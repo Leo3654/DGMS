@@ -35,7 +35,7 @@ parser.add_argument('--model_path', type=str, default='.')
 # others
 parser.add_argument('--print_interval', type=int, default=2000)
 parser.add_argument('--valid_interval', type=int, default=10000)
-parser.add_argument('--gpu_index', type=str, default='3', help="gpu index to use")
+parser.add_argument('--gpu_index', type=str, default='0', help="gpu index to use")
 
 args = parser.parse_args()
 

@@ -219,3 +219,69 @@ class Trainer(object):
         
         # Return the sorted rank list and the numpy array of scores for the current query
         return rank, np.array(one_query_scores)
+
+    @staticmethod
+    def calculate_square_mrr(similarity):
+        assert similarity.shape[0] == similarity.shape[1]
+        correct_scores = np.diagonal(similarity)
+        compared_scores = similarity >= correct_scores[..., np.newaxis]
+        rrs = 1.0 / compared_scores.astype(np.float).sum(-1)
+        return rrs
+
+    def test(self, iter_no):
+        write_log_file(self.log_path, "Start to testing ...")
+        test_query_ids = self.text_data.split_ids['test']
+        success = {1: 0, 5: 0, 10: 0}
+        total_test_scores = []
+        test_start = datetime.now()
+        for test_chunk in chunk(test_query_ids, 100):
+            one_chunk_scores = []
+            for i, query_id in enumerate(test_chunk):
+                rank_ids, one_row_scores = self.retrieve_rank(query_id, test_chunk, self.text_data, self.code_data)
+                one_chunk_scores.append(one_row_scores)
+                for k in success.keys():
+                    if query_id in rank_ids[:k]:
+                        success[k] += 1
+            total_test_scores.append(one_chunk_scores)
+
+        write_log_file(self.log_path, "\n&Testing Iteration {}: for {} queries finished. Time elapsed = {}.".format(iter_no, len(test_query_ids), datetime.now() - test_start))
+
+        all_mrr = []
+        for i in range(len(total_test_scores)):
+            one_chunk_square_score = total_test_scores[i]
+            one_chunk_square_score = np.vstack(one_chunk_square_score)
+            assert one_chunk_square_score.shape[0] == one_chunk_square_score.shape[1], "Every Chunk must be square"
+            mrr_array = self.calculate_square_mrr(one_chunk_square_score)
+            all_mrr.extend(mrr_array)
+        mrr = np.array(all_mrr).mean()
+        self.test_iter.append(iter_no)
+        self.test_mrr.append(mrr)
+        write_log_file(self.log_path, "&Testing Iteration {}: MRR = &{}&".format(iter_no, mrr))
+
+        for k, v in success.items():
+            value = v * 1.0 / len(test_query_ids)
+            write_log_file(self.log_path, "&Testing Iteration {}: S@{}@ = &{}&".format(iter_no, k, value))
+            if k == 1:
+                self.test_s1.append(value)
+            elif k == 5:
+                self.test_s5.append(value)
+            elif k == 10:
+                self.test_s10.append(value)
+            else:
+                print('cannot find !')
+        write_log_file(self.log_path, "S@1, S@5, S@10\n{}, {}, {}".format(self.test_s1[-1], self.test_s5[-1], self.test_s10[-1]))
+
+
+if __name__ == '__main__':
+    all_time_1 = datetime.now()
+    trainer = Trainer(arguments)
+    if arguments.only_test:
+        trainer.load_model(arguments.model_path)
+    else:
+        trainer.fit()
+        trainer.load_model(trainer.best_model_path)
+
+    all_time_1 = datetime.now()
+    write_log_file(trainer.log_path, "finished to load the model, next to start to test and time is = {}".format(all_time_1))
+    trainer.test(iter_no=trainer.max_iteration + 1)
+    write_log_file(trainer.log_path, "\nAll Finished using ({})\n".format(datetime.now() - all_time_1))

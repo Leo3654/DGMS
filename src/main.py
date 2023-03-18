@@ -20,8 +20,9 @@ from config import args_format as args_file_name
 from model.GraphMatchModel import GraphMatchNetwork
 from utils import write_log_file, arguments_to_tables, chunk
 
-os.environ["CUDA_VISIBLE_DEVICES"] = str(arguments.gpu_index)
+#os.environ["CUDA_VISIBLE_DEVICES"] = str(arguments.gpu_index)
 
+print("CUDA Available: ", torch.cuda.is_available())
 
 class Trainer(object):
     def __init__(self, args):
@@ -45,7 +46,7 @@ class Trainer(object):
         self.max_iteration = args.max_iter
         self.margin = args.margin
         
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cuda') #'cuda' if torch.cuda.is_available() else 'cpu')
         write_log_file(self.log_path, "\n****CPU or GPU: " + str(self.device))
         
         max_number_edge_types = 3

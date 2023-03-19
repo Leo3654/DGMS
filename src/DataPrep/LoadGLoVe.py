@@ -9,8 +9,9 @@ class GLoVe:
 
 
     def load_glove_vectors(self, glove_file):
+        pickle_file = os.path.splitext(glove_file)[0] + '.pkl'
         try:
-            with open('word_to_vector.pickle', 'rb') as f:
+            with open(pickle_file, 'rb') as f:
                 word_to_vector = pickle.load(f)
         except FileNotFoundError:
             with open(glove_file, 'r', encoding='utf-8') as f:
@@ -26,12 +27,12 @@ class GLoVe:
                     except:
                         print("Error in line", line)
                     word_to_vector[word] = vector
-            with open('word_to_vector.pickle', 'wb') as f:
+            with open(pickle_file, 'wb') as f:
                 pickle.dump(word_to_vector, f)
         return word_to_vector
 
     def get_vector(self, word):
-        return word_to_vector.get(word, None)
+        return self.word_to_vector.get(word, None)
 
 if __name__ == "__main__":
     glove_file = sys.argv[1]
@@ -39,6 +40,6 @@ if __name__ == "__main__":
     glove = GLoVe(glove_file)
 
     while True:
-        word = input("What word would you like to look up?")
+        word = input("What word would you like to look up? ")
         vector = glove.get_vector(word)
         print(vector)

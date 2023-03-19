@@ -2,19 +2,25 @@ import numpy as np
 import sys
 
 def load_glove_vectors(glove_file):
-    with open(glove_file, 'r', encoding='utf-8') as f:
-        word_to_vector = {}
-        i = 0
-        for line in f:
-            i+=1
-            print("Processing line", i)
-            line = line.strip().split()
-            word = line[0]
-            try:
-                vector = np.array([float(x) for x in line[1:]])
-            except:
-                print("Error in line", line)
-            word_to_vector[word] = vector
+    try:
+        with open('word_to_vector.pickle', 'rb') as f:
+            word_to_vector = pickle.load(f)
+    except FileNotFoundError:
+        with open(glove_file, 'r', encoding='utf-8') as f:
+            word_to_vector = {}
+            i = 0
+            for line in f:
+                i+=1
+                print("Processing line", i)
+                line = line.strip().split()
+                word = line[0]
+                try:
+                    vector = np.array([float(x) for x in line[1:]])
+                except:
+                    print("Error in line", line)
+                word_to_vector[word] = vector
+        with open('word_to_vector.pickle', 'wb') as f:
+            pickle.dump(word_to_vector, f)
     return word_to_vector
 
 glove_file = sys.argv[1]

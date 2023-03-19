@@ -4,7 +4,10 @@ import sys
 def load_glove_vectors(glove_file):
     with open(glove_file, 'r', encoding='utf-8') as f:
         word_to_vector = {}
+        i = 0
         for line in f:
+            i+=1
+            print("Processing line", i)
             line = line.strip().split()
             word = line[0]
             vector = np.array([float(x) for x in line[1:]])

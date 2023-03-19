@@ -2,36 +2,43 @@ import numpy as np
 import sys
 import pickle
 
-def load_glove_vectors(glove_file):
-    try:
-        with open('word_to_vector.pickle', 'rb') as f:
-            word_to_vector = pickle.load(f)
-    except FileNotFoundError:
-        with open(glove_file, 'r', encoding='utf-8') as f:
-            word_to_vector = {}
-            i = 0
-            for line in f:
-                i+=1
-                print("Processing line", i)
-                line = line.strip().split()
-                word = line[0]
-                try:
-                    vector = np.array([float(x) for x in line[1:]])
-                except:
-                    print("Error in line", line)
-                word_to_vector[word] = vector
-        with open('word_to_vector.pickle', 'wb') as f:
-            pickle.dump(word_to_vector, f)
-    return word_to_vector
+class GLoVe:
 
-glove_file = sys.argv[1]
-print("Loading GLoVe dataset...")
-word_to_vector = load_glove_vectors(glove_file)
+    def __init__(self, glove_file):
+        self.word_to_vector = self.load_glove_vectors(glove_file)
 
-def get_vector(word):
-    return word_to_vector.get(word, None)
 
-while True:
-    word = input("What word would you like to look up?")
-    vector = get_vector(word)
-    print(vector)
+    def load_glove_vectors(self, glove_file):
+        try:
+            with open('word_to_vector.pickle', 'rb') as f:
+                word_to_vector = pickle.load(f)
+        except FileNotFoundError:
+            with open(glove_file, 'r', encoding='utf-8') as f:
+                word_to_vector = {}
+                i = 0
+                for line in f:
+                    i+=1
+                    print("Processing line", i)
+                    line = line.strip().split()
+                    word = line[0]
+                    try:
+                        vector = np.array([float(x) for x in line[1:]])
+                    except:
+                        print("Error in line", line)
+                    word_to_vector[word] = vector
+            with open('word_to_vector.pickle', 'wb') as f:
+                pickle.dump(word_to_vector, f)
+        return word_to_vector
+
+    def get_vector(self, word):
+        return word_to_vector.get(word, None)
+
+if __name__ == "__main__":
+    glove_file = sys.argv[1]
+    print("Loading GLoVe dataset...")
+    glove = GLoVe(glove_file)
+
+    while True:
+        word = input("What word would you like to look up?")
+        vector = glove.get_vector(word)
+        print(vector)

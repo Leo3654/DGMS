@@ -222,10 +222,23 @@ class Trainer(object):
 
     @staticmethod
     def calculate_square_mrr(similarity):
+        # Ensure that the similarity matrix is square
         assert similarity.shape[0] == similarity.shape[1]
+    
+        # Extract the correct scores along the diagonal of the similarity matrix
         correct_scores = np.diagonal(similarity)
+    
+        # Generate a boolean matrix where elements are True if the similarity score is greater than or equal to the correct score
+        # Henry: correct_scores has shape [n,], so we need to add a new axis to make its shape [n,1],
+        #        then we can compare with similarity (shape [n,n]) 
         compared_scores = similarity >= correct_scores[..., np.newaxis]
+    
+        # Calculate the reciprocal rank for each row in the matrix
+        # Henry: this formulae looks different from the one in the paper (sec. 4.3.2 eq.11)
+        #        although it logically makes sense.
         rrs = 1.0 / compared_scores.astype(np.float).sum(-1)
+    
+        # Return the mean reciprocal rank
         return rrs
 
     def test(self, iter_no):
@@ -243,9 +256,9 @@ class Trainer(object):
                     if query_id in rank_ids[:k]:
                         success[k] += 1
             total_test_scores.append(one_chunk_scores)
-
+        
         write_log_file(self.log_path, "\n&Testing Iteration {}: for {} queries finished. Time elapsed = {}.".format(iter_no, len(test_query_ids), datetime.now() - test_start))
-
+        
         all_mrr = []
         for i in range(len(total_test_scores)):
             one_chunk_square_score = total_test_scores[i]
@@ -257,7 +270,7 @@ class Trainer(object):
         self.test_iter.append(iter_no)
         self.test_mrr.append(mrr)
         write_log_file(self.log_path, "&Testing Iteration {}: MRR = &{}&".format(iter_no, mrr))
-
+        
         for k, v in success.items():
             value = v * 1.0 / len(test_query_ids)
             write_log_file(self.log_path, "&Testing Iteration {}: S@{}@ = &{}&".format(iter_no, k, value))
@@ -280,8 +293,9 @@ if __name__ == '__main__':
     else:
         trainer.fit()
         trainer.load_model(trainer.best_model_path)
-
+    
     all_time_1 = datetime.now()
     write_log_file(trainer.log_path, "finished to load the model, next to start to test and time is = {}".format(all_time_1))
     trainer.test(iter_no=trainer.max_iteration + 1)
     write_log_file(trainer.log_path, "\nAll Finished using ({})\n".format(datetime.now() - all_time_1))
+

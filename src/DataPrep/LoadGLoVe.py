@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 def load_glove_vectors(glove_file):
     with open(glove_file, 'r', encoding='utf-8') as f:
@@ -10,7 +11,8 @@ def load_glove_vectors(glove_file):
             word_to_vector[word] = vector
     return word_to_vector
 
-glove_file = 'glove.840B.300d.txt'
+glove_file = sys.argv[1]
+print("Loading GLoVe dataset...")
 word_to_vector = load_glove_vectors(glove_file)
 
 def get_vector(word):

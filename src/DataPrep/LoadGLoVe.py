@@ -1,5 +1,6 @@
 import numpy as np
 import sys
+import pickle
 
 def load_glove_vectors(glove_file):
     try:

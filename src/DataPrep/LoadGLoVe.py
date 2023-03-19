@@ -10,7 +10,10 @@ def load_glove_vectors(glove_file):
             print("Processing line", i)
             line = line.strip().split()
             word = line[0]
-            vector = np.array([float(x) for x in line[1:]])
+            try:
+                vector = np.array([float(x) for x in line[1:]])
+            except:
+                print("Error in line", line)
             word_to_vector[word] = vector
     return word_to_vector
 

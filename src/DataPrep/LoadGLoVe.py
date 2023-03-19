@@ -16,6 +16,7 @@ word_to_vector = load_glove_vectors(glove_file)
 def get_vector(word):
     return word_to_vector.get(word, None)
 
-word = 'apple'
-vector = get_vector(word)
-print(vector)
+while True:
+    word = input("What word would you like to look up?")
+    vector = get_vector(word)
+    print(vector)

@@ -23,7 +23,8 @@ def nltk_tree_to_graph(nltk_tree):
             i = i + 1
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
-            nx_graph.add_node(node)
+            mapping[i] = node
+            nx_graph.add_node(i)
     return nx_graph
 
 parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")

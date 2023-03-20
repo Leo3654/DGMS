@@ -8,7 +8,7 @@ os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
 i = 0
-label = {}
+mapping = {}
 
 def nltk_tree_to_graph(nltk_tree):
     """
@@ -19,7 +19,7 @@ def nltk_tree_to_graph(nltk_tree):
     for node in nltk_tree:
         if isinstance(node, Tree):
             nx_graph.add_edge(i, i+1)
-            label[i] = node.label()
+            mapping[i] = node.label()
             i = i + 1
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
@@ -28,6 +28,8 @@ def nltk_tree_to_graph(nltk_tree):
 
 parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 sentences = list(parser.raw_parse("Hello, My name is Melroy."))[0]
-print(nx.to_dict_of_dicts(nltk_tree_to_graph(sentences)))
-print(label)
+trees = nltk_tree_to_graph(sentences)
+relabledTrees = nx.relabel_nodes(trees, mapping)
+print(nx.to_dict_of_dicts(relabledTrees))
+print(mapping)
 

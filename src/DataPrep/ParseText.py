@@ -27,5 +27,5 @@ def nltk_tree_to_graph(nltk_tree):
 
 parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 sentences = parser.raw_parse("Hello, My name is Melroy.")
-print(nltk_tree_to_graph(sentences))
+print(nltk_tree_to_graph(list(sentences)[0]))
 

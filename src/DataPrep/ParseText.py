@@ -37,11 +37,11 @@ parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-
 text_to_parse = input("Please enter a sentence: ")
 sentences = list(parser.raw_parse(text_to_parse))[0]
 print("Sentences:", sentences)
-trees = nltk_tree_to_graph(sentences)
-relabledTrees = nx.relabel_nodes(trees, mapping)
-dict_repr = nx.to_dict_of_dicts(relabledTrees)
+graph = nltk_tree_to_graph(sentences)
+relabledGraph = nx.relabel_nodes(graph, mapping)
+dict_repr = nx.to_dict_of_dicts(relabledGraph)
 print(dict_repr)
-print(nx.adjacency_matrix(relabledTrees))
+print(nx.adjacency_matrix(graph))
+print(nx.adjacency_matrix(relabledGraph))
 print(mapping)
-nx.draw(relabledTrees)
 

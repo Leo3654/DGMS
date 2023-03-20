@@ -25,7 +25,6 @@ def nltk_tree_to_graph(nltk_tree):
         else:
             print("else", node)
             mapping[i] = node
-            nx_graph.add_node(i)
             i=i+1
     return nx_graph
 

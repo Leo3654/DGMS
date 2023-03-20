@@ -17,7 +17,7 @@ def nltk_tree_to_graph(nltk_tree):
     global i, label
     nx_graph = nx.DiGraph()
     parent = i
-    mapping[parent] = node.label()
+    mapping[parent] = nltk_tree.label()
     for node in nltk_tree:
         if isinstance(node, Tree):
             print("Adding node ", i, " : ", node.label())

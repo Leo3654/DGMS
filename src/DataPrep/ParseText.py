@@ -18,6 +18,7 @@ def nltk_tree_to_graph(nltk_tree):
     nx_graph = nx.Graph()
     for node in nltk_tree:
         if isinstance(node, Tree):
+            print("Adding node ", i, " : ", node.label())
             nx_graph.add_edge(i, i+1)
             mapping[i] = node.label()
             i = i + 1

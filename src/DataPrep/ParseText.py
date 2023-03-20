@@ -23,6 +23,7 @@ def nltk_tree_to_graph(nltk_tree):
             i = i + 1
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
+            print("else", node)
             mapping[i] = node
             nx_graph.add_node(i)
     return nx_graph

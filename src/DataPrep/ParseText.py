@@ -14,7 +14,7 @@ def nltk_tree_to_graph(nltk_tree):
     nx_graph = nx.Graph()
     for node in nltk_tree:
         if isinstance(node, Tree):
-            print(node, "\nchild:\n", node[0])
+            print(node.label(),"\nnode:\n",node, "\nchild:\n", node[0])
             nx_graph.add_edge(node.label(), node[0])
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:

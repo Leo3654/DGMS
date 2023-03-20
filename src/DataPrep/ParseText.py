@@ -5,25 +5,17 @@ os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
 def nltk_tree_to_graph(nltk_tree):
-    graph = nx.Graph()
-    labels = {}
-
-    def traverse_tree(node, parent=None):
-        if isinstance(node, str):
-            node = Tree(node, [])
-        labels[node] = node.label()
-
-        if parent is not None:
-            graph.add_edge(parent, node)
-
-        for child in node:
-            if isinstance(child, str):
-                child = Tree(child, [])
-            traverse_tree(child, node)
-
-    traverse_tree(nltk_tree)
-    graph = nx.relabel_nodes(graph, labels)
-    return graph
+    """
+    Converts an nltk tree to an nx graph.
+    """
+    nx_graph = nx.Graph()
+    for node in nltk_tree:
+        if isinstance(node, Tree):
+            nx_graph.add_edge(node.label(), node[0])
+            nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
+        else:
+            nx_graph.add_node(node)
+    return nx_graph
 
 parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 sentences = parser.raw_parse("Hello, My name is Melroy.")

@@ -19,7 +19,7 @@ def nltk_tree_to_graph(nltk_tree):
             print((node.label(), i),"\nnode:\n",node, "\nchild:\n", node[0])
             nx_graph.add_edge(i, i+1)
             i = i + 1
-            nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node,i))
+            nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
             nx_graph.add_node(node)
     return nx_graph

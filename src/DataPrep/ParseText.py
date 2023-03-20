@@ -3,6 +3,7 @@ from nltk.parse import stanford
 import networkx as nx
 
 from nltk.tree import Tree
+import pprint
 
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
@@ -30,12 +31,14 @@ def nltk_tree_to_graph(nltk_tree):
             mapping[i] = node
     return nx_graph
 
+
 parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 text_to_parse = input("Please enter a sentence: ")
 sentences = list(parser.raw_parse(text_to_parse))[0]
 print("Sentences:", sentences)
 trees = nltk_tree_to_graph(sentences)
 relabledTrees = nx.relabel_nodes(trees, mapping)
-print(nx.to_dict_of_dicts(relabledTrees))
+dict_repr = nx.to_dict_of_dicts(relabledTrees)
+print(pprint.pprint(dict_repr, indent=1, width=20))
 print(mapping)
 

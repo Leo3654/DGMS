@@ -35,7 +35,6 @@ sentences = list(parser.raw_parse("Hello, My name is Melroy."))[0]
 print("Sentences:", sentences)
 trees = nltk_tree_to_graph(sentences)
 relabledTrees = nx.relabel_nodes(trees, mapping)
-#print(nx.to_dict_of_dicts(relabledTrees))
-print(nx.draw(relabledTrees, pos=nx.drawing.layout.shell_layout(relabledTrees), with_labels=True, font_weight='bold', node_size=1000))
+print(nx.to_dict_of_dicts(relabledTrees))
 print(mapping)
 

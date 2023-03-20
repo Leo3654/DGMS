@@ -21,13 +21,14 @@ def nltk_tree_to_graph(nltk_tree):
     mapping[parent] = nltk_tree.label()
     for node in nltk_tree:
         if isinstance(node, Tree):
-            print("Adding node ", i, " : ", node.label())
+            print("Adding node ", i+1, " : ", node.label())
             i = i + 1
             nx_graph.add_edge(parent, i)
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
-            print("else", i, node)
+            print("else", i+1, node)
             i=i + 1
+            nx_graph.add_edge(parent,i)
             mapping[i] = node
     return nx_graph
 

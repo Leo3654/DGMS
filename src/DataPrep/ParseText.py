@@ -1,6 +1,9 @@
 import os
 from nltk.parse import stanford
 import networkx as nx
+
+from nltk.tree import Tree
+
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 

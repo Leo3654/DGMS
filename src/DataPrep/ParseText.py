@@ -31,7 +31,8 @@ def nltk_tree_to_graph(nltk_tree):
     return nx_graph
 
 parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
-sentences = list(parser.raw_parse("Hello, My name is Melroy."))[0]
+text_to_parse = input("Please enter a sentence: ")
+sentences = list(parser.raw_parse(text_to_parse))[0]
 print("Sentences:", sentences)
 trees = nltk_tree_to_graph(sentences)
 relabledTrees = nx.relabel_nodes(trees, mapping)

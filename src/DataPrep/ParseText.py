@@ -7,6 +7,8 @@ from nltk.tree import Tree
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
+i = 0
+
 def nltk_tree_to_graph(nltk_tree):
     """
     Converts an nltk tree to an nx graph.
@@ -14,9 +16,10 @@ def nltk_tree_to_graph(nltk_tree):
     nx_graph = nx.Graph()
     for node in nltk_tree:
         if isinstance(node, Tree):
-            print(node.label(),"\nnode:\n",node, "\nchild:\n", node[0])
-            nx_graph.add_edge(node.label(), node[0])
-            nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
+            print((node.label(), i),"\nnode:\n",node, "\nchild:\n", node[0])
+            nx_graph.add_edge(i, i+1)
+            i = i + 1
+            nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node,i))
         else:
             nx_graph.add_node(node)
     return nx_graph

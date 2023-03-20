@@ -17,16 +17,16 @@ def nltk_tree_to_graph(nltk_tree):
     global i, label
     nx_graph = nx.DiGraph()
     parent = i
+    mapping[parent] = node.label()
     for node in nltk_tree:
         if isinstance(node, Tree):
             print("Adding node ", i, " : ", node.label())
-            mapping[parent] = node.label()
             i = i + 1
             nx_graph.add_edge(parent, i)
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
             print("else", node)
-            mapping[parent] = node
+            mapping[i] = node
             i=i+1
     return nx_graph
 

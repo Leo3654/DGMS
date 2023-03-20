@@ -3,10 +3,6 @@ from nltk.parse import stanford
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
-parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
-sentences = parser.raw_parse("Hello, My name is Melroy.")
-print(nltk_tree_to_graph(sentences))
-
 def nltk_tree_to_graph(nltk_tree):
     graph = nx.Graph()
     labels = {}
@@ -27,3 +23,8 @@ def nltk_tree_to_graph(nltk_tree):
     traverse_tree(nltk_tree)
     graph = nx.relabel_nodes(graph, labels)
     return graph
+
+parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
+sentences = parser.raw_parse("Hello, My name is Melroy.")
+print(nltk_tree_to_graph(sentences))
+

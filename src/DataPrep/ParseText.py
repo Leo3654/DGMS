@@ -25,7 +25,7 @@ def nltk_tree_to_graph(nltk_tree):
             nx_graph.add_edge(parent, i)
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
-            print("else", node)
+            print("else", i, node)
             i=i+1
             mapping[i] = node
     return nx_graph

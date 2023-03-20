@@ -13,6 +13,7 @@ def nltk_tree_to_graph(nltk_tree):
     """
     Converts an nltk tree to an nx graph.
     """
+    global i
     nx_graph = nx.Graph()
     for node in nltk_tree:
         if isinstance(node, Tree):

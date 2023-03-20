@@ -33,7 +33,7 @@ parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-
 sentences = list(parser.raw_parse("Hello, My name is Melroy."))[0]
 print("Sentences:", sentences)
 trees = nltk_tree_to_graph(sentences)
-relabledTrees = trees#nx.relabel_nodes(trees, mapping)
+relabledTrees = nx.relabel_nodes(trees, mapping)
 print(nx.to_dict_of_dicts(relabledTrees))
 print(mapping)
 

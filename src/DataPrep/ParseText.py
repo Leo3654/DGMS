@@ -43,4 +43,5 @@ dict_repr = nx.to_dict_of_dicts(relabledTrees)
 print(dict_repr)
 print(nx.adjacency_matrix(relabledTrees))
 print(mapping)
+nx.draw(relabledTrees)
 

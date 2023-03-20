@@ -41,6 +41,6 @@ trees = nltk_tree_to_graph(sentences)
 relabledTrees = nx.relabel_nodes(trees, mapping)
 dict_repr = nx.to_dict_of_dicts(relabledTrees)
 print(dict_repr)
-print(nx.ad(relabledTrees))
+print(nx.adjacency_matrix(relabledTrees))
 print(mapping)
 

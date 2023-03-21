@@ -9,6 +9,11 @@ from torch_geometric.utils.convert import from_networkx
 
 from LoadGLoVe import GLoVe
 
+import numpy as np
+
+constituency = np.array([1,0,0])
+word_ordering = np.array([0,1,0])
+
 
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
@@ -29,12 +34,12 @@ def nltk_tree_to_graph(nltk_tree):
         if isinstance(node, Tree):
             print("Adding node ", i+1, " : ", node.label())
             i = i + 1
-            nx_graph.add_edge(parent, i, type = "constituency")
+            nx_graph.add_edge(parent, i, type = constituency)
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
             print("else", i+1, node)
             i=i + 1
-            nx_graph.add_edge(parent,i)
+            nx_graph.add_edge(parent,i, type=word_ordering)
             mapping[i] = node
             words.append(i)
 

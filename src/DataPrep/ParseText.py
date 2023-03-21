@@ -7,6 +7,8 @@ import pprint
 
 from torch_geometric.utils.convert import from_networkx
 
+from LoadGLoVe import GLoVe
+
 
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
@@ -45,10 +47,16 @@ sentences = list(parser.raw_parse(text_to_parse))[0]
 print("Sentences:", sentences)
 graph = nltk_tree_to_graph(sentences)
 
-    # Add word edges
+# Add word-ordering edges
 for i in range(len(words)-1):
     graph.add_edge(words[i], words[i+1], type="word_ordering")
     graph.add_edge(words[i+1], words[i], type="word_ordering")
+
+# convert words to GLoVe vectors
+
+glove = GLoVe("../../glove.840B.300d.txt")
+
+mapping = {key: glove.get_vector(word) for key, word in my_dict.items()}
 
 relabledGraph = nx.relabel_nodes(graph, mapping)
 dict_repr = nx.to_dict_of_dicts(relabledGraph)

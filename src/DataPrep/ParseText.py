@@ -5,11 +5,15 @@ import networkx as nx
 from nltk.tree import Tree
 import pprint
 
+from torch_geometric.utils.convert import from_networkx
+
+
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
 i = 0
 mapping = {}
+words = []
 
 def nltk_tree_to_graph(nltk_tree):
     """
@@ -23,13 +27,15 @@ def nltk_tree_to_graph(nltk_tree):
         if isinstance(node, Tree):
             print("Adding node ", i+1, " : ", node.label())
             i = i + 1
-            nx_graph.add_edge(parent, i)
+            nx_graph.add_edge(parent, i, type = "constituency")
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
             print("else", i+1, node)
             i=i + 1
             nx_graph.add_edge(parent,i)
             mapping[i] = node
+            words.append(i)
+
     return nx_graph
 
 
@@ -38,10 +44,20 @@ text_to_parse = input("Please enter a sentence: ")
 sentences = list(parser.raw_parse(text_to_parse))[0]
 print("Sentences:", sentences)
 graph = nltk_tree_to_graph(sentences)
+
+    # Add word edges
+for i in range(len(words)-1):
+    graph.add_edge(words[i], words[i+1], type="word_ordering")
+    graph.add_edge(words[i+1], words[i], type="word_ordering")
+
 relabledGraph = nx.relabel_nodes(graph, mapping)
 dict_repr = nx.to_dict_of_dicts(relabledGraph)
 print(dict_repr)
 print(nx.adjacency_matrix(graph))
+print("Relabled:")
 print(nx.adjacency_matrix(relabledGraph))
 print(mapping)
 
+data = from_networkx(graph)
+
+print(data)

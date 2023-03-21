@@ -39,7 +39,7 @@ def nltk_tree_to_graph(nltk_tree):
         else:
             print("else", i+1, node)
             i=i + 1
-            nx_graph.add_edge(parent,i, type=word_ordering)
+            nx_graph.add_edge(parent,i, type=constituency)
             mapping[i] = node
             words.append(i)
 
@@ -54,8 +54,8 @@ graph = nltk_tree_to_graph(sentences)
 
 # Add word-ordering edges
 for i in range(len(words)-1):
-    graph.add_edge(words[i], words[i+1], type="word_ordering")
-    graph.add_edge(words[i+1], words[i], type="word_ordering")
+    graph.add_edge(words[i], words[i+1], type=word_ordering)
+    graph.add_edge(words[i+1], words[i], type=word_ordering)
 
 # convert words to GLoVe vectors
 

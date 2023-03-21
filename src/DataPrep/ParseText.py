@@ -56,7 +56,7 @@ for i in range(len(words)-1):
 
 glove = GLoVe("../../glove.840B.300d.txt")
 
-mapping = {key: glove.get_vector(word) for key, word in my_dict.items()}
+mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
 
 relabledGraph = nx.relabel_nodes(graph, mapping)
 dict_repr = nx.to_dict_of_dicts(relabledGraph)

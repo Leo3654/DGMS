@@ -242,41 +242,62 @@ class Trainer(object):
         return rrs
 
     def test(self, iter_no):
+        # write log for starting testing
         write_log_file(self.log_path, "Start to testing ...")
+
+        # get test query ids
         test_query_ids = self.text_data.split_ids['test']
+
+        # initialize a dictionary to store success@1, success@5, and success@10
         success = {1: 0, 5: 0, 10: 0}
+
+        # initialize an empty list to store all the scores for each test query
         total_test_scores = []
+
+        # record the start time of testing
         test_start = datetime.now()
+
+        # split test query ids into chunks of 100 and iterate over each chunk
+        # Henry: chunk is imported from util file
         for test_chunk in chunk(test_query_ids, 100):
+            # initialize an empty list to store scores for each query in the current chunk
             one_chunk_scores = []
             for i, query_id in enumerate(test_chunk):
+                # retrieve the rank and scores for the current query and store the scores
                 rank_ids, one_row_scores = self.retrieve_rank(query_id, test_chunk, self.text_data, self.code_data)
                 one_chunk_scores.append(one_row_scores)
+
+                # update success dictionary if the current query is in top-k results
                 for k in success.keys():
                     if query_id in rank_ids[:k]:
                         success[k] += 1
+
+            # append the scores for the current chunk to the list of all scores
             total_test_scores.append(one_chunk_scores)
-        
+
+        # write log for finishing testing
         write_log_file(self.log_path, "\n&Testing Iteration {}: for {} queries finished. Time elapsed = {}.".format(iter_no, len(test_query_ids), datetime.now() - test_start))
         
-        all_mrr = []
-        for i in range(len(total_test_scores)):
-            one_chunk_square_score = total_test_scores[i]
-            one_chunk_square_score = np.vstack(one_chunk_square_score)
-            assert one_chunk_square_score.shape[0] == one_chunk_square_score.shape[1], "Every Chunk must be square"
-            mrr_array = self.calculate_square_mrr(one_chunk_square_score)
-            all_mrr.extend(mrr_array)
-        mrr = np.array(all_mrr).mean()
-        self.test_iter.append(iter_no)
-        self.test_mrr.append(mrr)
-        write_log_file(self.log_path, "&Testing Iteration {}: MRR = &{}&".format(iter_no, mrr))
-        
-        for k, v in success.items():
-            value = v * 1.0 / len(test_query_ids)
-            write_log_file(self.log_path, "&Testing Iteration {}: S@{}@ = &{}&".format(iter_no, k, value))
-            if k == 1:
+        # Henry: retrieve_rank returns a row, comparing each query in a chunk with all queries in the same chunk. 
+        #       chunk score stacks the rows to be a square matrix.
+        all_mrr = []  # list to store all the MRR scores obtained from testing
+        for i in range(len(total_test_scores)):  # iterate over each chunk of test scores
+            one_chunk_square_score = total_test_scores[i]  # obtain one chunk of test scores
+            one_chunk_square_score = np.vstack(one_chunk_square_score)  # stack the test scores vertically to create a square matrix
+            assert one_chunk_square_score.shape[0] == one_chunk_square_score.shape[1], "Every Chunk must be square"  # check if the matrix is square
+            mrr_array = self.calculate_square_mrr(one_chunk_square_score)  # calculate MRR for the given chunk of scores
+            all_mrr.extend(mrr_array)  # add the MRR scores to the list of all MRR scores
+        mrr = np.array(all_mrr).mean()  # calculate the average of all MRR scores
+        self.test_iter.append(iter_no)  # append the current testing iteration number to the list of testing iterations
+        self.test_mrr.append(mrr)  # append the calculated MRR to the list of MRR scores obtained during testing
+        write_log_file(self.log_path, "&Testing Iteration {}: MRR = &{}&".format(iter_no, mrr))  # write the testing iteration number and MRR to the log file
+
+        for k, v in success.items():  # iterate over each key-value pair in the dictionary of success counts
+            value = v * 1.0 / len(test_query_ids)  # calculate the success rate for the given value
+            write_log_file(self.log_path, "&Testing Iteration {}: S@{}@ = &{}&".format(iter_no, k, value))  # write the testing iteration number, success rate key and value to the log file
+            if k == 1:  # if the success rate key is 1, append the success rate to the list of S@1 scores obtained during testing
                 self.test_s1.append(value)
-            elif k == 5:
+            elif k == 5:  # if the success rate key is 5, append the success rate to the list of S@5
                 self.test_s5.append(value)
             elif k == 10:
                 self.test_s10.append(value)

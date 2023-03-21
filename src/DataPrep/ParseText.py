@@ -54,16 +54,16 @@ for i in range(len(words)-1):
 
 # convert words to GLoVe vectors
 
-glove = GLoVe("../../glove.840B.300d.txt")
+#glove = GLoVe("../../glove.840B.300d.txt")
 
-mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
+#mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
 
-relabledGraph = nx.relabel_nodes(graph, mapping)
-dict_repr = nx.to_dict_of_dicts(relabledGraph)
-print(dict_repr)
+#relabledGraph = nx.relabel_nodes(graph, mapping)
+#dict_repr = nx.to_dict_of_dicts(relabledGraph)
+#print(dict_repr)
 print(nx.adjacency_matrix(graph))
-print("Relabled:")
-print(nx.adjacency_matrix(relabledGraph))
+#print("Relabled:")
+#print(nx.adjacency_matrix(relabledGraph))
 print(mapping)
 
 data = from_networkx(graph)

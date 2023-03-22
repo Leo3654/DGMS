@@ -12,6 +12,8 @@ from LoadGLoVe import GLoVe
 
 import numpy as np
 
+from WordSplit import *
+
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
@@ -66,7 +68,10 @@ def sentence_to_pyg(text_to_parse):
     x = np.zeros((graph.number_of_nodes(), 300))
 
     for i in range(len(words)):
-        x[i] = glove.get_vector(words[i])
+        if glove.get_vector(words[i]) is not None:
+            x[i] = glove.get_vector(words[i])
+        else:
+            x[i] = try_glove_split(words[i])
 
     #relabledGraph = nx.relabel_nodes(graph, mapping)
     #dict_repr = nx.to_dict_of_dicts(relabledGraph)

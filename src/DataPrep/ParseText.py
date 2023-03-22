@@ -55,7 +55,7 @@ def sentence_to_pyg(text_to_parse):
 
     sentence = list(parser.raw_parse(text_to_parse))[0]
 
-    graph = nltk_tree_to_graph(sentence, 0)
+    graph, _ = nltk_tree_to_graph(sentence, 0)
 
     # Add word-ordering edges
     for i in range(len(words)-1):

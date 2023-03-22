@@ -20,7 +20,7 @@ from utils import write_log_file
 
 class ProcessedDataset(object):
     def __init__(self, name, root, log_path):
-        self.name = name
+        self.name = name    #Henry: code or text
         self.data_processed_path = os.path.join(root, '{}_processed'.format(self.name))
         self.graph_id_file = os.path.join(root, '{}_graph_ids.pt'.format(self.name))
         self.graph_id_list = torch.load(self.graph_id_file)
@@ -31,9 +31,10 @@ class ProcessedDataset(object):
         # self.get_total_graphs()
         
         # Split train, test, validation set
-        if os.path.exists(os.path.join(root, 'split.json')):
+        if os.path.exists(os.path.join(root, 'split.json')): #Henry: this file is only available at Baidu
             with open(os.path.join(root, 'split.json'), 'rb') as f:
-                self.split_ids = json.loads(f.read())
+                #Henry: in the jason file, all ids are split in 3 lists with train, validation, test as dictionary keys.
+                self.split_ids = json.loads(f.read()) 
         else:
             raise NotImplementedError
         write_log_file(self.log_path, "Train={}\nValid={}\nTest={}".format(len(self.split_ids['train']), len(self.split_ids['valid']), len(self.split_ids['test'])))
@@ -90,6 +91,7 @@ class ProcessedDataset(object):
                 while train_graph_ids[neg_id_index] == train_graph_ids[i]:
                     neg_id_index = random.randint(a=0, b=len(train_graph_ids) - 1)
                 neg_code_list.append(train_graph_ids[neg_id_index])
+            #yield is similar to return, but the function returns a generator object
             yield pos_code_list, text_list, neg_code_list
             st = ed if ed < len(train_graph_ids) else 0
             current += batch_size

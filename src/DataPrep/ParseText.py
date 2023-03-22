@@ -12,12 +12,14 @@ from LoadGLoVe import GLoVe
 
 import numpy as np
 
+os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
+os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
+
 constituency = np.array([1,0,0])
 word_ordering = np.array([0,1,0])
 
-
-os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
-os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
+# Initialize the GLoVe dataset
+glove = GLoVe("../../glove.840B.300d.txt")
 
 i = 0
 mapping = {}
@@ -47,37 +49,40 @@ def nltk_tree_to_graph(nltk_tree):
     return nx_graph
 
 
-parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
-text_to_parse = input("Please enter a sentence: ")
-sentences = list(parser.raw_parse(text_to_parse))[0]
-print("Sentences:", sentences)
-graph = nltk_tree_to_graph(sentences)
+def sentence_to_pyg(text_to_parse):
+    parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 
-# Add word-ordering edges
-for i in range(len(words)-1):
-    graph.add_edge(words[i], words[i+1], edge_attr=word_ordering)
-    graph.add_edge(words[i+1], words[i], edge_attr=word_ordering)
+    sentences = list(parser.raw_parse(text_to_parse))[0]
+    print("Sentences:", sentences)
+    graph = nltk_tree_to_graph(sentences)
 
-# lookup words' GLoVe vectors
+    # Add word-ordering edges
+    for i in range(len(words)-1):
+        graph.add_edge(words[i], words[i+1], edge_attr=word_ordering)
+        graph.add_edge(words[i+1], words[i], edge_attr=word_ordering)
 
-glove = GLoVe("../../glove.840B.300d.txt")
+    # lookup words' GLoVe vectors
+    x = np.zeros((graph.number_of_nodes(), 300))
 
-x = np.zeros((graph.number_of_nodes(), 300))
-# glove_mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
+    for i in range(len(words)):
+        x[i] = glove.get_vector(words[i])
 
-for i in range(len(words)):
-    x[i] = glove.get_vector(words[i])
+    #relabledGraph = nx.relabel_nodes(graph, mapping)
+    #dict_repr = nx.to_dict_of_dicts(relabledGraph)
+    #print(dict_repr)
+    #print(nx.adjacency_matrix(graph))
+    #print("Relabled:")
+    #print(nx.adjacency_matrix(relabledGraph))
+    #print(mapping)
 
-#relabledGraph = nx.relabel_nodes(graph, mapping)
-#dict_repr = nx.to_dict_of_dicts(relabledGraph)
-#print(dict_repr)
-print(nx.adjacency_matrix(graph))
-#print("Relabled:")
-#print(nx.adjacency_matrix(relabledGraph))
-print(mapping)
+    data = from_networkx(graph)
+    data.x = torch.tensor(x)
 
-data = from_networkx(graph)
-data.x = torch.tensor(x)
+    return data
 
 
-print(data)
+if __name__ == "__main__":
+    text_to_parse = input("Please enter a sentence: ")
+    data = sentence_to_pyg(text_to_parse)
+
+    print(data)

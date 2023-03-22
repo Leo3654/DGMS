@@ -57,11 +57,15 @@ for i in range(len(words)-1):
     graph.add_edge(words[i], words[i+1], edge_attr=word_ordering)
     graph.add_edge(words[i+1], words[i], edge_attr=word_ordering)
 
-# convert words to GLoVe vectors
+# lookup words' GLoVe vectors
 
 glove = GLoVe("../../glove.840B.300d.txt")
 
-glove_mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
+x = np.zeros((graph.number_of_nodes(), 300))
+# glove_mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
+
+for i in range(len(words)):
+    x[i] = glove.get_vector(words[i])
 
 #relabledGraph = nx.relabel_nodes(graph, mapping)
 #dict_repr = nx.to_dict_of_dicts(relabledGraph)
@@ -72,6 +76,7 @@ print(nx.adjacency_matrix(graph))
 print(mapping)
 
 data = from_networkx(graph)
+data.x = x
 
 
 print(data)

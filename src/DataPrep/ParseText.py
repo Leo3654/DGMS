@@ -34,12 +34,12 @@ def nltk_tree_to_graph(nltk_tree):
         if isinstance(node, Tree):
             print("Adding node ", i+1, " : ", node.label())
             i = i + 1
-            nx_graph.add_edge(parent, i, type = constituency)
+            nx_graph.add_edge(parent, i, edge_attr = constituency)
             nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
         else:
             print("else", i+1, node)
             i=i + 1
-            nx_graph.add_edge(parent,i, type=constituency)
+            nx_graph.add_edge(parent,i, edge_attr=constituency)
             mapping[i] = node
             words.append(i)
 
@@ -54,14 +54,14 @@ graph = nltk_tree_to_graph(sentences)
 
 # Add word-ordering edges
 for i in range(len(words)-1):
-    graph.add_edge(words[i], words[i+1], type=word_ordering)
-    graph.add_edge(words[i+1], words[i], type=word_ordering)
+    graph.add_edge(words[i], words[i+1], edge_attr=word_ordering)
+    graph.add_edge(words[i+1], words[i], edge_attr=word_ordering)
 
 # convert words to GLoVe vectors
 
-#glove = GLoVe("../../glove.840B.300d.txt")
+glove = GLoVe("../../glove.840B.300d.txt")
 
-#mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
+glove_mapping = {key: glove.get_vector(word) for key, word in mapping.items()}
 
 #relabledGraph = nx.relabel_nodes(graph, mapping)
 #dict_repr = nx.to_dict_of_dicts(relabledGraph)
@@ -72,5 +72,6 @@ print(nx.adjacency_matrix(graph))
 print(mapping)
 
 data = from_networkx(graph)
+
 
 print(data)

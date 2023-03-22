@@ -236,7 +236,7 @@ class Trainer(object):
         # Calculate the reciprocal rank for each row in the matrix
         # Henry: this formulae looks different from the one in the paper (sec. 4.3.2 eq.11)
         #        although it logically makes sense.
-        rrs = 1.0 / compared_scores.astype(np.float).sum(-1)
+        rrs = 1.0 / compared_scores.astype(float).sum(-1)
     
         # Return the mean reciprocal rank
         return rrs

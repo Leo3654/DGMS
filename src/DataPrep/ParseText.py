@@ -69,11 +69,11 @@ def sentence_to_pyg(text_to_parse):
 
     for i in range(len(words)):
         if glove.get_vector(words[i]) is not None:
-            x[i] = glove.get_vector(words[i])
+            x[i] = glove.get_vector(mapping[i])
         elif glove.get_vector(words[i].lower()) is not None:
-            x[i] = glove.get_vector(words[i].lower())
+            x[i] = glove.get_vector(mapping[i].lower())
         else:
-            x[i] = try_glove_split(words[i])
+            x[i] = try_glove_split(mapping[i])
 
     #relabledGraph = nx.relabel_nodes(graph, mapping)
     #dict_repr = nx.to_dict_of_dicts(relabledGraph)

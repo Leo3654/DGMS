@@ -94,3 +94,4 @@ if __name__ == "__main__":
     data = sentence_to_pyg(text_to_parse)
 
     print(data)
+    print(data.x)

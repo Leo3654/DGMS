@@ -27,7 +27,7 @@ def sentence_to_pyg(text_to_parse):
     mapping = {}
     words = []
 
-    def nltk_tree_to_graph(nltk_tree):
+    def nltk_tree_to_graph(nltk_tree,i):
         """
         Converts an nltk tree to an nx graph.
         """
@@ -39,7 +39,9 @@ def sentence_to_pyg(text_to_parse):
                 print("Adding node ", i+1, " : ", node.label())
                 i = i + 1
                 nx_graph.add_edge(parent, i, edge_attr = constituency)
-                nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
+                new_graph, new_i = nltk_tree_to_graph(node,i)
+                i = new_i
+                nx_graph = nx.compose(nx_graph, new_graph)
             else:
                 print("else", i+1, node)
                 i=i + 1
@@ -47,7 +49,7 @@ def sentence_to_pyg(text_to_parse):
                 mapping[i] = node
                 words.append(i)
 
-        return nx_graph
+        return (nx_graph, i)
 
     parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 

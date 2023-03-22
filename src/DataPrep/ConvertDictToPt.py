@@ -1,4 +1,5 @@
 import os
+import sys
 import torch
 from torch_geometric.data import Data
 
@@ -15,6 +16,6 @@ def load_and_convert_dicts(folder_path):
             torch.save(data, new_file_path)
 
 if __name__ == "__main__":
-    folder = argv[1]
+    folder = sys.argv[1]
 
     load_and_convert_dicts(folder)

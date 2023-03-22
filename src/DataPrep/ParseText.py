@@ -21,35 +21,35 @@ word_ordering = np.array([0,1,0])
 # Initialize the GLoVe dataset
 glove = GLoVe("../../glove.840B.300d.txt")
 
-i = 0
-mapping = {}
-words = []
-
-def nltk_tree_to_graph(nltk_tree):
-    """
-    Converts an nltk tree to an nx graph.
-    """
-    global i, label
-    nx_graph = nx.DiGraph()
-    parent = i
-    mapping[parent] = nltk_tree.label()
-    for node in nltk_tree:
-        if isinstance(node, Tree):
-            print("Adding node ", i+1, " : ", node.label())
-            i = i + 1
-            nx_graph.add_edge(parent, i, edge_attr = constituency)
-            nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
-        else:
-            print("else", i+1, node)
-            i=i + 1
-            nx_graph.add_edge(parent,i, edge_attr=constituency)
-            mapping[i] = node
-            words.append(i)
-
-    return nx_graph
-
 
 def sentence_to_pyg(text_to_parse):
+    i = 0
+    mapping = {}
+    words = []
+
+    def nltk_tree_to_graph(nltk_tree):
+        """
+        Converts an nltk tree to an nx graph.
+        """
+        global i, label
+        nx_graph = nx.DiGraph()
+        parent = i
+        mapping[parent] = nltk_tree.label()
+        for node in nltk_tree:
+            if isinstance(node, Tree):
+                print("Adding node ", i+1, " : ", node.label())
+                i = i + 1
+                nx_graph.add_edge(parent, i, edge_attr = constituency)
+                nx_graph = nx.compose(nx_graph, nltk_tree_to_graph(node))
+            else:
+                print("else", i+1, node)
+                i=i + 1
+                nx_graph.add_edge(parent,i, edge_attr = constituency)
+                mapping[i] = node
+                words.append(i)
+
+        return nx_graph
+
     parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 
     sentences = list(parser.raw_parse(text_to_parse))[0]
@@ -58,8 +58,8 @@ def sentence_to_pyg(text_to_parse):
 
     # Add word-ordering edges
     for i in range(len(words)-1):
-        graph.add_edge(words[i], words[i+1], edge_attr=word_ordering)
-        graph.add_edge(words[i+1], words[i], edge_attr=word_ordering)
+        graph.add_edge(words[i], words[i+1], edge_attr = word_ordering)
+        graph.add_edge(words[i+1], words[i], edge_attr = word_ordering)
 
     # lookup words' GLoVe vectors
     x = np.zeros((graph.number_of_nodes(), 300))

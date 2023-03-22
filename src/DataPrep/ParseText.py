@@ -67,7 +67,7 @@ def sentence_to_pyg(text_to_parse):
     # lookup words' GLoVe vectors
     x = np.zeros((graph.number_of_nodes(), 300))
 
-    for i in range(len(words)):
+    for i in range(len(mapping)):
         if glove.get_vector(mapping[i]) is not None:
             x[i] = glove.get_vector(mapping[i])
         elif glove.get_vector(mapping[i].lower()) is not None:

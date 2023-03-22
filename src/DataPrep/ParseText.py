@@ -5,6 +5,7 @@ import networkx as nx
 from nltk.tree import Tree
 import pprint
 
+import torch
 from torch_geometric.utils.convert import from_networkx
 
 from LoadGLoVe import GLoVe

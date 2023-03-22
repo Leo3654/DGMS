@@ -11,6 +11,9 @@ for file_name in os.listdir(dir_path):
     if file_name.endswith('.pt'):
         # Load the file
         file_path = os.path.join(dir_path, file_name)
+
+        print("Processing", file_name)
+
         data = torch.load(file_path)
         
         # Convert the data to a dictionary

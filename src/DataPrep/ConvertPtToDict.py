@@ -1,8 +1,9 @@
 import os
 import torch
+import sys
 
 # Define the directory path
-dir_path = '/path/to/your/folder'
+dir_path = sys.argv[1]
 
 # Iterate over all the files in the directory
 for file_name in os.listdir(dir_path):
@@ -13,7 +14,7 @@ for file_name in os.listdir(dir_path):
         data = torch.load(file_path)
         
         # Convert the data to a dictionary
-        data_dict = dict(data)
+        data_dict = data.to_dict()
         
         # Save the dictionary as _dict.pt file
         dict_file_name = file_name.replace('.pt', '_dict.pt')

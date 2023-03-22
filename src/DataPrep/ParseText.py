@@ -76,7 +76,7 @@ print(nx.adjacency_matrix(graph))
 print(mapping)
 
 data = from_networkx(graph)
-data.x = x
+data.x = torch.tensor(x)
 
 
 print(data)

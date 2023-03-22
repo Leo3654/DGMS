@@ -53,9 +53,9 @@ def sentence_to_pyg(text_to_parse):
 
     parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 
-    sentences = list(parser.raw_parse(text_to_parse))[0]
-    print("Sentences:", sentences)
-    graph = nltk_tree_to_graph(sentences)
+    sentence = list(parser.raw_parse(text_to_parse))[0]
+
+    graph = nltk_tree_to_graph(sentence, 0)
 
     # Add word-ordering edges
     for i in range(len(words)-1):

@@ -31,7 +31,6 @@ def sentence_to_pyg(text_to_parse):
         """
         Converts an nltk tree to an nx graph.
         """
-        global i, label
         nx_graph = nx.DiGraph()
         parent = i
         mapping[parent] = nltk_tree.label()

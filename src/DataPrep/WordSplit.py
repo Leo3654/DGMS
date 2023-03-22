@@ -22,7 +22,7 @@ def try_glove_split(word, glove):
     snake_split = [glove.get_vector(individual_word) for individual_word in snake_case_split(word)]
     # If all of the word vectors are present, return the mean of the word vectors
     if not any(v is None for v in camel_split):
-        return np.mean(snake_split)
+        return np.mean(snake_split, axis=0)
     
     # Otherwise, return a zero vector
     return np.zeros(300)

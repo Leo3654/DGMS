@@ -14,11 +14,10 @@ import numpy as np
 
 from WordSplit import *
 
+from Constants import constituency, word_ordering
+
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
-
-constituency = np.array([1,0,0])
-word_ordering = np.array([0,1,0])
 
 # Initialize the GLoVe dataset
 glove = GLoVe("../../glove.840B.300d.txt")

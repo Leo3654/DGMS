@@ -2,6 +2,12 @@ import os
 import torch
 import sys
 
+# This file is used to convert the pt file with old format 
+# to dictionary file via pyg version 1.7.2
+# Example: ConvertPtToDict ../../Datasets/python/code_processed
+# Then all pt files under the directory will be converted and saved
+# under the directory ../../Datasets/python/code_processed/dict_files
+
 # Define the directory path
 dir_path = sys.argv[1]
 
@@ -23,6 +29,7 @@ for file_name in os.listdir(dir_path):
 
         data = torch.load(file_path)
         
+        print(data)
         # Convert the data to a dictionary
         data_dict = data.to_dict()
         

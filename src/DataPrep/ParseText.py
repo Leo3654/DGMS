@@ -87,7 +87,7 @@ def sentence_to_pyg(text_to_parse):
         graph.add_edge(words[i+1], words[i], edge_attr = word_ordering)
 
     # Lookup words' GLoVe vectors and store them in the x vector
-    x = np.zeros((graph.number_of_nodes(), 300))
+    x = np.empty((graph.number_of_nodes(), 300))
 
     for i in range(len(mapping)):
         if glove.get_vector(mapping[i]) is not None:
@@ -96,6 +96,7 @@ def sentence_to_pyg(text_to_parse):
             x[i] = glove.get_vector(mapping[i].lower())
         else:
             x[i] = try_glove_split(mapping[i], glove)
+        print(i, mapping[i], x[i])
 
     #relabledGraph = nx.relabel_nodes(graph, mapping)
     #dict_repr = nx.to_dict_of_dicts(relabledGraph)
@@ -107,6 +108,7 @@ def sentence_to_pyg(text_to_parse):
 
     # Convert the graph to a PyG object
     data = from_networkx(graph)
+
 
     # Attach the GLoVe vectors to the PyG object
     data.x = torch.tensor(x)

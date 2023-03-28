@@ -44,9 +44,9 @@ class PythonGraph(TokenGraph):
         elif isinstance(node, ast.Store):
             return self.add_node("Store", is_syntax_token = True)
         elif isinstance(node, ast.AST):
-            parent = self.add_node(node.__class__.__name__, is_syntax_token = True)
+            parent = self.add_node(node.__class__.__name__)
         else:
-            return self.add_node(str(node), is_syntax_token = True)
+            return self.add_node(str(node))
 
         for child in ast.iter_child_nodes(node):
             child_node = self.ast_to_networkx(child)

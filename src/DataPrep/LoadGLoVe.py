@@ -2,6 +2,7 @@ import numpy as np
 import sys
 import pickle
 import os
+from WordSplit import try_glove_split
 
 class GLoVe:
 
@@ -34,7 +35,17 @@ class GLoVe:
 
     def get_vector(self, word):
         return self.word_to_vector.get(word, None)
-    
+
+
+def word_to_glove(glove, word):
+    if glove.get_vector(word) is not None:
+        return glove.get_vector(word)
+    elif glove.get_vector(word.lower()) is not None:
+        return glove.get_vector(word.lower())
+    else:
+        return try_glove_split(word, glove)
+
+
 if __name__ == "__main__":
     glove_file = sys.argv[1]
     print("Loading GLoVe dataset...")

@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
     networkx_graph = python_graph.G
 
-    python_graph.graph.save_graph()
+    python_graph.save_graph()
 
 
     # for node in ast.walk(tokens_graph.tree):

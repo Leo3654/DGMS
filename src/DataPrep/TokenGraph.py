@@ -89,6 +89,8 @@ class TokenGraph:
 
         nx.draw_networkx_edge_labels(graph, pos, edge_labels)
         if show_labels: nx.draw_networkx_labels(graph, pos=pos, labels=self.mapping)
-        plt.savefig("graph.png")
+        
+        plt.gcf().set_size_inches(10, 8)
+        plt.savefig("graph.png", dpi=300)
 
     

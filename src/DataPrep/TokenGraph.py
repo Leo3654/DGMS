@@ -55,7 +55,7 @@ class TokenGraph:
         for i in range(len(self.syntax_tokens) - 1):
             token = self.mapping[self.syntax_tokens[i]]
             if token in last_lexical_use_map:
-                self.add_edge(self.syntax_tokens[i], last_lexical_use, last_lexical_use_map[token])
+                self.add_edge(self.syntax_tokens[i], last_lexical_use_map[token], edge_attr=last_lexical_use)
             last_lexical_use_map[token] = self.syntax_tokens[i]
 
     def convert_to_pyg(self, glove):

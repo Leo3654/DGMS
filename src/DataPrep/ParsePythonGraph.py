@@ -8,25 +8,23 @@ from Constants import *
 class PythonGraph(TokenGraph):
     def __init__(self, code):
         self.tree = ast.parse(code)
-        self.graph = TokenGraph()
-
         self.ast_to_networkx(self.tree)
 
     def add_const_to_graph(self, const, parent):
         if isinstance(const, str):
             for word in str.split(const):
-                child = self.graph.add_node(word, is_syntax_token = True)
-                self.graph.add_edge(parent,child)
+                child = self.add_node(word, is_syntax_token = True)
+                self.add_edge(parent,child)
         else:
-            child = self.graph.add_node(str(const), is_syntax_token = True)
-            self.graph.add_edge(parent, child)
+            child = self.add_node(str(const), is_syntax_token = True)
+            self.add_edge(parent, child)
 
 
     def ast_to_networkx(self, node):
         parent = None
         if isinstance(node, ast.Constant):
             # add "Constant" node
-            constant_node = self.graph.add_node("Constant")
+            constant_node = self.add_node("Constant")
 
             # add node with constant
             self.add_const_to_graph(node.value, constant_node)
@@ -34,24 +32,24 @@ class PythonGraph(TokenGraph):
             return constant_node
         elif isinstance(node, ast.Name):
             # add "Name" node
-            name_node = self.graph.add_node("Name")
+            name_node = self.add_node("Name")
 
             # add node with constant
-            id_node = self.graph.add_node(node.id, is_syntax_token = True)
-            self.graph.add_edge(name_node, id_node)
+            id_node = self.add_node(node.id, is_syntax_token = True)
+            self.add_edge(name_node, id_node)
 
             return name_node
         elif isinstance(node, ast.Store):
-            return self.graph.add_node("Store", is_syntax_token = True)
+            return self.add_node("Store", is_syntax_token = True)
         elif isinstance(node, ast.AST):
-            parent = self.graph.add_node(node.__class__.__name__, is_syntax_token = True)
+            parent = self.add_node(node.__class__.__name__, is_syntax_token = True)
         else:
-            return self.graph.add_node(str(node), is_syntax_token = True)
+            return self.add_node(str(node), is_syntax_token = True)
 
         for child in ast.iter_child_nodes(node):
             child_node = self.ast_to_networkx(child)
 
-            self.graph.add_edge(parent, child_node)
+            self.add_edge(parent, child_node)
 
         return parent
 
@@ -70,7 +68,7 @@ if __name__ == "__main__":
 
     networkx_graph = python_graph.graph
 
-    python_graph.save_graph()
+    python_graph.graph.save_graph()
 
 
     # for node in ast.walk(tokens_graph.tree):

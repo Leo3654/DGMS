@@ -65,7 +65,8 @@ if __name__ == "__main__":
     code2 = "print(\"Hello world\", 5)"
     code3 = "for i in range(4): print(\"Hello World {i}\")"
     code4 = "with open('file_path', 'w') as file:\n    file.write('hello world !')"
-    python_graph = PythonGraph(code4)
+    code5 = "def square(x)\n    return x * x"
+    python_graph = PythonGraph(code5)
 
     print(ast.dump(python_graph.tree))
 

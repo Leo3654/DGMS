@@ -11,6 +11,7 @@ class PythonGraph(TokenGraph):
         self.tree = ast.parse(code)
         self.ast_to_networkx(self.tree)
         self.add_word_ordering_edges(previous_word=False)
+        self.add_last_lexical_use_edges()
 
     def add_const_to_graph(self, const, parent):
         if isinstance(const, str):

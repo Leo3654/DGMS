@@ -16,10 +16,10 @@ class PythonGraph(TokenGraph):
         if isinstance(const, str):
             for word in str.split(const):
                 child = self.graph.add_node(word, is_syntax_token = True)
-                self.graph.add_new_edge(parent,child)
+                self.graph.add_edge(parent,child)
         else:
             child = self.graph.add_node(str(const), is_syntax_token = True)
-            self.graph.add_new_edge(parent, child)
+            self.graph.add_edge(parent, child)
 
 
     def ast_to_networkx(self, node):

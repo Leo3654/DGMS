@@ -75,6 +75,8 @@ if __name__ == "__main__":
 
     networkx_graph = python_graph.graph
 
+    python_graph.save_graph()
+
 
     # for node in ast.walk(tokens_graph.tree):
     #     if hasattr(node, 'lineno'):

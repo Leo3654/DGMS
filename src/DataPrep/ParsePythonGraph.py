@@ -5,9 +5,6 @@ import TokenGraph
 
 from Constants import *
 
-import asttokens
-
-
 class PythonGraph(TokenGraph):
     def __init__(self, code):
         self.tree = ast.parse(code)

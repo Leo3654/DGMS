@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     print(ast.dump(python_graph.tree))
 
-    networkx_graph = python_graph.graph
+    networkx_graph = python_graph.G
 
     python_graph.graph.save_graph()
 

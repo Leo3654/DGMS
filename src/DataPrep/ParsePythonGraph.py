@@ -58,7 +58,7 @@ class PythonGraph(TokenGraph):
 
 
 if __name__ == "__main__":
-    code = input("Please enter the code you'd like to parse")
+    #code = input("Please enter the code you'd like to parse")
 
     code1 = "x = 1\ny = 2\nz = x + y * y"
     code2 = "print(\"Hello world\", 5)"

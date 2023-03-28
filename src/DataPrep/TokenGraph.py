@@ -2,7 +2,7 @@ import LoadGLoVe
 import networkx as nx
 from Constants import *
 import torch
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 class TokenGraph:
     def __init__(self):
@@ -69,7 +69,7 @@ class TokenGraph:
         return torch.Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
     
     def save_graph(self, show_labels = True):
-        graph = self.graph.copy()
+        graph = self.G.copy()
 
         for layer, nodes in enumerate(nx.topological_generations(graph)):
         # `multipartite_layout` expects the layer as a node attribute, so add the

@@ -66,8 +66,6 @@ if __name__ == "__main__":
     code4 = "with open('file_path', 'w') as file:\n    file.write('hello world !')"
     python_graph = PythonGraph(code4)
 
-    print(tokens_graph)
-
     print(ast.dump(python_graph.tree))
 
     networkx_graph = python_graph.graph

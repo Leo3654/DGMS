@@ -45,9 +45,9 @@ class TokenGraph:
         # Add edges for word ordering
         for i in range(len(self.syntax_tokens) - 1):
             if next_word:
-                self.add_edge(i, word_ordering, i+1)
+                self.add_edge(self.syntax_tokens[i],self.syntax_tokens[i+1], edge_attr=word_ordering)
             if previous_word:
-                self.add_edge(i+1, word_ordering, i)
+                self.add_edge(self.syntax_tokens[i+1],self.syntax_tokens[i], edge_attr=word_ordering)
 
     def add_last_lexical_use_edges(self):
         # Add edges for last lexical use

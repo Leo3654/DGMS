@@ -79,7 +79,8 @@ class TokenGraph:
             for node in nodes:
                 graph.nodes[node]["layer"] = layer
 
-        pos = nx.multipartite_layout(graph, subset_key="layer", align="horizontal")
+        #pos = nx.multipartite_layout(graph, subset_key="layer", align="horizontal")
+        pos = nx.nx_pydot.graphviz_layout(G)
 
         nx.draw(graph, pos=pos, with_labels=not show_labels)
 

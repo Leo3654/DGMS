@@ -34,7 +34,7 @@ class GLoVe:
 
     def get_vector(self, word):
         return self.word_to_vector.get(word, None)
-
+    
 if __name__ == "__main__":
     glove_file = sys.argv[1]
     print("Loading GLoVe dataset...")

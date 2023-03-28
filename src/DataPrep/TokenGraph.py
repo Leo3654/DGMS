@@ -18,6 +18,8 @@ class TokenGraph:
             i = self.i
             self.i += 1
 
+        self.mapping[i] = token
+
         # Add the token to list of syntax tokens if it is a syntax token
         if is_syntax_token:
             if isinstance(token, str):

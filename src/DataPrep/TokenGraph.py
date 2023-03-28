@@ -30,7 +30,7 @@ class TokenGraph:
         # Return the index of the new node
         return i
     
-    def add_edge(self, parent, edge_attr = constituency, child = None):
+    def add_edge(self, parent, child = None, edge_attr = constituency):
         # Add an edge to the graph
         if child is None:
             child = self.i
@@ -67,5 +67,23 @@ class TokenGraph:
 
         return Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
     
+    def save_graph(self, show_labels = True):
+        for layer, nodes in enumerate(nx.topological_generations(graph)):
+        # `multipartite_layout` expects the layer as a node attribute, so add the
+        # numeric layer value as a node attribute
+            for node in nodes:
+                graph.nodes[node]["layer"] = layer
+
+        pos = nx.multipartite_layout(graph, subset_key="layer", align="horizontal")
+
+        nx.draw(graph, pos=pos, with_labels=not show_labels)
+
+        edge_labels = {}
+        for fr, to, dict in list(graph.edges(data=True)):
+            edge_labels[(fr,to)] = dict['edge_attr']
+
+        nx.draw_networkx_edge_labels(graph, pos, edge_labels)
+        if show_labels: nx.draw_networkx_labels(graph, pos=pos, labels=labels)
+        plt.savefig("graph.png")
 
     

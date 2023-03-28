@@ -86,7 +86,7 @@ class TokenGraph:
             edge_labels[(fr,to)] = dict['edge_attr']
 
         nx.draw_networkx_edge_labels(graph, pos, edge_labels)
-        if show_labels: nx.draw_networkx_labels(graph, pos=pos, labels=labels)
+        if show_labels: nx.draw_networkx_labels(graph, pos=pos, labels=self.mapping)
         plt.savefig("graph.png")
 
     

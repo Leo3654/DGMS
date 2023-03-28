@@ -10,6 +10,7 @@ class PythonGraph(TokenGraph):
         super().__init__()
         self.tree = ast.parse(code)
         self.ast_to_networkx(self.tree)
+        self.add_word_ordering_edges(previous_word=False)
 
     def add_const_to_graph(self, const, parent):
         if isinstance(const, str):

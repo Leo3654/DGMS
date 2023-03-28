@@ -7,6 +7,7 @@ from Constants import *
 
 class PythonGraph(TokenGraph):
     def __init__(self, code):
+        self.super.__init__(self)
         self.tree = ast.parse(code)
         self.ast_to_networkx(self.tree)
 

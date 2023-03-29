@@ -52,14 +52,13 @@ class TokenGraph:
     def add_last_lexical_use_edges(self):
         # Add edges for last lexical use
         last_lexical_use_map = {}
-        for i in range(len(self.syntax_tokens) - 1):
+        for i in range(len(self.syntax_tokens)):
             node_id = self.syntax_tokens[i]
             token = self.mapping[node_id]
             if token in last_lexical_use_map:
                 last_use_node_id = last_lexical_use_map[token]
                 self.add_edge(node_id, last_use_node_id, edge_attr=last_lexical_use)
             last_lexical_use_map[token] = node_id
-            print(last_lexical_use_map)
 
     def convert_to_pyg(self, glove):
         # Convert the networkx graph to a pytorch geometric graph

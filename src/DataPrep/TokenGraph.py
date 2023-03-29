@@ -58,6 +58,7 @@ class TokenGraph:
             if token in last_lexical_use_map:
                 last_use_node_id = last_lexical_use_map[token]
                 self.add_edge(node_id, last_use_node_id, edge_attr=last_lexical_use)
+                print("Adding edge from ", node_id, "to", last_use_node_id)
             last_lexical_use_map[token] = node_id
 
     def convert_to_pyg(self, glove):

@@ -58,7 +58,8 @@ class TokenGraph:
             if token in last_lexical_use_map:
                 last_use_node_id = last_lexical_use_map[token]
                 self.add_edge(node_id, last_use_node_id, edge_attr=last_lexical_use)
-            last_lexical_use_map[token] = self.syntax_tokens[i]
+            last_lexical_use_map[token] = node_id
+            print(last_lexical_use_map)
 
     def convert_to_pyg(self, glove):
         # Convert the networkx graph to a pytorch geometric graph

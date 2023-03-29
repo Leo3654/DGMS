@@ -76,11 +76,11 @@ class TokenGraph:
     def save_graph(self, show_labels = True):
         graph = self.G.copy()
 
-        for layer, nodes in enumerate(nx.topological_generations(graph)):
-        # `multipartite_layout` expects the layer as a node attribute, so add the
-        # numeric layer value as a node attribute
-            for node in nodes:
-                graph.nodes[node]["layer"] = layer
+        # for layer, nodes in enumerate(nx.topological_generations(graph)):
+        # # `multipartite_layout` expects the layer as a node attribute, so add the
+        # # numeric layer value as a node attribute
+        #     for node in nodes:
+        #         graph.nodes[node]["layer"] = layer
 
         #pos = nx.multipartite_layout(graph, subset_key="layer", align="horizontal")
         pos = nx.nx_pydot.graphviz_layout(self.G)

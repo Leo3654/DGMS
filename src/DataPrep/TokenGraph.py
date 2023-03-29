@@ -73,7 +73,7 @@ class TokenGraph:
     def convert_to_pyg(self, glove):
         # Convert the networkx graph to a pytorch geometric graph
         edge_index = torch.tensor(list(self.G.edges)).t().contiguous()
-        edge_attr = torch.tensor([self.G.edges[e]['edge_attr'] for e in self.G.edges])
+        edge_attr = torch.tensor(np.array([self.G.edges[e]['edge_attr'] for e in self.G.edges]))
         x = np.empty((len(self.mapping), 300))
         for i in range(len(self.mapping)):
             x[i] = LoadGLoVe.word_to_glove(glove, self.mapping[i])

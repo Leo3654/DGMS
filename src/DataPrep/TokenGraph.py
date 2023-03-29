@@ -73,7 +73,7 @@ class TokenGraph:
     def convert_to_pyg(self, glove):
         # Convert the networkx graph to a pytorch geometric graph
         edge_index = torch.tensor(list(self.G.edges)).t().contiguous()
-        edge_attr = torch.tensor([self.G.edges[e]['edge_attr'] for e in self.G.edges])
+        edge_attr = torch.tensor(np.array([self.G.edges[e]['edge_attr'] for e in self.G.edges]))
         x = np.empty((len(self.mapping), 300))
         for i in range(len(self.mapping)):
             x[i] = LoadGLoVe.word_to_glove(glove, self.mapping[i])
@@ -89,7 +89,7 @@ class TokenGraph:
         # # `multipartite_layout` expects the layer as a node attribute, so add the
         # # numeric layer value as a node attribute
         #     for node in nodes:
-        #         graph.nodes[node]["layer"] = layer
+        #         graph.nodes[node]["layer"] = layer    
 
         #pos = nx.multipartite_layout(graph, subset_key="layer", align="horizontal")
         pos = nx.nx_pydot.graphviz_layout(self.G)

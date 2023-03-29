@@ -10,9 +10,10 @@ class TokenGraph:
         self.mapping = {}       # Mapping from node index to token
         self.i = 0              # Index of the next node to be added
         self.syntax_tokens = [] # List of tokens that existing in the initial code / sentence
+        self.name_tokens = []
 
 
-    def add_node(self, token, i = None, is_syntax_token = False):
+    def add_node(self, token, i = None, is_syntax_token = False, is_name_token = False):
         # Add a node to the graph
         if i is None:
             i = self.i
@@ -24,6 +25,13 @@ class TokenGraph:
         if is_syntax_token:
             if isinstance(token, str):
                 self.syntax_tokens.append(i)
+            else:
+                raise ValueError("Token is not a string")
+            
+        # Add the token to list of syntax tokens if it is a syntax token
+        if is_name_token:
+            if isinstance(token, str):
+                self.name_tokens.append(i)
             else:
                 raise ValueError("Token is not a string")
 
@@ -52,7 +60,7 @@ class TokenGraph:
     def add_last_lexical_use_edges(self):
         # Add edges for last lexical use
         last_lexical_use_map = {}
-        for i in range(len(self.syntax_tokens)):
+        for i in range(len(self.name_tokens)):
             node_id = self.syntax_tokens[i]
             token = self.mapping[node_id]
             if token in last_lexical_use_map:

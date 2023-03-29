@@ -38,7 +38,7 @@ class PythonGraph(TokenGraph):
             name_node = self.add_node("Name")
 
             # add node with constant
-            id_node = self.add_node(node.id, is_syntax_token = True)
+            id_node = self.add_node(node.id, is_syntax_token = True, is_name_token = True)
             self.add_edge(name_node, id_node)
 
             return name_node

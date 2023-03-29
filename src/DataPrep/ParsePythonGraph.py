@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     python_graph.save_graph()
 
-    glove = GLoVe("../../glove.840b.300d.txt")
+    glove = GLoVe("../../glove.840B.300d.txt")
 
     print(python_graph.convert_to_pyg(glove))
 

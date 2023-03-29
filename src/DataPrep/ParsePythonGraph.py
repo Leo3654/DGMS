@@ -2,7 +2,7 @@ import ast
 import networkx as nx
 import matplotlib.pyplot as plt
 from TokenGraph import TokenGraph
-
+from LoadGLoVe import GLoVe
 from Constants import *
 
 class PythonGraph(TokenGraph):
@@ -73,6 +73,10 @@ if __name__ == "__main__":
     networkx_graph = python_graph.G
 
     python_graph.save_graph()
+
+    glove = GLoVe("../../glove.840b.300d.txt")
+
+    print(python_graph.convert_to_pyg(glove))
 
 
     # for node in ast.walk(tokens_graph.tree):

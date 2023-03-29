@@ -3,6 +3,7 @@ import networkx as nx
 from Constants import *
 import torch
 import matplotlib.pyplot as plt
+from torch_geometric.data import Data
 
 class TokenGraph:
     def __init__(self):
@@ -79,7 +80,7 @@ class TokenGraph:
             #print(i, mapping[i], x[i])
         x = torch.tensor(x)
 
-        return torch.Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
+        return Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
     
     def save_graph(self, show_labels = True):
         graph = self.G.copy()

@@ -18,6 +18,8 @@ from Constants import constituency, word_ordering
 
 from TokenGraph import TokenGraph
 
+from nltk.tokenize import sent_tokenize
+
 os.environ['STANFORD_PARSER'] = '../../stanford-parser-full-2020-11-17/jars'
 os.environ['STANFORD_MODELS'] = '../../stanford-parser-full-2020-11-17/jars'
 
@@ -55,11 +57,14 @@ class DocstringGraph(TokenGraph):
 
         parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 
+        sentences = sent_tokenize(text_to_parse)
+        print("Sentence:", sentences[0])
+
         # parse the sentence into an NLTK tree
-        sentence = list(parser.raw_parse(text_to_parse))[0]
+        tree = list(parser.raw_parse(sentences[0]))[0]
 
         # convert the NLTK tree to a graph
-        graph = nltk_tree_to_graph(sentence)
+        nltk_tree_to_graph(tree)
 
         # Convert the NLTK tree to a graph  
 
@@ -79,7 +84,29 @@ class DocstringGraph(TokenGraph):
 
 
 if __name__ == "__main__":
-    text_to_parse = input("Please enter a sentence: ")
+    text_to_parse = """Compute a histogram using the provided buckets. The buckets
+        are all open to the right except for the last which is closed.
+        e.g. [1,10,20,50] means the buckets are [1,10) [10,20) [20,50],
+        which means 1<=x<10, 10<=x<20, 20<=x<=50. And on the input of 1
+        and 50 we would have a histogram of 1,0,1.
+
+        If your histogram is evenly spaced (e.g. [0, 10, 20, 30]),
+        this can be switched from an O(log n) inseration to O(1) per
+        element (where n is the number of buckets).
+
+        Buckets must be sorted, not contain any duplicates, and have
+        at least two elements.
+
+        If `buckets` is a number, it will generate buckets which are
+        evenly spaced between the minimum and maximum of the RDD. For
+        example, if the min value is 0 and the max is 100, given `buckets`
+        as 2, the resulting buckets will be [0,50) [50,100]. `buckets` must
+        be at least 1. An exception is raised if the RDD contains infinity.
+        If the elements in the RDD do not vary (max == min), a single bucket
+        will be used.
+
+        The return value is a tuple of buckets and histogram.""".replace("\n"," ")
+    #input("Please enter a sentence: ")
     docstring_graph = DocstringGraph(text_to_parse)
 
     docstring_graph.add_word_ordering_edges()
@@ -89,3 +116,5 @@ if __name__ == "__main__":
     graph = docstring_graph.convert_to_pyg(glove)
 
     docstring_graph.save_graph()
+
+    print("Number of nodes:", docstring_graph.num_nodes())

@@ -25,7 +25,7 @@ max_nodes = 300
 parent_dir = os.path.dirname(directory)
 
 # Get the current date and time as a string 
-date_time = datetime.now().strftime("%D %H-%M-%S")
+date_time = datetime.now().strftime("%D/%H-%M-%S")
 
 processed_dir = parent_dir+"/processed/" + date_time
 
@@ -59,7 +59,14 @@ def process_one_line(data, id, last_docstring = None):
             json.dump(data, f)
         return False
     
-    _, _, details = cld2.detect(docstring)
+    try:
+        _, _, details = cld2.detect(docstring)
+    except:
+        print("Skipping, docstring error")
+        data["error"] = "docstring error"
+        with open(original_code_dir + f'/code_{id}.json', 'w') as f:
+            json.dump(data, f)
+        return False
 
     language = details[0][1]
     certainty = details[0][2]
@@ -162,7 +169,7 @@ for sample_type in ["train", "valid", "test"]:
         print("File:", files[i])
         starting_id += n + 1
 
-    with ThreadPool(mp.cpu_count()) as pool:
+    with ThreadPool(8) as pool:
         ids = pool.map(process_one_file, files)
         all_ids = sum(ids, [])
         starting_id = max(all_ids) + 1

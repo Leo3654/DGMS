@@ -57,11 +57,11 @@ class DocstringGraph(TokenGraph):
 
         parser = stanford.StanfordParser(model_path="../../stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
 
-        sentences = sent_tokenize(text_to_parse)
-        print("Sentence:", sentences[0])
+        sentence = pre_process_docstring(text_to_parse)
+        print("Sentence:", sentence)
 
         # parse the sentence into an NLTK tree
-        tree = list(parser.raw_parse(sentences[0]))[0]
+        tree = list(parser.raw_parse(sentence))[0]
 
         # convert the NLTK tree to a graph
         nltk_tree_to_graph(tree)
@@ -82,6 +82,11 @@ class DocstringGraph(TokenGraph):
         # # Return the PyG object
         # return data
 
+def pre_process_docstring(docstring):
+    # Split the docstring into sentences
+    sentences = sent_tokenize(docstring)
+
+    return sentences[0]
 
 if __name__ == "__main__":
     text_to_parse = """Compute a histogram using the provided buckets. The buckets

@@ -112,7 +112,9 @@ class GraphMatchNetwork(torch.nn.Module):
         # ---------- Semantic Matching Layer ----------
         
         attention = self.cosine_attention(feature_p, feature_h)
-        attention_h = feature_h.unsqueeze(1) * attention.unsqueeze(3)
+        #feature_h [batch,1, lenh, dim], attention [batch, lenp, lenh, 1]
+        attention_h = feature_h.unsqueeze(1) * attention.unsqueeze(3) #opposite of squeeze
+        #feature_p [batch, lenp, 1, dim]
         attention_p = feature_p.unsqueeze(2) * attention.unsqueeze(3)
         
         att_mean_h = self.div_with_small_value(attention_h.sum(dim=2), attention.sum(dim=2, keepdim=True))
@@ -150,5 +152,6 @@ class GraphMatchNetwork(torch.nn.Module):
             raise NotImplementedError
         
         # ---------- Prediction Layer ----------
+        # clamp() makes value less than min to be min, greater than max to be max
         sim = functional.cosine_similarity(agg_p, agg_h, dim=1).clamp(min=-1, max=1)
         return sim

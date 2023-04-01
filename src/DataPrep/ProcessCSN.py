@@ -102,7 +102,14 @@ def process_one_line(data, id, last_docstring = None):
             json.dump(data, f)
         return False
 
-    text_graph = DocstringGraph(docstring)
+    try:
+        text_graph = DocstringGraph(docstring)
+    except:
+        print("Skipping, text error")
+        data["error"] = "text error"
+        with open(original_code_dir + f'/code_{id}.json', 'w') as f:
+            json.dump(data, f)
+        return False
     text_graph.add_word_ordering_edges()
     text_pyg = text_graph.convert_to_pyg(glove)
     text_graph_nodes = text_graph.num_nodes()
@@ -136,9 +143,15 @@ def process_one_file(filename_and_id):
         for line in f:
             data = json.loads(line)
             print("Processing", id, os.path.join(dir, filename))
-            if process_one_line(data, id, docstring):
-                ids.append(id)
-            docstring = pre_process_docstring(data['docstring'])
+            try:
+                if process_one_line(data, id, docstring):
+                    ids.append(id)
+                docstring = pre_process_docstring(data['docstring'])
+            except:
+                print("Skipping, error")
+                data["error"] = "error"
+                with open(original_code_dir + f'/code_{id}.json', 'w') as f:
+                    json.dump(data, f)
             id += 1
 
     return ids
@@ -169,7 +182,7 @@ for sample_type in ["train", "valid", "test"]:
         print("File:", files[i])
         starting_id += n + 1
 
-    with ThreadPool(8) as pool:
+    with ThreadPool(mp.cpu_count()) as pool:
         ids = pool.map(process_one_file, files)
         all_ids = sum(ids, [])
         starting_id = max(all_ids) + 1

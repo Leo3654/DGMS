@@ -3,6 +3,10 @@ import sys
 import torch
 from torch_geometric.data import Data
 
+"""
+Example: python ConvertDictToPt.py ../../Datasets/python/code_processed/dict_files
+Note: don't end with '/'
+"""
 def load_and_convert_dicts(folder_path):
     parent_folder_path = os.path.dirname(folder_path)
     for file_name in os.listdir(folder_path):

@@ -2,7 +2,7 @@ import numpy as np
 import sys
 import pickle
 import os
-from WordSplit import try_glove_split
+from DataPrep.WordSplit import try_glove_split
 
 class GLoVe:
 

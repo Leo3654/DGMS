@@ -1,6 +1,6 @@
-import LoadGLoVe
+import DataPrep.LoadGLoVe
 import networkx as nx
-from Constants import *
+from DataPrep.Constants import *
 import torch
 import matplotlib.pyplot as plt
 from torch_geometric.data import Data

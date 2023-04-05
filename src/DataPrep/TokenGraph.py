@@ -1,4 +1,4 @@
-import DataPrep.LoadGLoVe
+import DataPrep.LoadGLoVe as LoadGLoVe
 import networkx as nx
 from DataPrep.Constants import *
 import torch
@@ -70,6 +70,15 @@ class TokenGraph:
                 #print("Adding edge from ", node_id, "to", last_use_node_id)
             last_lexical_use_map[token] = node_id
 
+    def list_nodes(self):
+        num_nodes = self.G.number_of_nodes()
+
+        nodes = []
+        for i in range(num_nodes):
+            nodes.append(self.mapping[i])
+        
+        return nodes
+
     def convert_to_pyg(self, glove):
         # Convert the networkx graph to a pytorch geometric graph
         edge_index = torch.tensor(list(self.G.edges)).t().contiguous()
@@ -82,29 +91,48 @@ class TokenGraph:
 
         return Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
     
-    def save_graph(self, show_labels = True):
+    def save_graph(self, file_name = "graph.png", show_labels = True):
+        graph_for_pos = self.G.copy()
+
+        # Remove word-ordering edges
+        for fr, to, dict in list(graph_for_pos.edges(data=True)):
+            if np.array_equal(dict['edge_attr'],word_ordering):
+                graph_for_pos.remove_edge(fr,to)
+
+        for layer, nodes in enumerate(nx.topological_generations(graph_for_pos)):
+        # `multipartite_layout` expects the layer as a node attribute, so add the
+        # numeric layer value as a node attribute
+            for node in nodes:
+                graph_for_pos.nodes[node]["layer"] = layer
+        
         graph = self.G.copy()
 
-        # for layer, nodes in enumerate(nx.topological_generations(graph)):
-        # # `multipartite_layout` expects the layer as a node attribute, so add the
-        # # numeric layer value as a node attribute
-        #     for node in nodes:
-        #         graph.nodes[node]["layer"] = layer    
+        pos = nx.multipartite_layout(graph_for_pos, subset_key="layer", align="horizontal")
 
-        #pos = nx.multipartite_layout(graph, subset_key="layer", align="horizontal")
-        pos = nx.nx_pydot.graphviz_layout(self.G)
+        # Invert the positions on the y axis
+        pos = {k: (-v[0], -v[1]) for k, v in pos.items()}
 
-        nx.draw(graph, pos=pos, with_labels=not show_labels)
+        #pos = nx.nx_pydot.graphviz_layout(self.G)
+
+        # Create a new figure
+        plt.figure()
+
+        nx.draw(graph, pos=pos, with_labels=not show_labels, node_size=3000)
 
         edge_labels = {}
         for fr, to, dict in list(graph.edges(data=True)):
-            edge_labels[(fr,to)] = dict['edge_attr']
+            if np.array_equal(dict['edge_attr'],word_ordering):
+                edge_labels[(fr,to)] = "WO"
+            elif np.array_equal(dict['edge_attr'],last_lexical_use):
+                edge_labels[(fr,to)] = "LLU"
+            elif np.array_equal(dict['edge_attr'],constituency):
+                edge_labels[(fr,to)] = "CON"
 
-        nx.draw_networkx_edge_labels(graph, pos, edge_labels)
-        if show_labels: nx.draw_networkx_labels(graph, pos=pos, labels=self.mapping)
+        nx.draw_networkx_edge_labels(graph, pos, edge_labels, font_size=18)
+        if show_labels: nx.draw_networkx_labels(graph, pos=pos, labels=self.mapping, font_size=18)
         
-        plt.gcf().set_size_inches(10, 8)
-        plt.savefig("graph.png", dpi=300)
+        plt.gcf().set_size_inches(12, 10)
+        plt.savefig(file_name, dpi=300)
 
     def num_nodes(self):
         return self.G.number_of_nodes()

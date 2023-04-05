@@ -1,9 +1,9 @@
 import ast
 import networkx as nx
 import matplotlib.pyplot as plt
-from TokenGraph import TokenGraph
-from LoadGLoVe import GLoVe
-from Constants import *
+from DataPrep.TokenGraph import TokenGraph
+from DataPrep.LoadGLoVe import GLoVe
+from DataPrep.Constants import *
 
 class PythonGraph(TokenGraph):
     def __init__(self, code):

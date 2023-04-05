@@ -8,15 +8,13 @@ import pprint
 import torch
 from torch_geometric.utils.convert import from_networkx
 
-from LoadGLoVe import GLoVe
+from DataPrep.LoadGLoVe import GLoVe
 
 import numpy as np
 
-from WordSplit import *
-
-from Constants import constituency, word_ordering
-
-from TokenGraph import TokenGraph
+from DataPrep.WordSplit import *
+from DataPrep.Constants import constituency, word_ordering
+from DataPrep.TokenGraph import TokenGraph
 
 from nltk.tokenize import sent_tokenize
 

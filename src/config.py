@@ -30,6 +30,7 @@ parser.add_argument("--dropout", type=float, default=0.1, help="Dropout probabil
 
 # testing
 parser.add_argument('--only_test', type=lambda x: (str(x).lower() == 'true'), default='false')
+parser.add_argument('--test_chunk_size', type=int, default=100)
 parser.add_argument('--model_path', type=str, default='.')
 
 # others

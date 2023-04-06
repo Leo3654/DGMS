@@ -241,7 +241,7 @@ class Trainer(object):
         # Return the mean reciprocal rank
         return rrs
 
-    def test(self, iter_no):
+    def test(self, iter_no, test_chunk_size = 100):
         # write log for starting testing
         write_log_file(self.log_path, "Start to testing ...")
 
@@ -259,7 +259,7 @@ class Trainer(object):
 
         # split test query ids into chunks of 100 and iterate over each chunk
         # Henry: chunk is imported from util file
-        for test_chunk in chunk(test_query_ids, 100):
+        for test_chunk in chunk(test_query_ids, test_chunk_size):
             # initialize an empty list to store scores for each query in the current chunk
             one_chunk_scores = []
             for i, query_id in enumerate(test_chunk):
@@ -317,6 +317,6 @@ if __name__ == '__main__':
     
     all_time_1 = datetime.now()
     write_log_file(trainer.log_path, "finished to load the model, next to start to test and time is = {}".format(all_time_1))
-    trainer.test(iter_no=trainer.max_iteration + 1)
+    trainer.test(iter_no=trainer.max_iteration + 1, test_chunk_size = arguments.test_chunk_size)
     write_log_file(trainer.log_path, "\nAll Finished using ({})\n".format(datetime.now() - all_time_1))
 

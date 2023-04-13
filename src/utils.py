@@ -7,6 +7,8 @@
 # @Lab      : nesa.zju.edu.cn
 # ************************************
 import os
+import matplotlib.pyplot as plt
+from datetime import datetime
 
 from texttable import Texttable
 
@@ -51,3 +53,45 @@ def int_2_one_hot(n, n_classes):
     v = [0] * n_classes
     v[n] = 1
     return v
+
+def draw_loss(file_path, train_batch_size, train_sample_size):
+    train_losses = []
+    train_counter = []
+    val_losses = []
+    val_counter = []
+    time_elapsed = []
+    
+    
+    my_file = open(file_path, 'r')
+    lines = my_file.readlines()
+    for line in lines:
+        if line[:6] == '#Valid':
+            print(line.split(':')[1].split('#') [1])
+            val_losses.append(float(line.split(':')[1].split('#')[1]))
+            val_counter.append(float(line.split(':')[0].split(' ')[-1]) \
+                                     * train_batch_size / train_sample_size)
+        if line[:6] == '@Train':
+            train_losses.append(float(line.split(':')[1].split('@')[1]))
+            epoch_count = float(line.split(':')[0].split(' ')[-1]) \
+                                     * train_batch_size / train_sample_size
+            train_counter.append(epoch_count)
+            minute = float(line.split('=')[-1].split(':')[1])
+            second = float(line.split('=')[-1].split(':')[2].split('.')[0])
+            time_elapsed.append(minute+second/60)
+    fig = plt.figure()
+    plt.plot(train_counter, train_losses, color='blue')
+    plt.scatter(val_counter, val_losses, color='red')
+    plt.legend(['Train Loss', 'Validation Loss'], loc='upper right')
+    plt.xlabel('number of epochs')
+    plt.ylabel('triplet similarity loss')
+    plt.savefig('curve.png')
+    fig = plt.figure()
+    plt.plot(train_counter, time_elapsed, color='blue')
+    #plt.scatter(val_counter, val_losses, color='red')
+    plt.legend(['Time Elapsed'], loc='upper right')
+    plt.xlabel('number of epochs')
+    plt.ylabel('time elapsed for every 2000 iterations (min)')
+    plt.savefig('time.png')
+
+
+#draw_loss('../PythonLogs/2023-04-03@17:43:34/log_Filter_100_1CONV_rgcn_2MATCH_submul_3MatchAgg_fc_max_margin_0.5_4MaxIter_312189_trainBS_10_validBS_50_LR_0.0001_Dropout_0.1.txt', 10, 312189)

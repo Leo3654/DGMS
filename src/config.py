@@ -27,6 +27,8 @@ parser.add_argument("--train_batch_size", type=int, default=10, help="Number of 
 parser.add_argument('--valid_batch_size', type=int, default=50, help="Number of graph pairs per batch for Validation/Testing.")
 parser.add_argument("--lr", type=float, default=0.0001, help="Learning rate.")
 parser.add_argument("--dropout", type=float, default=0.1, help="Dropout probability.")
+parser.add_argument("--train_sample_size", type=int, default=216259, help="Number of training samples.")
+parser.add_argument("--random_split", type=bool, default=False, help='True to split randomely')
 
 # testing
 parser.add_argument('--only_test', type=lambda x: (str(x).lower() == 'true'), default='false')
@@ -37,6 +39,7 @@ parser.add_argument('--model_path', type=str, default='.')
 parser.add_argument('--print_interval', type=int, default=2000)
 parser.add_argument('--valid_interval', type=int, default=10000)
 parser.add_argument('--gpu_index', type=str, default='0', help="gpu index to use")
+parser.add_argument('--skip_file_check', type=bool, default=False, help='True to skip')
 
 args = parser.parse_args()
 

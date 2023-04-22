@@ -19,22 +19,32 @@ from utils import write_log_file
 
 
 class ProcessedDataset(object):
-    def __init__(self, name, root, log_path):
+    def __init__(self, name, root, log_path, skip_check, train_sample_size, random_split):
         self.name = name    #Henry: code or text
         self.data_processed_path = os.path.join(root, '{}_processed'.format(self.name))
         self.graph_id_file = os.path.join(root, '{}_graph_ids.pt'.format(self.name))
         self.graph_id_list = torch.load(self.graph_id_file)
         self.log_path = log_path
         
-        self._check_whether_all_graph_ids_files_exist()
-        self.total_graph = {}
+        if not skip_check:
+            self._check_whether_all_graph_ids_files_exist()
+        #self.total_graph = {}
         # self.get_total_graphs()
         
         # Split train, test, validation set
         if os.path.exists(os.path.join(root, 'split.json')): #Henry: this file is only available at Baidu
             with open(os.path.join(root, 'split.json'), 'rb') as f:
                 #Henry: in the jason file, all ids are split in 3 lists with train, validation, test as dictionary keys.
-                self.split_ids = json.loads(f.read()) 
+                self.split_ids = json.loads(f.read())
+            if random_split:
+                all_ids = []
+                for grp in ['train', 'valid', 'test']:
+                    all_ids += self.split_ids[grp]
+                self.split_ids['test'] = random.sample(all_ids, 1000)
+                all_ids = [i for i in all_ids if i not in self.split_ids['test']]
+                self.split_ids['valid'] = random.sample(all_ids, 17215)
+                self.split_ids['train'] = [i for i in all_ids if i not in self.split_ids['valid']]
+            self.split_ids['train'] = random.sample(self.split_ids['train'], train_sample_size)
         else:
             raise NotImplementedError
         write_log_file(self.log_path, "Train={}\nValid={}\nTest={}".format(len(self.split_ids['train']), len(self.split_ids['valid']), len(self.split_ids['test'])))

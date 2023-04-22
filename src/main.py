@@ -85,9 +85,9 @@ class Trainer(object):
         
         # Initialize ProcessedDataset objects for code and text     
         write_log_file(self.log_path, "Init Reading Code Graphs ... ")
-        self.code_data = ProcessedDataset(name='code', root=self.dataset_dir, log_path=self.log_path)
+        self.code_data = ProcessedDataset(name='code', root=self.dataset_dir, log_path=self.log_path, skip_check=self.args.skip_file_check, train_sample_size=self.args.train_sample_size, random_split=self.args.random_split)
         write_log_file(self.log_path, "Init Reading Text Graphs ... ")
-        self.text_data = ProcessedDataset(name='text', root=self.dataset_dir, log_path=self.log_path)
+        self.text_data = ProcessedDataset(name='text', root=self.dataset_dir, log_path=self.log_path, skip_check=self.args.skip_file_check, train_sample_size=self.args.train_sample_size, random_split=self.args.random_split)
         
         # for plotting and record (init empty list)
         self.train_iter, self.train_smooth_loss, self.valid_iter, self.valid_loss, self.test_iter, self.test_mrr, self.test_s1, self.test_s5, self.test_s10 = ([] for _ in range(9))

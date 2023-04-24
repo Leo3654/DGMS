@@ -62,7 +62,9 @@ be specific, each ``code/text_X.pt`` in ``text/code_processed`` folder is the sa
 is over 100G, please download the zipped files from Baidu NetDisc and unzip them into the corresponding folder in this repo.
 
 > NetDisc Link: https://pan.baidu.com/s/1CbzQWireoH5hMopK3CRZOw
-> Extraction code: 9xz5 
+> Extraction code: 9xz5
+
+> Schankula & Li Preprocessed Dataset link: [Click here](https://mcmasteru365-my.sharepoint.com/:u:/g/personal/schankuc_mcmaster_ca/EbVY-gZQL-ZNuGsMRRAHCI8B-TNBKELD3HWeDsJCtq3oeA?e=0ymSJj), Password: DGMS-747
 
 ## 2. Example of usage
 

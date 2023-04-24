@@ -1,4 +1,4 @@
-name: dgms-747-test
+name: dgms-747
 channels:
   - conda-forge
   - defaults

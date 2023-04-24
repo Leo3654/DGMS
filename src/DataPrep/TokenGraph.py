@@ -89,7 +89,7 @@ class TokenGraph:
             #print(i, mapping[i], x[i])
         x = torch.tensor(x)
 
-        return Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
+        return Data(x=x.float(), edge_index=edge_index, edge_attr=edge_attr.float())
     
     def save_graph(self, file_name = "graph.png", show_labels = True):
         graph_for_pos = self.G.copy()

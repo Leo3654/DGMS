@@ -1,7 +1,7 @@
-from LoadGLoVe import GLoVe
+from DataPrep.LoadGLoVe import GLoVe
 
-from ParseTextGraph import *
-from ParsePythonGraph import *
+from DataPrep.ParseTextGraph import *
+from DataPrep.ParsePythonGraph import *
 
 from datetime import datetime
 

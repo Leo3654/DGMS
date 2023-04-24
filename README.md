@@ -68,6 +68,12 @@ is over 100G, please download the zipped files from Baidu NetDisc and unzip them
 
 ## 2. Example of usage
 
+### Set Up Conda Environment
+
+To set up your Conda environment, run the following command: `conda env create -f environment-new.yml` (`environment.yml` is for the old version of PyTorch). Then run `conda activate dgms-747`.
+
+### Run Training on a Dataset
+
 - **Step 1**: All hyper-parameters of our model can be found and customized in the `config.py` file. For instance, the employed graph neural network, the semantic matching 
   operation, the aggregation function, number of training iterations, etc.
 

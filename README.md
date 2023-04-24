@@ -62,9 +62,9 @@ be specific, each ``code/text_X.pt`` in ``text/code_processed`` folder is the sa
 is over 100G, please download the zipped files from Baidu NetDisc and unzip them into the corresponding folder in this repo.
 
 > NetDisc Link: https://pan.baidu.com/s/1CbzQWireoH5hMopK3CRZOw
-> Extraction code: 9xz5
+> Extraction code: 9xz5 (does not work with newer versions of PyTorch)
 
-> Schankula & Li Preprocessed Dataset link: [Click here](https://mcmasteru365-my.sharepoint.com/:u:/g/personal/schankuc_mcmaster_ca/EbVY-gZQL-ZNuGsMRRAHCI8B-TNBKELD3HWeDsJCtq3oeA?e=0ymSJj), Password: DGMS-747
+> Schankula & Li Preprocessed Dataset: [Download Link](https://mcmasteru365-my.sharepoint.com/:u:/g/personal/schankuc_mcmaster_ca/EbVY-gZQL-ZNuGsMRRAHCI8B-TNBKELD3HWeDsJCtq3oeA?e=0ymSJj), Password: DGMS-747
 
 ## 2. Example of usage
 
@@ -83,13 +83,13 @@ python main.py --conv='rgcn' --filters='100' --match='submul' --match_agg='fc_ma
 
 1. **Step 1**: Clone the repo into the `$DGMS_ROOT/DGMS/` directory (we'll refer to
    this directory as the root repo directory).
-2. **Step 2**: Download the [Stanford Parser](https://nlp.stanford.edu/software/stanford-parser-4.2.0.zip) to parse. 
+2. **Step 2**: Download the [Stanford Parser](https://nlp.stanford.edu/software/stanford-parser-4.2.0.zip) to parse the text snippets. 
 Unzip the file and name the new directory as(`$DGMS_ROOT/stanford-parser-full-2020-11-17`) into the same
 directory as the root repo directory. Move all jar files to the a new 
 directory into `$DGMS_ROOT/stanford-parser-full-2020-11-17/jars/`. Unzip the models
 jar file and place the English one in `$DGMS_ROOT/stanford-parser-full-2020-11-17/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz`.
 3. **Step 3**: Download the [GLoVe 840B-300d embeddings](https://nlp.stanford.edu/data/glove.840B.300d.zip) and place the `glove.840B.300d.txt` file in the `$DGMS_ROOT` directory.
-4. Download the new dataset here: and place it in the `$DGMS_ROOT/python` directory.
+4. Download the [CSN Python dataset](https://github.com/github/CodeSearchNet#downloading-data-from-s3) and place it in the `$DGMS_ROOT/python` directory.
 5. Run `cd $DGMS_ROOT/DGMS/src` and then run `python DataPrep/ProcessCSN.py ` to preprocess the dataset.
 6. The new dataset will be placed in `$DGMS_ROOT/python/final/processed` 
   directory.

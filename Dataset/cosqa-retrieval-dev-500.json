@@ -1,0 +1,1667 @@
+[
+ {
+  "idx": "cosqa-train-9080",
+  "doc": "python how to show help",
+  "code": "def _help():\n    \"\"\" Display both SQLAlchemy and Python help statements \"\"\"\n\n    statement = '%s%s' % (shelp, phelp % ', '.join(cntx_.keys()))\n    print(statement.strip())",
+  "code_tokens": "def _help ( ) : statement = '%s%s' % ( shelp , phelp % ', ' . join ( cntx_ . keys ( ) ) ) print statement . strip ( )",
+  "docstring_tokens": "Display both SQLAlchemy and Python help statements",
+  "label": 1,
+  "retrieval_idx": 2266
+ },
+ {
+  "idx": "cosqa-train-10090",
+  "doc": "max heap insert python",
+  "code": "def heappush_max(heap, item):\n    \"\"\"Push item onto heap, maintaining the heap invariant.\"\"\"\n    heap.append(item)\n    _siftdown_max(heap, 0, len(heap) - 1)",
+  "code_tokens": "def heappush_max ( heap , item ) : heap . append ( item ) _siftdown_max ( heap , 0 , len ( heap ) - 1 )",
+  "docstring_tokens": "Push item onto heap maintaining the heap invariant .",
+  "label": 1,
+  "retrieval_idx": 508
+ },
+ {
+  "idx": "cosqa-train-9261",
+  "doc": "how to check for duplicate characters in a python string",
+  "code": "def first_unique_char(s):\n    \"\"\"\n    :type s: str\n    :rtype: int\n    \"\"\"\n    if (len(s) == 1):\n        return 0\n    ban = []\n    for i in range(len(s)):\n        if all(s[i] != s[k] for k in range(i + 1, len(s))) == True and s[i] not in ban:\n            return i\n        else:\n            ban.append(s[i])\n    return -1",
+  "code_tokens": "def first_unique_char ( s ) : if ( len ( s ) == 1 ) : return 0 ban = [ ] for i in range ( len ( s ) ) : if all ( s [ i ] != s [ k ] for k in range ( i + 1 , len ( s ) ) ) == True and s [ i ] not in ban : return i else : ban . append ( s [ i ] ) return - 1",
+  "docstring_tokens": ": type s : str : rtype : int",
+  "label": 1,
+  "retrieval_idx": 3503
+ },
+ {
+  "idx": "cosqa-train-15810",
+  "doc": "how to correct socket not define error in python",
+  "code": "def pick_unused_port(self):\n    \"\"\" Pick an unused port. There is a slight chance that this wont work. \"\"\"\n    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n    s.bind(('127.0.0.1', 0))\n    _, port = s.getsockname()\n    s.close()\n    return port",
+  "code_tokens": "def pick_unused_port ( self ) : s = socket . socket ( socket . AF_INET , socket . SOCK_STREAM ) s . bind ( ( '127.0.0.1' , 0 ) ) _ , port = s . getsockname ( ) s . close ( ) return port",
+  "docstring_tokens": "Pick an unused port . There is a slight chance that this wont work .",
+  "label": 1,
+  "retrieval_idx": 2379
+ },
+ {
+  "idx": "cosqa-train-4418",
+  "doc": "python draft4validator validate schema",
+  "code": "def validate(self):\n        \"\"\"Validate the configuration file.\"\"\"\n        validator = Draft4Validator(self.SCHEMA)\n        if not validator.is_valid(self.config):\n            for err in validator.iter_errors(self.config):\n                LOGGER.error(str(err.message))\n            validator.validate(self.config)",
+  "code_tokens": "def validate ( self ) : validator = Draft4Validator ( self . SCHEMA ) if not validator . is_valid ( self . config ) : for err in validator . iter_errors ( self . config ) : LOGGER . error ( str ( err . message ) ) validator . validate ( self . config )",
+  "docstring_tokens": "Validate the configuration file .",
+  "label": 1,
+  "retrieval_idx": 2808
+ },
+ {
+  "idx": "cosqa-train-11185",
+  "doc": "get number of rows in output of sql query in python",
+  "code": "def count_rows(self, table, cols='*'):\n        \"\"\"Get the number of rows in a particular table.\"\"\"\n        query = 'SELECT COUNT({0}) FROM {1}'.format(join_cols(cols), wrap(table))\n        result = self.fetch(query)\n        return result if result is not None else 0",
+  "code_tokens": "def count_rows ( self , table , cols = '*' ) : query = 'SELECT COUNT({0}) FROM {1}' . format ( join_cols ( cols ) , wrap ( table ) ) result = self . fetch ( query ) return result if result is not None else 0",
+  "docstring_tokens": "Get the number of rows in a particular table .",
+  "label": 1,
+  "retrieval_idx": 4609
+ },
+ {
+  "idx": "cosqa-train-6382",
+  "doc": "add index support objects python",
+  "code": "def to_index(self, index_type, index_name, includes=None):\n        \"\"\" Create an index field from this field \"\"\"\n        return IndexField(self.name, self.data_type, index_type, index_name, includes)",
+  "code_tokens": "def to_index ( self , index_type , index_name , includes = None ) : return IndexField ( self . name , self . data_type , index_type , index_name , includes )",
+  "docstring_tokens": "Create an index field from this field",
+  "label": 1,
+  "retrieval_idx": 3472
+ },
+ {
+  "idx": "cosqa-train-17114",
+  "doc": "make python tuple from list of strings",
+  "code": "def _parse_tuple_string(argument):\n        \"\"\" Return a tuple from parsing 'a,b,c,d' -> (a,b,c,d) \"\"\"\n        if isinstance(argument, str):\n            return tuple(int(p.strip()) for p in argument.split(','))\n        return argument",
+  "code_tokens": "def _parse_tuple_string ( argument ) : if isinstance ( argument , str ) : return tuple ( int ( p . strip ( ) ) for p in argument . split ( ',' ) ) return argument",
+  "docstring_tokens": "Return a tuple from parsing a b c d - > ( a b c d )",
+  "label": 1,
+  "retrieval_idx": 5669
+ },
+ {
+  "idx": "cosqa-train-11447",
+  "doc": "how to create a variable containing multiple figures python",
+  "code": "def strip_figures(figure):\n\t\"\"\"\n\tStrips a figure into multiple figures with a trace on each of them\n\n\tParameters:\n\t-----------\n\t\tfigure : Figure\n\t\t\tPlotly Figure\n\t\"\"\"\n\tfig=[]\n\tfor trace in figure['data']:\n\t\tfig.append(dict(data=[trace],layout=figure['layout']))\n\treturn fig",
+  "code_tokens": "def strip_figures ( figure ) : fig = [ ] for trace in figure [ 'data' ] : fig . append ( dict ( data = [ trace ] , layout = figure [ 'layout' ] ) ) return fig",
+  "docstring_tokens": "Strips a figure into multiple figures with a trace on each of them",
+  "label": 1,
+  "retrieval_idx": 1715
+ },
+ {
+  "idx": "cosqa-train-14293",
+  "doc": "python validate url invalid characters",
+  "code": "def url_syntax_check(url):  # pragma: no cover\n    \"\"\"\n    Check the syntax of the given URL.\n\n    :param url: The URL to check the syntax for.\n    :type url: str\n\n    :return: The syntax validity.\n    :rtype: bool\n\n    .. warning::\n        If an empty or a non-string :code:`url` is given, we return :code:`None`.\n    \"\"\"\n\n    if url and isinstance(url, str):\n        # The given URL is not empty nor None.\n        # and\n        # * The given URL is a string.\n\n        # We silently load the configuration.\n        load_config(True)\n\n        return Check(url).is_url_valid()\n\n    # We return None, there is nothing to check.\n    return None",
+  "code_tokens": "def url_syntax_check ( url ) : # pragma: no cover if url and isinstance ( url , str ) : # The given URL is not empty nor None. # and # * The given URL is a string. # We silently load the configuration. load_config ( True ) return Check ( url ) . is_url_valid ( ) # We return None, there is nothing to check. return None",
+  "docstring_tokens": "Check the syntax of the given URL .",
+  "label": 1,
+  "retrieval_idx": 4006
+ },
+ {
+  "idx": "cosqa-train-8457",
+  "doc": "python compare float of number to integer",
+  "code": "def _check_for_int(x):\n    \"\"\"\n    This is a compatibility function that takes a C{float} and converts it to an\n    C{int} if the values are equal.\n    \"\"\"\n    try:\n        y = int(x)\n    except (OverflowError, ValueError):\n        pass\n    else:\n        # There is no way in AMF0 to distinguish between integers and floats\n        if x == x and y == x:\n            return y\n\n    return x",
+  "code_tokens": "def _check_for_int ( x ) : try : y = int ( x ) except ( OverflowError , ValueError ) : pass else : # There is no way in AMF0 to distinguish between integers and floats if x == x and y == x : return y return x",
+  "docstring_tokens": "This is a compatibility function that takes a C { float } and converts it to an C { int } if the values are equal .",
+  "label": 1,
+  "retrieval_idx": 289
+ },
+ {
+  "idx": "cosqa-train-11585",
+  "doc": "python pdb see stack",
+  "code": "def set_trace():\n    \"\"\"Start a Pdb instance at the calling frame, with stdout routed to sys.__stdout__.\"\"\"\n    # https://github.com/nose-devs/nose/blob/master/nose/tools/nontrivial.py\n    pdb.Pdb(stdout=sys.__stdout__).set_trace(sys._getframe().f_back)",
+  "code_tokens": "def set_trace ( ) : # https://github.com/nose-devs/nose/blob/master/nose/tools/nontrivial.py pdb . Pdb ( stdout = sys . __stdout__ ) . set_trace ( sys . _getframe ( ) . f_back )",
+  "docstring_tokens": "Start a Pdb instance at the calling frame with stdout routed to sys . __stdout__ .",
+  "label": 1,
+  "retrieval_idx": 900
+ },
+ {
+  "idx": "cosqa-train-7568",
+  "doc": "how to raise a number to a power in python 3",
+  "code": "def _power(ctx, number, power):\n    \"\"\"\n    Returns the result of a number raised to a power\n    \"\"\"\n    return decimal_pow(conversions.to_decimal(number, ctx), conversions.to_decimal(power, ctx))",
+  "code_tokens": "def _power ( ctx , number , power ) : return decimal_pow ( conversions . to_decimal ( number , ctx ) , conversions . to_decimal ( power , ctx ) )",
+  "docstring_tokens": "Returns the result of a number raised to a power",
+  "label": 1,
+  "retrieval_idx": 3816
+ },
+ {
+  "idx": "cosqa-train-7677",
+  "doc": "how to set width of bar in horizontal bar chart python",
+  "code": "def _change_height(self, ax, new_value):\n        \"\"\"Make bars in horizontal bar chart thinner\"\"\"\n        for patch in ax.patches:\n            current_height = patch.get_height()\n            diff = current_height - new_value\n\n            # we change the bar height\n            patch.set_height(new_value)\n\n            # we recenter the bar\n            patch.set_y(patch.get_y() + diff * .5)",
+  "code_tokens": "def _change_height ( self , ax , new_value ) : for patch in ax . patches : current_height = patch . get_height ( ) diff = current_height - new_value # we change the bar height patch . set_height ( new_value ) # we recenter the bar patch . set_y ( patch . get_y ( ) + diff * .5 )",
+  "docstring_tokens": "Make bars in horizontal bar chart thinner",
+  "label": 1,
+  "retrieval_idx": 1996
+ },
+ {
+  "idx": "cosqa-train-14814",
+  "doc": "writing javascript in python for webpage",
+  "code": "def add_to_js(self, name, var):\n        \"\"\"Add an object to Javascript.\"\"\"\n        frame = self.page().mainFrame()\n        frame.addToJavaScriptWindowObject(name, var)",
+  "code_tokens": "def add_to_js ( self , name , var ) : frame = self . page ( ) . mainFrame ( ) frame . addToJavaScriptWindowObject ( name , var )",
+  "docstring_tokens": "Add an object to Javascript .",
+  "label": 1,
+  "retrieval_idx": 128
+ },
+ {
+  "idx": "cosqa-train-9979",
+  "doc": "python two vector multiply",
+  "code": "def dot_v2(vec1, vec2):\n    \"\"\"Return the dot product of two vectors\"\"\"\n\n    return vec1.x * vec2.x + vec1.y * vec2.y",
+  "code_tokens": "def dot_v2 ( vec1 , vec2 ) : return vec1 . x * vec2 . x + vec1 . y * vec2 . y",
+  "docstring_tokens": "Return the dot product of two vectors",
+  "label": 1,
+  "retrieval_idx": 3581
+ },
+ {
+  "idx": "cosqa-train-12860",
+  "doc": "python dynamically read args in functions",
+  "code": "def parsed_args():\n    parser = argparse.ArgumentParser(description=\"\"\"python runtime functions\"\"\", epilog=\"\")\n    parser.add_argument('command',nargs='*',\n        help=\"Name of the function to run with arguments\")\n    args = parser.parse_args()\n    return (args, parser)",
+  "code_tokens": "def parsed_args ( ) : parser = argparse . ArgumentParser ( description = \"\"\"python runtime functions\"\"\" , epilog = \"\" ) parser . add_argument ( 'command' , nargs = '*' , help = \"Name of the function to run with arguments\" ) args = parser . parse_args ( ) return ( args , parser )",
+  "docstring_tokens": "",
+  "label": 1,
+  "retrieval_idx": 3283
+ },
+ {
+  "idx": "cosqa-train-8681",
+  "doc": "python draw line with scope and intercept",
+  "code": "def vline(self, x, y, height, color):\n        \"\"\"Draw a vertical line up to a given length.\"\"\"\n        self.rect(x, y, 1, height, color, fill=True)",
+  "code_tokens": "def vline ( self , x , y , height , color ) : self . rect ( x , y , 1 , height , color , fill = True )",
+  "docstring_tokens": "Draw a vertical line up to a given length .",
+  "label": 1,
+  "retrieval_idx": 3875
+ },
+ {
+  "idx": "cosqa-train-13176",
+  "doc": "python good way to load a yaml file",
+  "code": "def load_yaml(filepath):\n    \"\"\"Convenience function for loading yaml-encoded data from disk.\"\"\"\n    with open(filepath) as f:\n        txt = f.read()\n    return yaml.load(txt)",
+  "code_tokens": "def load_yaml ( filepath ) : with open ( filepath ) as f : txt = f . read ( ) return yaml . load ( txt )",
+  "docstring_tokens": "Convenience function for loading yaml - encoded data from disk .",
+  "label": 1,
+  "retrieval_idx": 1096
+ },
+ {
+  "idx": "cosqa-train-15044",
+  "doc": "python detect if a file is a symbolic link",
+  "code": "def is_symlink(self):\n        \"\"\"\n        Whether this path is a symbolic link.\n        \"\"\"\n        try:\n            return S_ISLNK(self.lstat().st_mode)\n        except OSError as e:\n            if e.errno != ENOENT:\n                raise\n            # Path doesn't exist\n            return False",
+  "code_tokens": "def is_symlink ( self ) : try : return S_ISLNK ( self . lstat ( ) . st_mode ) except OSError as e : if e . errno != ENOENT : raise # Path doesn't exist return False",
+  "docstring_tokens": "Whether this path is a symbolic link .",
+  "label": 1,
+  "retrieval_idx": 1607
+ },
+ {
+  "idx": "cosqa-train-10452",
+  "doc": "test if multiple variables are none python",
+  "code": "def _not_none(items):\n    \"\"\"Whether the item is a placeholder or contains a placeholder.\"\"\"\n    if not isinstance(items, (tuple, list)):\n        items = (items,)\n    return all(item is not _none for item in items)",
+  "code_tokens": "def _not_none ( items ) : if not isinstance ( items , ( tuple , list ) ) : items = ( items , ) return all ( item is not _none for item in items )",
+  "docstring_tokens": "Whether the item is a placeholder or contains a placeholder .",
+  "label": 1,
+  "retrieval_idx": 208
+ },
+ {
+  "idx": "cosqa-train-18500",
+  "doc": "delete a column in python db",
+  "code": "def drop_column(self, tablename: str, fieldname: str) -> int:\n        \"\"\"Drops (deletes) a column from an existing table.\"\"\"\n        sql = \"ALTER TABLE {} DROP COLUMN {}\".format(tablename, fieldname)\n        log.info(sql)\n        return self.db_exec_literal(sql)",
+  "code_tokens": "def drop_column ( self , tablename : str , fieldname : str ) -> int : sql = \"ALTER TABLE {} DROP COLUMN {}\" . format ( tablename , fieldname ) log . info ( sql ) return self . db_exec_literal ( sql )",
+  "docstring_tokens": "Drops ( deletes ) a column from an existing table .",
+  "label": 1,
+  "retrieval_idx": 6069
+ },
+ {
+  "idx": "cosqa-train-8600",
+  "doc": "calculate the eigen values in python",
+  "code": "def center_eigenvalue_diff(mat):\n    \"\"\"Compute the eigvals of mat and then find the center eigval difference.\"\"\"\n    N = len(mat)\n    evals = np.sort(la.eigvals(mat))\n    diff = np.abs(evals[N/2] - evals[N/2-1])\n    return diff",
+  "code_tokens": "def center_eigenvalue_diff ( mat ) : N = len ( mat ) evals = np . sort ( la . eigvals ( mat ) ) diff = np . abs ( evals [ N / 2 ] - evals [ N / 2 - 1 ] ) return diff",
+  "docstring_tokens": "Compute the eigvals of mat and then find the center eigval difference .",
+  "label": 1,
+  "retrieval_idx": 445
+ },
+ {
+  "idx": "cosqa-train-19250",
+  "doc": "python read adb devices",
+  "code": "def list_adb_devices_by_usb_id():\n    \"\"\"List the usb id of all android devices connected to the computer that\n    are detected by adb.\n\n    Returns:\n        A list of strings that are android device usb ids. Empty if there's\n        none.\n    \"\"\"\n    out = adb.AdbProxy().devices(['-l'])\n    clean_lines = new_str(out, 'utf-8').strip().split('\\n')\n    results = []\n    for line in clean_lines:\n        tokens = line.strip().split()\n        if len(tokens) > 2 and tokens[1] == 'device':\n            results.append(tokens[2])\n    return results",
+  "code_tokens": "def list_adb_devices_by_usb_id ( ) : out = adb . AdbProxy ( ) . devices ( [ '-l' ] ) clean_lines = new_str ( out , 'utf-8' ) . strip ( ) . split ( '\\n' ) results = [ ] for line in clean_lines : tokens = line . strip ( ) . split ( ) if len ( tokens ) > 2 and tokens [ 1 ] == 'device' : results . append ( tokens [ 2 ] ) return results",
+  "docstring_tokens": "List the usb id of all android devices connected to the computer that are detected by adb .",
+  "label": 1,
+  "retrieval_idx": 6061
+ },
+ {
+  "idx": "cosqa-train-5000",
+  "doc": "how to capitalize only the first letter of a string in python",
+  "code": "def to_capitalized_camel_case(snake_case_string):\n    \"\"\"\n    Convert a string from snake case to camel case with the first letter capitalized. For example, \"some_var\"\n    would become \"SomeVar\".\n\n    :param snake_case_string: Snake-cased string to convert to camel case.\n    :returns: Camel-cased version of snake_case_string.\n    \"\"\"\n    parts = snake_case_string.split('_')\n    return ''.join([i.title() for i in parts])",
+  "code_tokens": "def to_capitalized_camel_case ( snake_case_string ) : parts = snake_case_string . split ( '_' ) return '' . join ( [ i . title ( ) for i in parts ] )",
+  "docstring_tokens": "Convert a string from snake case to camel case with the first letter capitalized . For example some_var would become SomeVar .",
+  "label": 1,
+  "retrieval_idx": 1625
+ },
+ {
+  "idx": "cosqa-train-6678",
+  "doc": "python function that takes a string and returns an int",
+  "code": "def get_number(s, cast=int):\n    \"\"\"\n    Try to get a number out of a string, and cast it.\n    \"\"\"\n    import string\n    d = \"\".join(x for x in str(s) if x in string.digits)\n    return cast(d)",
+  "code_tokens": "def get_number ( s , cast = int ) : import string d = \"\" . join ( x for x in str ( s ) if x in string . digits ) return cast ( d )",
+  "docstring_tokens": "Try to get a number out of a string and cast it .",
+  "label": 1,
+  "retrieval_idx": 40
+ },
+ {
+  "idx": "cosqa-train-15687",
+  "doc": "python lookup and add idiom",
+  "code": "def _import(module, cls):\n    \"\"\"\n    A messy way to import library-specific classes.\n    TODO: I should really make a factory class or something, but I'm lazy.\n    Plus, factories remind me a lot of java...\n    \"\"\"\n    global Scanner\n\n    try:\n        cls = str(cls)\n        mod = __import__(str(module), globals(), locals(), [cls], 1)\n        Scanner = getattr(mod, cls)\n    except ImportError:\n        pass",
+  "code_tokens": "def _import ( module , cls ) : global Scanner try : cls = str ( cls ) mod = __import__ ( str ( module ) , globals ( ) , locals ( ) , [ cls ] , 1 ) Scanner = getattr ( mod , cls ) except ImportError : pass",
+  "docstring_tokens": "A messy way to import library - specific classes . TODO : I should really make a factory class or something but I m lazy . Plus factories remind me a lot of java ...",
+  "label": 1,
+  "retrieval_idx": 3089
+ },
+ {
+  "idx": "cosqa-train-17221",
+  "doc": "python elementtree delete namespace",
+  "code": "def recClearTag(element):\n    \"\"\"Applies maspy.xml.clearTag() to the tag attribute of the \"element\" and\n    recursively to all child elements.\n\n    :param element: an :instance:`xml.etree.Element`\n    \"\"\"\n    children = element.getchildren()\n    if len(children) > 0:\n        for child in children:\n            recClearTag(child)\n    element.tag = clearTag(element.tag)",
+  "code_tokens": "def recClearTag ( element ) : children = element . getchildren ( ) if len ( children ) > 0 : for child in children : recClearTag ( child ) element . tag = clearTag ( element . tag )",
+  "docstring_tokens": "Applies maspy . xml . clearTag () to the tag attribute of the element and recursively to all child elements .",
+  "label": 1,
+  "retrieval_idx": 5570
+ },
+ {
+  "idx": "cosqa-train-10541",
+  "doc": "what can you store in a python session",
+  "code": "def save_session(self, sid, session, namespace=None):\n        \"\"\"Store the user session for a client.\n\n        The only difference with the :func:`socketio.Server.save_session`\n        method is that when the ``namespace`` argument is not given the\n        namespace associated with the class is used.\n        \"\"\"\n        return self.server.save_session(\n            sid, session, namespace=namespace or self.namespace)",
+  "code_tokens": "def save_session ( self , sid , session , namespace = None ) : return self . server . save_session ( sid , session , namespace = namespace or self . namespace )",
+  "docstring_tokens": "Store the user session for a client .",
+  "label": 1,
+  "retrieval_idx": 1242
+ },
+ {
+  "idx": "cosqa-train-10553",
+  "doc": "wrapping python as a wrapper",
+  "code": "def library(func):\n    \"\"\"\n    A decorator for providing a unittest with a library and have it called only\n    once.\n    \"\"\"\n    @wraps(func)\n    def wrapped(*args, **kwargs):\n        \"\"\"Transparent wrapper.\"\"\"\n        return func(*args, **kwargs)\n    SINGLES.append(wrapped)\n    return wrapped",
+  "code_tokens": "def library ( func ) : @ wraps ( func ) def wrapped ( * args , * * kwargs ) : \"\"\"Transparent wrapper.\"\"\" return func ( * args , * * kwargs ) SINGLES . append ( wrapped ) return wrapped",
+  "docstring_tokens": "A decorator for providing a unittest with a library and have it called only once .",
+  "label": 1,
+  "retrieval_idx": 4501
+ },
+ {
+  "idx": "cosqa-train-10858",
+  "doc": "configure a list of characters into a string python",
+  "code": "def delimited(items, character='|'):\n    \"\"\"Returns a character delimited version of the provided list as a Python string\"\"\"\n    return '|'.join(items) if type(items) in (list, tuple, set) else items",
+  "code_tokens": "def delimited ( items , character = '|' ) : return '|' . join ( items ) if type ( items ) in ( list , tuple , set ) else items",
+  "docstring_tokens": "Returns a character delimited version of the provided list as a Python string",
+  "label": 1,
+  "retrieval_idx": 1295
+ },
+ {
+  "idx": "cosqa-train-7049",
+  "doc": "python list of self variables",
+  "code": "def vars_(self):\n        \"\"\" Returns symbol instances corresponding to variables\n        of the current scope.\n        \"\"\"\n        return [x for x in self[self.current_scope].values() if x.class_ == CLASS.var]",
+  "code_tokens": "def vars_ ( self ) : return [ x for x in self [ self . current_scope ] . values ( ) if x . class_ == CLASS . var ]",
+  "docstring_tokens": "Returns symbol instances corresponding to variables of the current scope .",
+  "label": 1,
+  "retrieval_idx": 3654
+ },
+ {
+  "idx": "cosqa-train-9857",
+  "doc": "how to stop streaming data python",
+  "code": "def stop(self):\n        \"\"\"Stop stream.\"\"\"\n        if self.stream and self.stream.session.state != STATE_STOPPED:\n            self.stream.stop()",
+  "code_tokens": "def stop ( self ) : if self . stream and self . stream . session . state != STATE_STOPPED : self . stream . stop ( )",
+  "docstring_tokens": "Stop stream .",
+  "label": 1,
+  "retrieval_idx": 4342
+ },
+ {
+  "idx": "cosqa-train-6411",
+  "doc": "python create remote file ssh",
+  "code": "def send_file(self, local_path, remote_path, user='root', unix_mode=None):\n        \"\"\"Upload a local file on the remote host.\n        \"\"\"\n        self.enable_user(user)\n        return self.ssh_pool.send_file(user, local_path, remote_path, unix_mode=unix_mode)",
+  "code_tokens": "def send_file ( self , local_path , remote_path , user = 'root' , unix_mode = None ) : self . enable_user ( user ) return self . ssh_pool . send_file ( user , local_path , remote_path , unix_mode = unix_mode )",
+  "docstring_tokens": "Upload a local file on the remote host .",
+  "label": 1,
+  "retrieval_idx": 2924
+ },
+ {
+  "idx": "cosqa-train-13354",
+  "doc": "get the first value in a series python",
+  "code": "def reduce_fn(x):\n    \"\"\"\n    Aggregation function to get the first non-zero value.\n    \"\"\"\n    values = x.values if pd and isinstance(x, pd.Series) else x\n    for v in values:\n        if not is_nan(v):\n            return v\n    return np.NaN",
+  "code_tokens": "def reduce_fn ( x ) : values = x . values if pd and isinstance ( x , pd . Series ) else x for v in values : if not is_nan ( v ) : return v return np . NaN",
+  "docstring_tokens": "Aggregation function to get the first non - zero value .",
+  "label": 1,
+  "retrieval_idx": 621
+ },
+ {
+  "idx": "cosqa-train-6848",
+  "doc": "fetch a variable from its name + python",
+  "code": "def _get_var_from_string(item):\n    \"\"\" Get resource variable. \"\"\"\n    modname, varname = _split_mod_var_names(item)\n    if modname:\n        mod = __import__(modname, globals(), locals(), [varname], -1)\n        return getattr(mod, varname)\n    else:\n        return globals()[varname]",
+  "code_tokens": "def _get_var_from_string ( item ) : modname , varname = _split_mod_var_names ( item ) if modname : mod = __import__ ( modname , globals ( ) , locals ( ) , [ varname ] , - 1 ) return getattr ( mod , varname ) else : return globals ( ) [ varname ]",
+  "docstring_tokens": "Get resource variable .",
+  "label": 1,
+  "retrieval_idx": 3596
+ },
+ {
+  "idx": "cosqa-train-15681",
+  "doc": "how to change dimensions of a window in python",
+  "code": "def setwinsize(self, rows, cols):\n        \"\"\"Set the terminal window size of the child tty.\n        \"\"\"\n        self._winsize = (rows, cols)\n        self.pty.set_size(cols, rows)",
+  "code_tokens": "def setwinsize ( self , rows , cols ) : self . _winsize = ( rows , cols ) self . pty . set_size ( cols , rows )",
+  "docstring_tokens": "Set the terminal window size of the child tty .",
+  "label": 1,
+  "retrieval_idx": 2629
+ },
+ {
+  "idx": "cosqa-train-7234",
+  "doc": "python numpy array fix dtype",
+  "code": "def dict_to_numpy_array(d):\n    \"\"\"\n    Convert a dict of 1d array to a numpy recarray\n    \"\"\"\n    return fromarrays(d.values(), np.dtype([(str(k), v.dtype) for k, v in d.items()]))",
+  "code_tokens": "def dict_to_numpy_array ( d ) : return fromarrays ( d . values ( ) , np . dtype ( [ ( str ( k ) , v . dtype ) for k , v in d . items ( ) ] ) )",
+  "docstring_tokens": "Convert a dict of 1d array to a numpy recarray",
+  "label": 1,
+  "retrieval_idx": 1583
+ },
+ {
+  "idx": "cosqa-train-10130",
+  "doc": "python3 extending an empty diff results in none type",
+  "code": "def default_diff(latest_config, current_config):\n    \"\"\"Determine if two revisions have actually changed.\"\"\"\n    # Pop off the fields we don't care about:\n    pop_no_diff_fields(latest_config, current_config)\n\n    diff = DeepDiff(\n        latest_config,\n        current_config,\n        ignore_order=True\n    )\n    return diff",
+  "code_tokens": "def default_diff ( latest_config , current_config ) : # Pop off the fields we don't care about: pop_no_diff_fields ( latest_config , current_config ) diff = DeepDiff ( latest_config , current_config , ignore_order = True ) return diff",
+  "docstring_tokens": "Determine if two revisions have actually changed .",
+  "label": 1,
+  "retrieval_idx": 4047
+ },
+ {
+  "idx": "cosqa-train-12663",
+  "doc": "windows cmd python display width",
+  "code": "def get_width():\n    \"\"\"Get terminal width\"\"\"\n    # Get terminal size\n    ws = struct.pack(\"HHHH\", 0, 0, 0, 0)\n    ws = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, ws)\n    lines, columns, x, y = struct.unpack(\"HHHH\", ws)\n    width = min(columns * 39 // 40, columns - 2)\n    return width",
+  "code_tokens": "def get_width ( ) : # Get terminal size ws = struct . pack ( \"HHHH\" , 0 , 0 , 0 , 0 ) ws = fcntl . ioctl ( sys . stdout . fileno ( ) , termios . TIOCGWINSZ , ws ) lines , columns , x , y = struct . unpack ( \"HHHH\" , ws ) width = min ( columns * 39 // 40 , columns - 2 ) return width",
+  "docstring_tokens": "Get terminal width",
+  "label": 1,
+  "retrieval_idx": 1907
+ },
+ {
+  "idx": "cosqa-train-17053",
+  "doc": "top values in list python",
+  "code": "def top(self, topn=10):\n        \"\"\"\n        Get a list of the top ``topn`` features in this :class:`.Feature`\\.\n\n        Examples\n        --------\n\n        .. code-block:: python\n\n        >>> myFeature = Feature([('the', 2), ('pine', 1), ('trapezoid', 5)])\n        >>> myFeature.top(1)\n        [('trapezoid', 5)]\n\n        Parameters\n        ----------\n        topn : int\n\n        Returns\n        -------\n        list\n        \"\"\"\n        return [self[i] for i in argsort(list(zip(*self))[1])[::-1][:topn]]",
+  "code_tokens": "def top ( self , topn = 10 ) : return [ self [ i ] for i in argsort ( list ( zip ( * self ) ) [ 1 ] ) [ : : - 1 ] [ : topn ] ]",
+  "docstring_tokens": "Get a list of the top topn features in this : class : . Feature \\ .",
+  "label": 1,
+  "retrieval_idx": 5556
+ },
+ {
+  "idx": "cosqa-train-16531",
+  "doc": "md5 value of a file python",
+  "code": "def get_file_md5sum(path):\n    \"\"\"Calculate the MD5 hash for a file.\"\"\"\n    with open(path, 'rb') as fh:\n        h = str(hashlib.md5(fh.read()).hexdigest())\n    return h",
+  "code_tokens": "def get_file_md5sum ( path ) : with open ( path , 'rb' ) as fh : h = str ( hashlib . md5 ( fh . read ( ) ) . hexdigest ( ) ) return h",
+  "docstring_tokens": "Calculate the MD5 hash for a file .",
+  "label": 1,
+  "retrieval_idx": 1881
+ },
+ {
+  "idx": "cosqa-train-2363",
+  "doc": "code to create folders in python",
+  "code": "def mkdir(dir, enter):\n    \"\"\"Create directory with template for topic of the current environment\n\n    \"\"\"\n\n    if not os.path.exists(dir):\n        os.makedirs(dir)",
+  "code_tokens": "def mkdir ( dir , enter ) : if not os . path . exists ( dir ) : os . makedirs ( dir )",
+  "docstring_tokens": "Create directory with template for topic of the current environment",
+  "label": 1,
+  "retrieval_idx": 54
+ },
+ {
+  "idx": "cosqa-train-17907",
+  "doc": "python check if certain length of input equals something",
+  "code": "def check_lengths(*arrays):\n    \"\"\"\n    tool to ensure input and output data have the same number of samples\n\n    Parameters\n    ----------\n    *arrays : iterable of arrays to be checked\n\n    Returns\n    -------\n    None\n    \"\"\"\n    lengths = [len(array) for array in arrays]\n    if len(np.unique(lengths)) > 1:\n        raise ValueError('Inconsistent data lengths: {}'.format(lengths))",
+  "code_tokens": "def check_lengths ( * arrays ) : lengths = [ len ( array ) for array in arrays ] if len ( np . unique ( lengths ) ) > 1 : raise ValueError ( 'Inconsistent data lengths: {}' . format ( lengths ) )",
+  "docstring_tokens": "tool to ensure input and output data have the same number of samples",
+  "label": 1,
+  "retrieval_idx": 5934
+ },
+ {
+  "idx": "cosqa-train-15552",
+  "doc": "python iterate chunks of string",
+  "code": "def generate_chunks(string, num_chars):\n    \"\"\"Yield num_chars-character chunks from string.\"\"\"\n    for start in range(0, len(string), num_chars):\n        yield string[start:start+num_chars]",
+  "code_tokens": "def generate_chunks ( string , num_chars ) : for start in range ( 0 , len ( string ) , num_chars ) : yield string [ start : start + num_chars ]",
+  "docstring_tokens": "Yield num_chars - character chunks from string .",
+  "label": 1,
+  "retrieval_idx": 5338
+ },
+ {
+  "idx": "cosqa-train-15711",
+  "doc": "how to check datatype in data frame in python",
+  "code": "def _validate_pos(df):\n    \"\"\"Validates the returned positional object\n    \"\"\"\n    assert isinstance(df, pd.DataFrame)\n    assert [\"seqname\", \"position\", \"strand\"] == df.columns.tolist()\n    assert df.position.dtype == np.dtype(\"int64\")\n    assert df.strand.dtype == np.dtype(\"O\")\n    assert df.seqname.dtype == np.dtype(\"O\")\n    return df",
+  "code_tokens": "def _validate_pos ( df ) : assert isinstance ( df , pd . DataFrame ) assert [ \"seqname\" , \"position\" , \"strand\" ] == df . columns . tolist ( ) assert df . position . dtype == np . dtype ( \"int64\" ) assert df . strand . dtype == np . dtype ( \"O\" ) assert df . seqname . dtype == np . dtype ( \"O\" ) return df",
+  "docstring_tokens": "Validates the returned positional object",
+  "label": 1,
+  "retrieval_idx": 740
+ },
+ {
+  "idx": "cosqa-train-6730",
+  "doc": "python get first object in a list",
+  "code": "def findfirst(f, coll):\n    \"\"\"Return first occurrence matching f, otherwise None\"\"\"\n    result = list(dropwhile(f, coll))\n    return result[0] if result else None",
+  "code_tokens": "def findfirst ( f , coll ) : result = list ( dropwhile ( f , coll ) ) return result [ 0 ] if result else None",
+  "docstring_tokens": "Return first occurrence matching f otherwise None",
+  "label": 1,
+  "retrieval_idx": 598
+ },
+ {
+  "idx": "cosqa-train-4464",
+  "doc": "python extract all numbers in a string",
+  "code": "def get_numbers(s):\n    \"\"\"Extracts all integers from a string an return them in a list\"\"\"\n\n    result = map(int, re.findall(r'[0-9]+', unicode(s)))\n    return result + [1] * (2 - len(result))",
+  "code_tokens": "def get_numbers ( s ) : result = map ( int , re . findall ( r'[0-9]+' , unicode ( s ) ) ) return result + [ 1 ] * ( 2 - len ( result ) )",
+  "docstring_tokens": "Extracts all integers from a string an return them in a list",
+  "label": 1,
+  "retrieval_idx": 2828
+ },
+ {
+  "idx": "cosqa-train-7906",
+  "doc": "python unittest assert not raises",
+  "code": "def assert_is_not(expected, actual, message=None, extra=None):\n    \"\"\"Raises an AssertionError if expected is actual.\"\"\"\n    assert expected is not actual, _assert_fail_message(\n        message, expected, actual, \"is\", extra\n    )",
+  "code_tokens": "def assert_is_not ( expected , actual , message = None , extra = None ) : assert expected is not actual , _assert_fail_message ( message , expected , actual , \"is\" , extra )",
+  "docstring_tokens": "Raises an AssertionError if expected is actual .",
+  "label": 1,
+  "retrieval_idx": 1307
+ },
+ {
+  "idx": "cosqa-train-16444",
+  "doc": "python zmq check if connected",
+  "code": "def start(self, test_connection=True):\n        \"\"\"Starts connection to server if not existent.\n\n        NO-OP if connection is already established.\n        Makes ping-pong test as well if desired.\n\n        \"\"\"\n        if self._context is None:\n            self._logger.debug('Starting Client')\n            self._context = zmq.Context()\n            self._poll = zmq.Poller()\n            self._start_socket()\n            if test_connection:\n                self.test_ping()",
+  "code_tokens": "def start ( self , test_connection = True ) : if self . _context is None : self . _logger . debug ( 'Starting Client' ) self . _context = zmq . Context ( ) self . _poll = zmq . Poller ( ) self . _start_socket ( ) if test_connection : self . test_ping ( )",
+  "docstring_tokens": "Starts connection to server if not existent .",
+  "label": 1,
+  "retrieval_idx": 5466
+ },
+ {
+  "idx": "cosqa-train-17529",
+  "doc": "using string to generate datetime date in python",
+  "code": "def get_from_gnucash26_date(date_str: str) -> date:\n    \"\"\" Creates a datetime from GnuCash 2.6 date string \"\"\"\n    date_format = \"%Y%m%d\"\n    result = datetime.strptime(date_str, date_format).date()\n    return result",
+  "code_tokens": "def get_from_gnucash26_date ( date_str : str ) -> date : date_format = \"%Y%m%d\" result = datetime . strptime ( date_str , date_format ) . date ( ) return result",
+  "docstring_tokens": "Creates a datetime from GnuCash 2 . 6 date string",
+  "label": 1,
+  "retrieval_idx": 5766
+ },
+ {
+  "idx": "cosqa-train-19388",
+  "doc": "python list comprehension flatten",
+  "code": "def flatten_list(l: List[list]) -> list:\n    \"\"\" takes a list of lists, l and returns a flat list\n    \"\"\"\n    return [v for inner_l in l for v in inner_l]",
+  "code_tokens": "def flatten_list ( l : List [ list ] ) -> list : return [ v for inner_l in l for v in inner_l ]",
+  "docstring_tokens": "takes a list of lists l and returns a flat list",
+  "label": 1,
+  "retrieval_idx": 5705
+ },
+ {
+  "idx": "cosqa-train-8434",
+  "doc": "python code remove duplicate labels",
+  "code": "def get_labels(labels):\n    \"\"\"Create unique labels.\"\"\"\n    label_u = unique_labels(labels)\n    label_u_line = [i + \"_line\" for i in label_u]\n    return label_u, label_u_line",
+  "code_tokens": "def get_labels ( labels ) : label_u = unique_labels ( labels ) label_u_line = [ i + \"_line\" for i in label_u ] return label_u , label_u_line",
+  "docstring_tokens": "Create unique labels .",
+  "label": 1,
+  "retrieval_idx": 4033
+ },
+ {
+  "idx": "cosqa-train-13389",
+  "doc": "heatmap python set the axis limits",
+  "code": "def set_mlimits(self, row, column, min=None, max=None):\n        \"\"\"Set limits for the point meta (colormap).\n\n        Point meta values outside this range will be clipped.\n\n        :param min: value for start of the colormap.\n        :param max: value for end of the colormap.\n\n        \"\"\"\n        subplot = self.get_subplot_at(row, column)\n        subplot.set_mlimits(min, max)",
+  "code_tokens": "def set_mlimits ( self , row , column , min = None , max = None ) : subplot = self . get_subplot_at ( row , column ) subplot . set_mlimits ( min , max )",
+  "docstring_tokens": "Set limits for the point meta ( colormap ) .",
+  "label": 1,
+  "retrieval_idx": 4994
+ },
+ {
+  "idx": "cosqa-train-19863",
+  "doc": "rotate between items in a list python",
+  "code": "def iprotate(l, steps=1):\n    \"\"\"Like rotate, but modifies `l` in-place.\n\n    >>> l = [1,2,3]\n    >>> iprotate(l) is l\n    True\n    >>> l\n    [2, 3, 1]\n    >>> iprotate(iprotate(l, 2), -3)\n    [1, 2, 3]\n\n    \"\"\"\n    if len(l):\n        steps %= len(l)\n        if steps:\n            firstPart = l[:steps]\n            del l[:steps]\n            l.extend(firstPart)\n    return l",
+  "code_tokens": "def iprotate ( l , steps = 1 ) : if len ( l ) : steps %= len ( l ) if steps : firstPart = l [ : steps ] del l [ : steps ] l . extend ( firstPart ) return l",
+  "docstring_tokens": "r Like rotate but modifies l in - place .",
+  "label": 1,
+  "retrieval_idx": 5735
+ },
+ {
+  "idx": "cosqa-train-15897",
+  "doc": "how to exclude item from index python",
+  "code": "def _remove_from_index(index, obj):\n    \"\"\"Removes object ``obj`` from the ``index``.\"\"\"\n    try:\n        index.value_map[indexed_value(index, obj)].remove(obj.id)\n    except KeyError:\n        pass",
+  "code_tokens": "def _remove_from_index ( index , obj ) : try : index . value_map [ indexed_value ( index , obj ) ] . remove ( obj . id ) except KeyError : pass",
+  "docstring_tokens": "Removes object obj from the index .",
+  "label": 1,
+  "retrieval_idx": 2482
+ },
+ {
+  "idx": "cosqa-train-5961",
+  "doc": "remove punctuation and stop words python nltk",
+  "code": "def wordify(text):\n    \"\"\"Generate a list of words given text, removing punctuation.\n\n    Parameters\n    ----------\n    text : unicode\n        A piece of english text.\n\n    Returns\n    -------\n    words : list\n        List of words.\n    \"\"\"\n    stopset = set(nltk.corpus.stopwords.words('english'))\n    tokens = nltk.WordPunctTokenizer().tokenize(text)\n    return [w for w in tokens if w not in stopset]",
+  "code_tokens": "def wordify ( text ) : stopset = set ( nltk . corpus . stopwords . words ( 'english' ) ) tokens = nltk . WordPunctTokenizer ( ) . tokenize ( text ) return [ w for w in tokens if w not in stopset ]",
+  "docstring_tokens": "Generate a list of words given text removing punctuation .",
+  "label": 1,
+  "retrieval_idx": 844
+ },
+ {
+  "idx": "cosqa-train-6180",
+  "doc": "strip spaces from columns in python",
+  "code": "def strip_columns(tab):\n    \"\"\"Strip whitespace from string columns.\"\"\"\n    for colname in tab.colnames:\n        if tab[colname].dtype.kind in ['S', 'U']:\n            tab[colname] = np.core.defchararray.strip(tab[colname])",
+  "code_tokens": "def strip_columns ( tab ) : for colname in tab . colnames : if tab [ colname ] . dtype . kind in [ 'S' , 'U' ] : tab [ colname ] = np . core . defchararray . strip ( tab [ colname ] )",
+  "docstring_tokens": "Strip whitespace from string columns .",
+  "label": 1,
+  "retrieval_idx": 1437
+ },
+ {
+  "idx": "cosqa-train-17060",
+  "doc": "python datetime get last month number",
+  "code": "def get_last_day_of_month(t: datetime) -> int:\n    \"\"\"\n    Returns day number of the last day of the month\n    :param t: datetime\n    :return: int\n    \"\"\"\n    tn = t + timedelta(days=32)\n    tn = datetime(year=tn.year, month=tn.month, day=1)\n    tt = tn - timedelta(hours=1)\n    return tt.day",
+  "code_tokens": "def get_last_day_of_month ( t : datetime ) -> int : tn = t + timedelta ( days = 32 ) tn = datetime ( year = tn . year , month = tn . month , day = 1 ) tt = tn - timedelta ( hours = 1 ) return tt . day",
+  "docstring_tokens": "Returns day number of the last day of the month : param t : datetime : return : int",
+  "label": 1,
+  "retrieval_idx": 5645
+ },
+ {
+  "idx": "cosqa-train-8210",
+  "doc": "python assertassert no description",
+  "code": "def assert_is_not(expected, actual, message=None, extra=None):\n    \"\"\"Raises an AssertionError if expected is actual.\"\"\"\n    assert expected is not actual, _assert_fail_message(\n        message, expected, actual, \"is\", extra\n    )",
+  "code_tokens": "def assert_is_not ( expected , actual , message = None , extra = None ) : assert expected is not actual , _assert_fail_message ( message , expected , actual , \"is\" , extra )",
+  "docstring_tokens": "Raises an AssertionError if expected is actual .",
+  "label": 1,
+  "retrieval_idx": 1307
+ },
+ {
+  "idx": "cosqa-train-13784",
+  "doc": "python program calculating angle from two points",
+  "code": "def angle_between_vectors(x, y):\n    \"\"\" Compute the angle between vector x and y \"\"\"\n    dp = dot_product(x, y)\n    if dp == 0:\n        return 0\n    xm = magnitude(x)\n    ym = magnitude(y)\n    return math.acos(dp / (xm*ym)) * (180. / math.pi)",
+  "code_tokens": "def angle_between_vectors ( x , y ) : dp = dot_product ( x , y ) if dp == 0 : return 0 xm = magnitude ( x ) ym = magnitude ( y ) return math . acos ( dp / ( xm * ym ) ) * ( 180. / math . pi )",
+  "docstring_tokens": "Compute the angle between vector x and y",
+  "label": 1,
+  "retrieval_idx": 1665
+ },
+ {
+  "idx": "cosqa-train-7686",
+  "doc": "python split iterable into batches",
+  "code": "def ibatch(iterable, size):\n    \"\"\"Yield a series of batches from iterable, each size elements long.\"\"\"\n    source = iter(iterable)\n    while True:\n        batch = itertools.islice(source, size)\n        yield itertools.chain([next(batch)], batch)",
+  "code_tokens": "def ibatch ( iterable , size ) : source = iter ( iterable ) while True : batch = itertools . islice ( source , size ) yield itertools . chain ( [ next ( batch ) ] , batch )",
+  "docstring_tokens": "Yield a series of batches from iterable each size elements long .",
+  "label": 1,
+  "retrieval_idx": 2638
+ },
+ {
+  "idx": "cosqa-train-2587",
+  "doc": "easy python decompiler invalid pys file",
+  "code": "def disassemble_file(filename, outstream=None):\n    \"\"\"\n    disassemble Python byte-code file (.pyc)\n\n    If given a Python source file (\".py\") file, we'll\n    try to find the corresponding compiled object.\n    \"\"\"\n    filename = check_object_path(filename)\n    (version, timestamp, magic_int, co, is_pypy,\n     source_size) = load_module(filename)\n    if type(co) == list:\n        for con in co:\n            disco(version, con, outstream)\n    else:\n        disco(version, co, outstream, is_pypy=is_pypy)\n    co = None",
+  "code_tokens": "def disassemble_file ( filename , outstream = None ) : filename = check_object_path ( filename ) ( version , timestamp , magic_int , co , is_pypy , source_size ) = load_module ( filename ) if type ( co ) == list : for con in co : disco ( version , con , outstream ) else : disco ( version , co , outstream , is_pypy = is_pypy ) co = None",
+  "docstring_tokens": "disassemble Python byte - code file ( . pyc )",
+  "label": 1,
+  "retrieval_idx": 1951
+ },
+ {
+  "idx": "cosqa-train-6620",
+  "doc": "close stdin subprocess python",
+  "code": "def _finish(self):\n        \"\"\"\n        Closes and waits for subprocess to exit.\n        \"\"\"\n        if self._process.returncode is None:\n            self._process.stdin.flush()\n            self._process.stdin.close()\n            self._process.wait()\n            self.closed = True",
+  "code_tokens": "def _finish ( self ) : if self . _process . returncode is None : self . _process . stdin . flush ( ) self . _process . stdin . close ( ) self . _process . wait ( ) self . closed = True",
+  "docstring_tokens": "Closes and waits for subprocess to exit .",
+  "label": 1,
+  "retrieval_idx": 3531
+ },
+ {
+  "idx": "cosqa-train-3852",
+  "doc": "remove a value from all keys in a dictionary python",
+  "code": "def _delete_keys(dct, keys):\n    \"\"\"Returns a copy of dct without `keys` keys\n    \"\"\"\n    c = deepcopy(dct)\n    assert isinstance(keys, list)\n    for k in keys:\n        c.pop(k)\n    return c",
+  "code_tokens": "def _delete_keys ( dct , keys ) : c = deepcopy ( dct ) assert isinstance ( keys , list ) for k in keys : c . pop ( k ) return c",
+  "docstring_tokens": "Returns a copy of dct without keys keys",
+  "label": 1,
+  "retrieval_idx": 2569
+ },
+ {
+  "idx": "cosqa-train-4324",
+  "doc": "assertion error python how to solve",
+  "code": "def process_instance(self, instance):\n        self.log.debug(\"e = mc^2\")\n        self.log.info(\"About to fail..\")\n        self.log.warning(\"Failing.. soooon..\")\n        self.log.critical(\"Ok, you're done.\")\n        assert False, \"\"\"ValidateFailureMock was destined to fail..\n\nHere's some extended information about what went wrong.\n\nIt has quite the long string associated with it, including\na few newlines and a list.\n\n- Item 1\n- Item 2\n\n\"\"\"",
+  "code_tokens": "def process_instance ( self , instance ) : self . log . debug ( \"e = mc^2\" ) self . log . info ( \"About to fail..\" ) self . log . warning ( \"Failing.. soooon..\" ) self . log . critical ( \"Ok, you're done.\" ) assert False , \"\"\"ValidateFailureMock was destined to fail..\n\nHere's some extended information about what went wrong.\n\nIt has quite the long string associated with it, including\na few newlines and a list.\n\n- Item 1\n- Item 2\n\n\"\"\"",
+  "docstring_tokens": "",
+  "label": 1,
+  "retrieval_idx": 2102
+ },
+ {
+  "idx": "cosqa-train-17009",
+  "doc": "python remove words from sentences in a list",
+  "code": "def remove_empty_text(utterances: List[Utterance]) -> List[Utterance]:\n    \"\"\"Remove empty utterances from a list of utterances\n    Args:\n        utterances: The list of utterance we are processing\n    \"\"\"\n    return [utter for utter in utterances if utter.text.strip() != \"\"]",
+  "code_tokens": "def remove_empty_text ( utterances : List [ Utterance ] ) -> List [ Utterance ] : return [ utter for utter in utterances if utter . text . strip ( ) != \"\" ]",
+  "docstring_tokens": "Remove empty utterances from a list of utterances Args : utterances : The list of utterance we are processing",
+  "label": 1,
+  "retrieval_idx": 5557
+ },
+ {
+  "idx": "cosqa-train-9177",
+  "doc": "python iterate over many regex sub",
+  "code": "def _sub_patterns(patterns, text):\n    \"\"\"\n    Apply re.sub to bunch of (pattern, repl)\n    \"\"\"\n    for pattern, repl in patterns:\n        text = re.sub(pattern, repl, text)\n    return text",
+  "code_tokens": "def _sub_patterns ( patterns , text ) : for pattern , repl in patterns : text = re . sub ( pattern , repl , text ) return text",
+  "docstring_tokens": "Apply re . sub to bunch of ( pattern repl )",
+  "label": 1,
+  "retrieval_idx": 773
+ },
+ {
+  "idx": "cosqa-train-11440",
+  "doc": "python multiindex get index freeze",
+  "code": "def validate_multiindex(self, obj):\n        \"\"\"validate that we can store the multi-index; reset and return the\n        new object\n        \"\"\"\n        levels = [l if l is not None else \"level_{0}\".format(i)\n                  for i, l in enumerate(obj.index.names)]\n        try:\n            return obj.reset_index(), levels\n        except ValueError:\n            raise ValueError(\"duplicate names/columns in the multi-index when \"\n                             \"storing as a table\")",
+  "code_tokens": "def validate_multiindex ( self , obj ) : levels = [ l if l is not None else \"level_{0}\" . format ( i ) for i , l in enumerate ( obj . index . names ) ] try : return obj . reset_index ( ) , levels except ValueError : raise ValueError ( \"duplicate names/columns in the multi-index when \" \"storing as a table\" )",
+  "docstring_tokens": "validate that we can store the multi - index ; reset and return the new object",
+  "label": 1,
+  "retrieval_idx": 998
+ },
+ {
+  "idx": "cosqa-train-9977",
+  "doc": "python two range union",
+  "code": "def __or__(self, other):\n        \"\"\"Return the union of two RangeSets as a new RangeSet.\n\n        (I.e. all elements that are in either set.)\n        \"\"\"\n        if not isinstance(other, set):\n            return NotImplemented\n        return self.union(other)",
+  "code_tokens": "def __or__ ( self , other ) : if not isinstance ( other , set ) : return NotImplemented return self . union ( other )",
+  "docstring_tokens": "Return the union of two RangeSets as a new RangeSet .",
+  "label": 1,
+  "retrieval_idx": 3372
+ },
+ {
+  "idx": "cosqa-train-15226",
+  "doc": "decode object to bytes python",
+  "code": "def _decode(self, obj, context):\n        \"\"\"\n        Get the python representation of the obj\n        \"\"\"\n        return b''.join(map(int2byte, [c + 0x60 for c in bytearray(obj)])).decode(\"utf8\")",
+  "code_tokens": "def _decode ( self , obj , context ) : return b'' . join ( map ( int2byte , [ c + 0x60 for c in bytearray ( obj ) ] ) ) . decode ( \"utf8\" )",
+  "docstring_tokens": "Get the python representation of the obj",
+  "label": 1,
+  "retrieval_idx": 4067
+ },
+ {
+  "idx": "cosqa-train-14266",
+  "doc": "limit float decimals in python",
+  "code": "def roundClosestValid(val, res, decimals=None):\n        \"\"\" round to closest resolution \"\"\"\n        if decimals is None and \".\" in str(res):\n            decimals = len(str(res).split('.')[1])\n\n        return round(round(val / res) * res, decimals)",
+  "code_tokens": "def roundClosestValid ( val , res , decimals = None ) : if decimals is None and \".\" in str ( res ) : decimals = len ( str ( res ) . split ( '.' ) [ 1 ] ) return round ( round ( val / res ) * res , decimals )",
+  "docstring_tokens": "round to closest resolution",
+  "label": 1,
+  "retrieval_idx": 3832
+ },
+ {
+  "idx": "cosqa-train-17640",
+  "doc": "delete an element from set python",
+  "code": "def remove_once(gset, elem):\n    \"\"\"Remove the element from a set, lists or dict.\n    \n        >>> L = [\"Lucy\"]; S = set([\"Sky\"]); D = { \"Diamonds\": True };\n        >>> remove_once(L, \"Lucy\"); remove_once(S, \"Sky\"); remove_once(D, \"Diamonds\");\n        >>> print L, S, D\n        [] set([]) {}\n\n    Returns the element if it was removed. Raises one of the exceptions in \n    :obj:`RemoveError` otherwise.\n    \"\"\"\n    remove = getattr(gset, 'remove', None)\n    if remove is not None: remove(elem)\n    else: del gset[elem]\n    return elem",
+  "code_tokens": "def remove_once ( gset , elem ) : remove = getattr ( gset , 'remove' , None ) if remove is not None : remove ( elem ) else : del gset [ elem ] return elem",
+  "docstring_tokens": "Remove the element from a set lists or dict . >>> L = [ Lucy ] ; S = set ( [ Sky ] ) ; D = { Diamonds : True } ; >>> remove_once ( L Lucy ) ; remove_once ( S Sky ) ; remove_once ( D Diamonds ) ; >>> print L S D [] set ( [] ) {}",
+  "label": 1,
+  "retrieval_idx": 5741
+ },
+ {
+  "idx": "cosqa-train-12232",
+  "doc": "object id in python equivalent in golang",
+  "code": "def generate_id(self, obj):\n        \"\"\"Generate unique document id for ElasticSearch.\"\"\"\n        object_type = type(obj).__name__.lower()\n        return '{}_{}'.format(object_type, self.get_object_id(obj))",
+  "code_tokens": "def generate_id ( self , obj ) : object_type = type ( obj ) . __name__ . lower ( ) return '{}_{}' . format ( object_type , self . get_object_id ( obj ) )",
+  "docstring_tokens": "Generate unique document id for ElasticSearch .",
+  "label": 1,
+  "retrieval_idx": 4302
+ },
+ {
+  "idx": "cosqa-train-18797",
+  "doc": "python create dictionary with keys and no values",
+  "code": "def clean_map(obj: Mapping[Any, Any]) -> Mapping[Any, Any]:\n    \"\"\"\n    Return a new copied dictionary without the keys with ``None`` values from\n    the given Mapping object.\n    \"\"\"\n    return {k: v for k, v in obj.items() if v is not None}",
+  "code_tokens": "def clean_map ( obj : Mapping [ Any , Any ] ) -> Mapping [ Any , Any ] : return { k : v for k , v in obj . items ( ) if v is not None }",
+  "docstring_tokens": "Return a new copied dictionary without the keys with None values from the given Mapping object .",
+  "label": 1,
+  "retrieval_idx": 5748
+ },
+ {
+  "idx": "cosqa-train-6195",
+  "doc": "python check if directory is writable",
+  "code": "def _writable_dir(path):\n    \"\"\"Whether `path` is a directory, to which the user has write access.\"\"\"\n    return os.path.isdir(path) and os.access(path, os.W_OK)",
+  "code_tokens": "def _writable_dir ( path ) : return os . path . isdir ( path ) and os . access ( path , os . W_OK )",
+  "docstring_tokens": "Whether path is a directory to which the user has write access .",
+  "label": 1,
+  "retrieval_idx": 651
+ },
+ {
+  "idx": "cosqa-train-15054",
+  "doc": "python df change type",
+  "code": "def _to_corrected_pandas_type(dt):\n    \"\"\"\n    When converting Spark SQL records to Pandas DataFrame, the inferred data type may be wrong.\n    This method gets the corrected data type for Pandas if that type may be inferred uncorrectly.\n    \"\"\"\n    import numpy as np\n    if type(dt) == ByteType:\n        return np.int8\n    elif type(dt) == ShortType:\n        return np.int16\n    elif type(dt) == IntegerType:\n        return np.int32\n    elif type(dt) == FloatType:\n        return np.float32\n    else:\n        return None",
+  "code_tokens": "def _to_corrected_pandas_type ( dt ) : import numpy as np if type ( dt ) == ByteType : return np . int8 elif type ( dt ) == ShortType : return np . int16 elif type ( dt ) == IntegerType : return np . int32 elif type ( dt ) == FloatType : return np . float32 else : return None",
+  "docstring_tokens": "When converting Spark SQL records to Pandas DataFrame the inferred data type may be wrong . This method gets the corrected data type for Pandas if that type may be inferred uncorrectly .",
+  "label": 1,
+  "retrieval_idx": 170
+ },
+ {
+  "idx": "cosqa-train-11747",
+  "doc": "how to put json in file python",
+  "code": "def save(self, fname):\n        \"\"\" Saves the dictionary in json format\n        :param fname: file to save to\n        \"\"\"\n        with open(fname, 'wb') as f:\n            json.dump(self, f)",
+  "code_tokens": "def save ( self , fname ) : with open ( fname , 'wb' ) as f : json . dump ( self , f )",
+  "docstring_tokens": "Saves the dictionary in json format : param fname : file to save to",
+  "label": 1,
+  "retrieval_idx": 686
+ },
+ {
+  "idx": "cosqa-train-14568",
+  "doc": "set a rect to a variable python",
+  "code": "def setRect(self, rect):\n\t\t\"\"\"\n\t\tSets the window bounds from a tuple of (x,y,w,h)\n\t\t\"\"\"\n\t\tself.x, self.y, self.w, self.h = rect",
+  "code_tokens": "def setRect ( self , rect ) : self . x , self . y , self . w , self . h = rect",
+  "docstring_tokens": "Sets the window bounds from a tuple of ( x y w h )",
+  "label": 1,
+  "retrieval_idx": 5190
+ },
+ {
+  "idx": "cosqa-train-16821",
+  "doc": "python borderless table via format function",
+  "code": "def adapter(data, headers, **kwargs):\n    \"\"\"Wrap vertical table in a function for TabularOutputFormatter.\"\"\"\n    keys = ('sep_title', 'sep_character', 'sep_length')\n    return vertical_table(data, headers, **filter_dict_by_key(kwargs, keys))",
+  "code_tokens": "def adapter ( data , headers , * * kwargs ) : keys = ( 'sep_title' , 'sep_character' , 'sep_length' ) return vertical_table ( data , headers , * * filter_dict_by_key ( kwargs , keys ) )",
+  "docstring_tokens": "Wrap vertical table in a function for TabularOutputFormatter .",
+  "label": 1,
+  "retrieval_idx": 2196
+ },
+ {
+  "idx": "cosqa-train-16226",
+  "doc": "how to select region in array python",
+  "code": "def select_from_array(cls, array, identifier):\n        \"\"\"Return a region from a numpy array.\n        \n        :param array: :class:`numpy.ndarray`\n        :param identifier: value representing the region to select in the array\n        :returns: :class:`jicimagelib.region.Region`\n        \"\"\"\n\n        base_array = np.zeros(array.shape)\n        array_coords = np.where(array == identifier)\n        base_array[array_coords] = 1\n\n        return cls(base_array)",
+  "code_tokens": "def select_from_array ( cls , array , identifier ) : base_array = np . zeros ( array . shape ) array_coords = np . where ( array == identifier ) base_array [ array_coords ] = 1 return cls ( base_array )",
+  "docstring_tokens": "Return a region from a numpy array . : param array : : class : numpy . ndarray : param identifier : value representing the region to select in the array : returns : : class : jicimagelib . region . Region",
+  "label": 1,
+  "retrieval_idx": 3783
+ },
+ {
+  "idx": "cosqa-train-9169",
+  "doc": "python is not not none",
+  "code": "def less_strict_bool(x):\n    \"\"\"Idempotent and None-safe version of strict_bool.\"\"\"\n    if x is None:\n        return False\n    elif x is True or x is False:\n        return x\n    else:\n        return strict_bool(x)",
+  "code_tokens": "def less_strict_bool ( x ) : if x is None : return False elif x is True or x is False : return x else : return strict_bool ( x )",
+  "docstring_tokens": "Idempotent and None - safe version of strict_bool .",
+  "label": 1,
+  "retrieval_idx": 908
+ },
+ {
+  "idx": "cosqa-train-12818",
+  "doc": "python dir is writable",
+  "code": "def is_writable_by_others(filename):\n    \"\"\"Check if file or directory is world writable.\"\"\"\n    mode = os.stat(filename)[stat.ST_MODE]\n    return mode & stat.S_IWOTH",
+  "code_tokens": "def is_writable_by_others ( filename ) : mode = os . stat ( filename ) [ stat . ST_MODE ] return mode & stat . S_IWOTH",
+  "docstring_tokens": "Check if file or directory is world writable .",
+  "label": 1,
+  "retrieval_idx": 3186
+ },
+ {
+  "idx": "cosqa-train-12797",
+  "doc": "behave python element not visible",
+  "code": "def show(self):\n        \"\"\" Ensure the widget is shown.\n        Calling this method will also set the widget visibility to True.\n        \"\"\"\n        self.visible = True\n        if self.proxy_is_active:\n            self.proxy.ensure_visible()",
+  "code_tokens": "def show ( self ) : self . visible = True if self . proxy_is_active : self . proxy . ensure_visible ( )",
+  "docstring_tokens": "Ensure the widget is shown . Calling this method will also set the widget visibility to True .",
+  "label": 1,
+  "retrieval_idx": 4884
+ },
+ {
+  "idx": "cosqa-train-2191",
+  "doc": "python detect change of slope",
+  "code": "def click_estimate_slope():\n    \"\"\"\n    Takes two clicks and returns the slope.\n\n    Right-click aborts.\n    \"\"\"\n\n    c1 = _pylab.ginput()\n    if len(c1)==0:\n        return None\n\n    c2 = _pylab.ginput()\n    if len(c2)==0:\n        return None\n\n    return (c1[0][1]-c2[0][1])/(c1[0][0]-c2[0][0])",
+  "code_tokens": "def click_estimate_slope ( ) : c1 = _pylab . ginput ( ) if len ( c1 ) == 0 : return None c2 = _pylab . ginput ( ) if len ( c2 ) == 0 : return None return ( c1 [ 0 ] [ 1 ] - c2 [ 0 ] [ 1 ] ) / ( c1 [ 0 ] [ 0 ] - c2 [ 0 ] [ 0 ] )",
+  "docstring_tokens": "Takes two clicks and returns the slope .",
+  "label": 1,
+  "retrieval_idx": 1724
+ },
+ {
+  "idx": "cosqa-train-7844",
+  "doc": "python tkinter unchecking checkbutton change variable",
+  "code": "def checkbox_uncheck(self, force_check=False):\n        \"\"\"\n        Wrapper to uncheck a checkbox\n        \"\"\"\n        if self.get_attribute('checked'):\n            self.click(force_click=force_check)",
+  "code_tokens": "def checkbox_uncheck ( self , force_check = False ) : if self . get_attribute ( 'checked' ) : self . click ( force_click = force_check )",
+  "docstring_tokens": "Wrapper to uncheck a checkbox",
+  "label": 1,
+  "retrieval_idx": 1582
+ },
+ {
+  "idx": "cosqa-train-11288",
+  "doc": "python json dumps numpy key",
+  "code": "def deserialize_ndarray_npy(d):\n    \"\"\"\n    Deserializes a JSONified :obj:`numpy.ndarray` that was created using numpy's\n    :obj:`save` function.\n\n    Args:\n        d (:obj:`dict`): A dictionary representation of an :obj:`ndarray` object, created\n            using :obj:`numpy.save`.\n\n    Returns:\n        An :obj:`ndarray` object.\n    \"\"\"\n    with io.BytesIO() as f:\n        f.write(json.loads(d['npy']).encode('latin-1'))\n        f.seek(0)\n        return np.load(f)",
+  "code_tokens": "def deserialize_ndarray_npy ( d ) : with io . BytesIO ( ) as f : f . write ( json . loads ( d [ 'npy' ] ) . encode ( 'latin-1' ) ) f . seek ( 0 ) return np . load ( f )",
+  "docstring_tokens": "Deserializes a JSONified : obj : numpy . ndarray that was created using numpy s : obj : save function .",
+  "label": 1,
+  "retrieval_idx": 231
+ },
+ {
+  "idx": "cosqa-train-11349",
+  "doc": "how to change python input to upper case",
+  "code": "def clean(some_string, uppercase=False):\n    \"\"\"\n    helper to clean up an input string\n    \"\"\"\n    if uppercase:\n        return some_string.strip().upper()\n    else:\n        return some_string.strip().lower()",
+  "code_tokens": "def clean ( some_string , uppercase = False ) : if uppercase : return some_string . strip ( ) . upper ( ) else : return some_string . strip ( ) . lower ( )",
+  "docstring_tokens": "helper to clean up an input string",
+  "label": 1,
+  "retrieval_idx": 3327
+ },
+ {
+  "idx": "cosqa-train-13590",
+  "doc": "python minidom html to dict",
+  "code": "def tag_to_dict(html):\n    \"\"\"Extract tag's attributes into a `dict`.\"\"\"\n\n    element = document_fromstring(html).xpath(\"//html/body/child::*\")[0]\n    attributes = dict(element.attrib)\n    attributes[\"text\"] = element.text_content()\n    return attributes",
+  "code_tokens": "def tag_to_dict ( html ) : element = document_fromstring ( html ) . xpath ( \"//html/body/child::*\" ) [ 0 ] attributes = dict ( element . attrib ) attributes [ \"text\" ] = element . text_content ( ) return attributes",
+  "docstring_tokens": "Extract tag s attributes into a dict .",
+  "label": 1,
+  "retrieval_idx": 5031
+ },
+ {
+  "idx": "cosqa-train-11787",
+  "doc": "how to remove punctuation and special charachhters in python",
+  "code": "def slugify(s, delimiter='-'):\n    \"\"\"\n    Normalize `s` into ASCII and replace non-word characters with `delimiter`.\n    \"\"\"\n    s = unicodedata.normalize('NFKD', to_unicode(s)).encode('ascii', 'ignore').decode('ascii')\n    return RE_SLUG.sub(delimiter, s).strip(delimiter).lower()",
+  "code_tokens": "def slugify ( s , delimiter = '-' ) : s = unicodedata . normalize ( 'NFKD' , to_unicode ( s ) ) . encode ( 'ascii' , 'ignore' ) . decode ( 'ascii' ) return RE_SLUG . sub ( delimiter , s ) . strip ( delimiter ) . lower ( )",
+  "docstring_tokens": "Normalize s into ASCII and replace non - word characters with delimiter .",
+  "label": 1,
+  "retrieval_idx": 4718
+ },
+ {
+  "idx": "cosqa-train-12625",
+  "doc": "update figure in python to show change",
+  "code": "def OnUpdateFigurePanel(self, event):\n        \"\"\"Redraw event handler for the figure panel\"\"\"\n\n        if self.updating:\n            return\n\n        self.updating = True\n        self.figure_panel.update(self.get_figure(self.code))\n        self.updating = False",
+  "code_tokens": "def OnUpdateFigurePanel ( self , event ) : if self . updating : return self . updating = True self . figure_panel . update ( self . get_figure ( self . code ) ) self . updating = False",
+  "docstring_tokens": "Redraw event handler for the figure panel",
+  "label": 1,
+  "retrieval_idx": 1999
+ },
+ {
+  "idx": "cosqa-dev-398",
+  "doc": "python hashlib of entire file",
+  "code": "def _hash_the_file(hasher, filename):\n    \"\"\"Helper function for creating hash functions.\n\n    See implementation of :func:`dtoolcore.filehasher.shasum`\n    for more usage details.\n    \"\"\"\n    BUF_SIZE = 65536\n    with open(filename, 'rb') as f:\n        buf = f.read(BUF_SIZE)\n        while len(buf) > 0:\n            hasher.update(buf)\n            buf = f.read(BUF_SIZE)\n    return hasher",
+  "code_tokens": "def _hash_the_file ( hasher , filename ) : BUF_SIZE = 65536 with open ( filename , 'rb' ) as f : buf = f . read ( BUF_SIZE ) while len ( buf ) > 0 : hasher . update ( buf ) buf = f . read ( BUF_SIZE ) return hasher",
+  "docstring_tokens": "Helper function for creating hash functions .",
+  "label": 1,
+  "retrieval_idx": 5995
+ },
+ {
+  "idx": "cosqa-train-9109",
+  "doc": "get processing power from other devices in python",
+  "code": "def get_power(self):\n        \"\"\"Check if the device is on.\"\"\"\n        power = (yield from self.handle_int(self.API.get('power')))\n        return bool(power)",
+  "code_tokens": "def get_power ( self ) : power = ( yield from self . handle_int ( self . API . get ( 'power' ) ) ) return bool ( power )",
+  "docstring_tokens": "Check if the device is on .",
+  "label": 1,
+  "retrieval_idx": 4170
+ },
+ {
+  "idx": "cosqa-train-13087",
+  "doc": "python get hash of file filestorage",
+  "code": "def get_hash(self, handle):\n        \"\"\"Return the hash.\"\"\"\n        fpath = self._fpath_from_handle(handle)\n        return DiskStorageBroker.hasher(fpath)",
+  "code_tokens": "def get_hash ( self , handle ) : fpath = self . _fpath_from_handle ( handle ) return DiskStorageBroker . hasher ( fpath )",
+  "docstring_tokens": "Return the hash .",
+  "label": 1,
+  "retrieval_idx": 4926
+ },
+ {
+  "idx": "cosqa-train-19257",
+  "doc": "how to detect number of cpu cores in python",
+  "code": "def cpu_count() -> int:\n    \"\"\"Returns the number of processors on this machine.\"\"\"\n    if multiprocessing is None:\n        return 1\n    try:\n        return multiprocessing.cpu_count()\n    except NotImplementedError:\n        pass\n    try:\n        return os.sysconf(\"SC_NPROCESSORS_CONF\")\n    except (AttributeError, ValueError):\n        pass\n    gen_log.error(\"Could not detect number of processors; assuming 1\")\n    return 1",
+  "code_tokens": "def cpu_count ( ) -> int : if multiprocessing is None : return 1 try : return multiprocessing . cpu_count ( ) except NotImplementedError : pass try : return os . sysconf ( \"SC_NPROCESSORS_CONF\" ) except ( AttributeError , ValueError ) : pass gen_log . error ( \"Could not detect number of processors; assuming 1\" ) return 1",
+  "docstring_tokens": "Returns the number of processors on this machine .",
+  "label": 1,
+  "retrieval_idx": 5653
+ },
+ {
+  "idx": "cosqa-train-7630",
+  "doc": "how to return the index of a number in a list python",
+  "code": "def is_in(self, search_list, pair):\n        \"\"\"\n        If pair is in search_list, return the index. Otherwise return -1\n        \"\"\"\n        index = -1\n        for nr, i in enumerate(search_list):\n            if(np.all(i == pair)):\n                return nr\n        return index",
+  "code_tokens": "def is_in ( self , search_list , pair ) : index = - 1 for nr , i in enumerate ( search_list ) : if ( np . all ( i == pair ) ) : return nr return index",
+  "docstring_tokens": "If pair is in search_list return the index . Otherwise return - 1",
+  "label": 1,
+  "retrieval_idx": 2444
+ },
+ {
+  "idx": "cosqa-train-15644",
+  "doc": "python list of all objects",
+  "code": "def getAllTriples(self):\n        \"\"\"Returns:\n\n        list of tuples : Each tuple holds a subject, predicate, object triple\n\n        \"\"\"\n        return [(str(s), str(p), str(o)) for s, p, o in self]",
+  "code_tokens": "def getAllTriples ( self ) : return [ ( str ( s ) , str ( p ) , str ( o ) ) for s , p , o in self ]",
+  "docstring_tokens": "Returns :",
+  "label": 1,
+  "retrieval_idx": 5351
+ },
+ {
+  "idx": "cosqa-train-15556",
+  "doc": "python iterate regex matches",
+  "code": "def iter_finds(regex_obj, s):\n    \"\"\"Generate all matches found within a string for a regex and yield each match as a string\"\"\"\n    if isinstance(regex_obj, str):\n        for m in re.finditer(regex_obj, s):\n            yield m.group()\n    else:\n        for m in regex_obj.finditer(s):\n            yield m.group()",
+  "code_tokens": "def iter_finds ( regex_obj , s ) : if isinstance ( regex_obj , str ) : for m in re . finditer ( regex_obj , s ) : yield m . group ( ) else : for m in regex_obj . finditer ( s ) : yield m . group ( )",
+  "docstring_tokens": "Generate all matches found within a string for a regex and yield each match as a string",
+  "label": 1,
+  "retrieval_idx": 326
+ },
+ {
+  "idx": "cosqa-train-6760",
+  "doc": "python get rid of comments in json string",
+  "code": "def strip_comments(string, comment_symbols=frozenset(('#', '//'))):\n    \"\"\"Strip comments from json string.\n\n    :param string: A string containing json with comments started by comment_symbols.\n    :param comment_symbols: Iterable of symbols that start a line comment (default # or //).\n    :return: The string with the comments removed.\n    \"\"\"\n    lines = string.splitlines()\n    for k in range(len(lines)):\n        for symbol in comment_symbols:\n            lines[k] = strip_comment_line_with_symbol(lines[k], start=symbol)\n    return '\\n'.join(lines)",
+  "code_tokens": "def strip_comments ( string , comment_symbols = frozenset ( ( '#' , '//' ) ) ) : lines = string . splitlines ( ) for k in range ( len ( lines ) ) : for symbol in comment_symbols : lines [ k ] = strip_comment_line_with_symbol ( lines [ k ] , start = symbol ) return '\\n' . join ( lines )",
+  "docstring_tokens": "Strip comments from json string .",
+  "label": 1,
+  "retrieval_idx": 3569
+ },
+ {
+  "idx": "cosqa-train-19008",
+  "doc": "python code to check if line in file exists",
+  "code": "def is_line_in_file(filename: str, line: str) -> bool:\n    \"\"\"\n    Detects whether a line is present within a file.\n\n    Args:\n        filename: file to check\n        line: line to search for (as an exact match)\n    \"\"\"\n    assert \"\\n\" not in line\n    with open(filename, \"r\") as file:\n        for fileline in file:\n            if fileline == line:\n                return True\n        return False",
+  "code_tokens": "def is_line_in_file ( filename : str , line : str ) -> bool : assert \"\\n\" not in line with open ( filename , \"r\" ) as file : for fileline in file : if fileline == line : return True return False",
+  "docstring_tokens": "Detects whether a line is present within a file .",
+  "label": 1,
+  "retrieval_idx": 5707
+ },
+ {
+  "idx": "cosqa-train-17655",
+  "doc": "python thread spawn async",
+  "code": "async def async_run(self) -> None:\n        \"\"\"\n        Asynchronously run the worker, does not close connections. Useful when testing.\n        \"\"\"\n        self.main_task = self.loop.create_task(self.main())\n        await self.main_task",
+  "code_tokens": "async def async_run ( self ) -> None : self . main_task = self . loop . create_task ( self . main ( ) ) await self . main_task",
+  "docstring_tokens": "Asynchronously run the worker does not close connections . Useful when testing .",
+  "label": 1,
+  "retrieval_idx": 5728
+ },
+ {
+  "idx": "cosqa-train-12713",
+  "doc": "python \"not is none\" \"is not none\"",
+  "code": "def _not_none(items):\n    \"\"\"Whether the item is a placeholder or contains a placeholder.\"\"\"\n    if not isinstance(items, (tuple, list)):\n        items = (items,)\n    return all(item is not _none for item in items)",
+  "code_tokens": "def _not_none ( items ) : if not isinstance ( items , ( tuple , list ) ) : items = ( items , ) return all ( item is not _none for item in items )",
+  "docstring_tokens": "Whether the item is a placeholder or contains a placeholder .",
+  "label": 1,
+  "retrieval_idx": 208
+ },
+ {
+  "idx": "cosqa-train-10777",
+  "doc": "check if attribute exists python",
+  "code": "def has_attribute(module_name, attribute_name):\n    \"\"\"Is this attribute present?\"\"\"\n    init_file = '%s/__init__.py' % module_name\n    return any(\n        [attribute_name in init_line for init_line in open(init_file).readlines()]\n    )",
+  "code_tokens": "def has_attribute ( module_name , attribute_name ) : init_file = '%s/__init__.py' % module_name return any ( [ attribute_name in init_line for init_line in open ( init_file ) . readlines ( ) ] )",
+  "docstring_tokens": "Is this attribute present?",
+  "label": 1,
+  "retrieval_idx": 1239
+ },
+ {
+  "idx": "cosqa-train-7485",
+  "doc": "python remove non printing characters",
+  "code": "def drop_bad_characters(text):\n    \"\"\"Takes a text and drops all non-printable and non-ascii characters and\n    also any whitespace characters that aren't space.\n\n    :arg str text: the text to fix\n\n    :returns: text with all bad characters dropped\n\n    \"\"\"\n    # Strip all non-ascii and non-printable characters\n    text = ''.join([c for c in text if c in ALLOWED_CHARS])\n    return text",
+  "code_tokens": "def drop_bad_characters ( text ) : # Strip all non-ascii and non-printable characters text = '' . join ( [ c for c in text if c in ALLOWED_CHARS ] ) return text",
+  "docstring_tokens": "Takes a text and drops all non - printable and non - ascii characters and also any whitespace characters that aren t space .",
+  "label": 1,
+  "retrieval_idx": 1217
+ },
+ {
+  "idx": "cosqa-train-13755",
+  "doc": "python pool imap mutltiple argements",
+  "code": "def imapchain(*a, **kwa):\n    \"\"\" Like map but also chains the results. \"\"\"\n\n    imap_results = map( *a, **kwa )\n    return itertools.chain( *imap_results )",
+  "code_tokens": "def imapchain ( * a , * * kwa ) : imap_results = map ( * a , * * kwa ) return itertools . chain ( * imap_results )",
+  "docstring_tokens": "Like map but also chains the results .",
+  "label": 1,
+  "retrieval_idx": 3696
+ },
+ {
+  "idx": "cosqa-train-6799",
+  "doc": "drop column if all column values are nan in python",
+  "code": "def clean_df(df, fill_nan=True, drop_empty_columns=True):\n    \"\"\"Clean a pandas dataframe by:\n        1. Filling empty values with Nan\n        2. Dropping columns with all empty values\n\n    Args:\n        df: Pandas DataFrame\n        fill_nan (bool): If any empty values (strings, None, etc) should be replaced with NaN\n        drop_empty_columns (bool): If columns whose values are all empty should be dropped\n\n    Returns:\n        DataFrame: cleaned DataFrame\n\n    \"\"\"\n    if fill_nan:\n        df = df.fillna(value=np.nan)\n    if drop_empty_columns:\n        df = df.dropna(axis=1, how='all')\n    return df.sort_index()",
+  "code_tokens": "def clean_df ( df , fill_nan = True , drop_empty_columns = True ) : if fill_nan : df = df . fillna ( value = np . nan ) if drop_empty_columns : df = df . dropna ( axis = 1 , how = 'all' ) return df . sort_index ( )",
+  "docstring_tokens": "Clean a pandas dataframe by : 1 . Filling empty values with Nan 2 . Dropping columns with all empty values",
+  "label": 1,
+  "retrieval_idx": 2333
+ },
+ {
+  "idx": "cosqa-train-12555",
+  "doc": "python check if end of file reached",
+  "code": "def eof(fd):\n    \"\"\"Determine if end-of-file is reached for file fd.\"\"\"\n    b = fd.read(1)\n    end = len(b) == 0\n    if not end:\n        curpos = fd.tell()\n        fd.seek(curpos - 1)\n    return end",
+  "code_tokens": "def eof ( fd ) : b = fd . read ( 1 ) end = len ( b ) == 0 if not end : curpos = fd . tell ( ) fd . seek ( curpos - 1 ) return end",
+  "docstring_tokens": "Determine if end - of - file is reached for file fd .",
+  "label": 1,
+  "retrieval_idx": 2556
+ },
+ {
+  "idx": "cosqa-train-14576",
+  "doc": "set table widget cell width python",
+  "code": "def table_width(self):\n        \"\"\"Return the width of the table including padding and borders.\"\"\"\n        outer_widths = max_dimensions(self.table_data, self.padding_left, self.padding_right)[2]\n        outer_border = 2 if self.outer_border else 0\n        inner_border = 1 if self.inner_column_border else 0\n        return table_width(outer_widths, outer_border, inner_border)",
+  "code_tokens": "def table_width ( self ) : outer_widths = max_dimensions ( self . table_data , self . padding_left , self . padding_right ) [ 2 ] outer_border = 2 if self . outer_border else 0 inner_border = 1 if self . inner_column_border else 0 return table_width ( outer_widths , outer_border , inner_border )",
+  "docstring_tokens": "Return the width of the table including padding and borders .",
+  "label": 1,
+  "retrieval_idx": 2671
+ },
+ {
+  "idx": "cosqa-train-9012",
+  "doc": "from json to obejct python",
+  "code": "def json(body, charset='utf-8', **kwargs):\n    \"\"\"Takes JSON formatted data, converting it into native Python objects\"\"\"\n    return json_converter.loads(text(body, charset=charset))",
+  "code_tokens": "def json ( body , charset = 'utf-8' , * * kwargs ) : return json_converter . loads ( text ( body , charset = charset ) )",
+  "docstring_tokens": "Takes JSON formatted data converting it into native Python objects",
+  "label": 1,
+  "retrieval_idx": 2057
+ },
+ {
+  "idx": "cosqa-train-8054",
+  "doc": "redis python get list length",
+  "code": "def llen(self, name):\n        \"\"\"\n        Returns the length of the list.\n\n        :param name: str     the name of the redis key\n        :return: Future()\n        \"\"\"\n        with self.pipe as pipe:\n            return pipe.llen(self.redis_key(name))",
+  "code_tokens": "def llen ( self , name ) : with self . pipe as pipe : return pipe . llen ( self . redis_key ( name ) )",
+  "docstring_tokens": "Returns the length of the list .",
+  "label": 1,
+  "retrieval_idx": 3940
+ },
+ {
+  "idx": "cosqa-train-14439",
+  "doc": "proxy setup for python",
+  "code": "def _prepare_proxy(self, conn):\n        \"\"\"\n        Establish tunnel connection early, because otherwise httplib\n        would improperly set Host: header to proxy's IP:port.\n        \"\"\"\n        conn.set_tunnel(self._proxy_host, self.port, self.proxy_headers)\n        conn.connect()",
+  "code_tokens": "def _prepare_proxy ( self , conn ) : conn . set_tunnel ( self . _proxy_host , self . port , self . proxy_headers ) conn . connect ( )",
+  "docstring_tokens": "Establish tunnel connection early because otherwise httplib would improperly set Host : header to proxy s IP : port .",
+  "label": 1,
+  "retrieval_idx": 2519
+ },
+ {
+  "idx": "cosqa-train-12630",
+  "doc": "python check type equals to",
+  "code": "def is_value_type_valid_for_exact_conditions(self, value):\n    \"\"\" Method to validate if the value is valid for exact match type evaluation.\n\n    Args:\n      value: Value to validate.\n\n    Returns:\n      Boolean: True if value is a string, boolean, or number. Otherwise False.\n    \"\"\"\n    # No need to check for bool since bool is a subclass of int\n    if isinstance(value, string_types) or isinstance(value, (numbers.Integral, float)):\n      return True\n\n    return False",
+  "code_tokens": "def is_value_type_valid_for_exact_conditions ( self , value ) : # No need to check for bool since bool is a subclass of int if isinstance ( value , string_types ) or isinstance ( value , ( numbers . Integral , float ) ) : return True return False",
+  "docstring_tokens": "Method to validate if the value is valid for exact match type evaluation .",
+  "label": 1,
+  "retrieval_idx": 3056
+ },
+ {
+  "idx": "cosqa-train-9617",
+  "doc": "python remove none values from a list",
+  "code": "def filter_none(list_of_points):\n    \"\"\"\n    \n    :param list_of_points: \n    :return: list_of_points with None's removed\n    \"\"\"\n    remove_elementnone = filter(lambda p: p is not None, list_of_points)\n    remove_sublistnone = filter(lambda p: not contains_none(p), remove_elementnone)\n    return list(remove_sublistnone)",
+  "code_tokens": "def filter_none ( list_of_points ) : remove_elementnone = filter ( lambda p : p is not None , list_of_points ) remove_sublistnone = filter ( lambda p : not contains_none ( p ) , remove_elementnone ) return list ( remove_sublistnone )",
+  "docstring_tokens": ": param list_of_points : : return : list_of_points with None s removed",
+  "label": 1,
+  "retrieval_idx": 1219
+ },
+ {
+  "idx": "cosqa-train-9776",
+  "doc": "how to see all variables in python",
+  "code": "def caller_locals():\n    \"\"\"Get the local variables in the caller's frame.\"\"\"\n    import inspect\n    frame = inspect.currentframe()\n    try:\n        return frame.f_back.f_back.f_locals\n    finally:\n        del frame",
+  "code_tokens": "def caller_locals ( ) : import inspect frame = inspect . currentframe ( ) try : return frame . f_back . f_back . f_locals finally : del frame",
+  "docstring_tokens": "Get the local variables in the caller s frame .",
+  "label": 1,
+  "retrieval_idx": 4156
+ },
+ {
+  "idx": "cosqa-train-8493",
+  "doc": "python create a filter with cutoff frequency",
+  "code": "def fft_bandpassfilter(data, fs, lowcut, highcut):\n    \"\"\"\n    http://www.swharden.com/blog/2009-01-21-signal-filtering-with-python/#comment-16801\n    \"\"\"\n    fft = np.fft.fft(data)\n    # n = len(data)\n    # timestep = 1.0 / fs\n    # freq = np.fft.fftfreq(n, d=timestep)\n    bp = fft.copy()\n\n    # Zero out fft coefficients\n    # bp[10:-10] = 0\n\n    # Normalise\n    # bp *= real(fft.dot(fft))/real(bp.dot(bp))\n\n    bp *= fft.dot(fft) / bp.dot(bp)\n\n    # must multipy by 2 to get the correct amplitude\n    ibp = 12 * np.fft.ifft(bp)\n    return ibp",
+  "code_tokens": "def fft_bandpassfilter ( data , fs , lowcut , highcut ) : fft = np . fft . fft ( data ) # n = len(data) # timestep = 1.0 / fs # freq = np.fft.fftfreq(n, d=timestep) bp = fft . copy ( ) # Zero out fft coefficients # bp[10:-10] = 0 # Normalise # bp *= real(fft.dot(fft))/real(bp.dot(bp)) bp *= fft . dot ( fft ) / bp . dot ( bp ) # must multipy by 2 to get the correct amplitude ibp = 12 * np . fft . ifft ( bp ) return ibp",
+  "docstring_tokens": "http : // www . swharden . com / blog / 2009 - 01 - 21 - signal - filtering - with - python / #comment - 16801",
+  "label": 1,
+  "retrieval_idx": 1552
+ },
+ {
+  "idx": "cosqa-train-17070",
+  "doc": "python shuffle columns of a matrix",
+  "code": "def _reshuffle(mat, shape):\n    \"\"\"Reshuffle the indicies of a bipartite matrix A[ij,kl] -> A[lj,ki].\"\"\"\n    return np.reshape(\n        np.transpose(np.reshape(mat, shape), (3, 1, 2, 0)),\n        (shape[3] * shape[1], shape[0] * shape[2]))",
+  "code_tokens": "def _reshuffle ( mat , shape ) : return np . reshape ( np . transpose ( np . reshape ( mat , shape ) , ( 3 , 1 , 2 , 0 ) ) , ( shape [ 3 ] * shape [ 1 ] , shape [ 0 ] * shape [ 2 ] ) )",
+  "docstring_tokens": "Reshuffle the indicies of a bipartite matrix A [ ij kl ] - > A [ lj ki ] .",
+  "label": 1,
+  "retrieval_idx": 5652
+ },
+ {
+  "idx": "cosqa-train-12756",
+  "doc": "python delete all listswith similar name",
+  "code": "def distinct(l):\n    \"\"\"\n    Return a list where the duplicates have been removed.\n\n    Args:\n        l (list): the list to filter.\n\n    Returns:\n        list: the same list without duplicates.\n    \"\"\"\n    seen = set()\n    seen_add = seen.add\n    return (_ for _ in l if not (_ in seen or seen_add(_)))",
+  "code_tokens": "def distinct ( l ) : seen = set ( ) seen_add = seen . add return ( _ for _ in l if not ( _ in seen or seen_add ( _ ) ) )",
+  "docstring_tokens": "Return a list where the duplicates have been removed .",
+  "label": 1,
+  "retrieval_idx": 2294
+ },
+ {
+  "idx": "cosqa-train-14531",
+  "doc": "round numbers in array to nearest whole python",
+  "code": "def round_array(array_in):\n    \"\"\"\n    arr_out = round_array(array_in)\n\n    Rounds an array and recasts it to int. Also works on scalars.\n    \"\"\"\n    if isinstance(array_in, ndarray):\n        return np.round(array_in).astype(int)\n    else:\n        return int(np.round(array_in))",
+  "code_tokens": "def round_array ( array_in ) : if isinstance ( array_in , ndarray ) : return np . round ( array_in ) . astype ( int ) else : return int ( np . round ( array_in ) )",
+  "docstring_tokens": "arr_out = round_array ( array_in )",
+  "label": 1,
+  "retrieval_idx": 1487
+ },
+ {
+  "idx": "cosqa-train-12901",
+  "doc": "change utc time to relative time python",
+  "code": "def datetime_local_to_utc(local):\n    \"\"\"\n    Simple function to convert naive :std:`datetime.datetime` object containing\n    local time to a naive :std:`datetime.datetime` object with UTC time.\n    \"\"\"\n    timestamp = time.mktime(local.timetuple())\n    return datetime.datetime.utcfromtimestamp(timestamp)",
+  "code_tokens": "def datetime_local_to_utc ( local ) : timestamp = time . mktime ( local . timetuple ( ) ) return datetime . datetime . utcfromtimestamp ( timestamp )",
+  "docstring_tokens": "Simple function to convert naive : std : datetime . datetime object containing local time to a naive : std : datetime . datetime object with UTC time .",
+  "label": 1,
+  "retrieval_idx": 737
+ },
+ {
+  "idx": "cosqa-train-9276",
+  "doc": "how to check if file is not empty python",
+  "code": "def file_empty(fp):\n    \"\"\"Determine if a file is empty or not.\"\"\"\n    # for python 2 we need to use a homemade peek()\n    if six.PY2:\n        contents = fp.read()\n        fp.seek(0)\n        return not bool(contents)\n\n    else:\n        return not fp.peek()",
+  "code_tokens": "def file_empty ( fp ) : # for python 2 we need to use a homemade peek() if six . PY2 : contents = fp . read ( ) fp . seek ( 0 ) return not bool ( contents ) else : return not fp . peek ( )",
+  "docstring_tokens": "Determine if a file is empty or not .",
+  "label": 1,
+  "retrieval_idx": 286
+ },
+ {
+  "idx": "cosqa-train-10655",
+  "doc": "area of a triangle using python",
+  "code": "def get_tri_area(pts):\n    \"\"\"\n    Given a list of coords for 3 points,\n    Compute the area of this triangle.\n\n    Args:\n        pts: [a, b, c] three points\n    \"\"\"\n    a, b, c = pts[0], pts[1], pts[2]\n    v1 = np.array(b) - np.array(a)\n    v2 = np.array(c) - np.array(a)\n    area_tri = abs(sp.linalg.norm(sp.cross(v1, v2)) / 2)\n    return area_tri",
+  "code_tokens": "def get_tri_area ( pts ) : a , b , c = pts [ 0 ] , pts [ 1 ] , pts [ 2 ] v1 = np . array ( b ) - np . array ( a ) v2 = np . array ( c ) - np . array ( a ) area_tri = abs ( sp . linalg . norm ( sp . cross ( v1 , v2 ) ) / 2 ) return area_tri",
+  "docstring_tokens": "Given a list of coords for 3 points Compute the area of this triangle .",
+  "label": 1,
+  "retrieval_idx": 58
+ },
+ {
+  "idx": "cosqa-train-13534",
+  "doc": "python make a copy not reference",
+  "code": "def copy(obj):\n    def copy(self):\n        \"\"\"\n        Copy self to a new object.\n        \"\"\"\n        from copy import deepcopy\n\n        return deepcopy(self)\n    obj.copy = copy\n    return obj",
+  "code_tokens": "def copy ( obj ) : def copy ( self ) : \"\"\"\n        Copy self to a new object.\n        \"\"\" from copy import deepcopy return deepcopy ( self ) obj . copy = copy return obj",
+  "docstring_tokens": "",
+  "label": 1,
+  "retrieval_idx": 1395
+ },
+ {
+  "idx": "cosqa-train-4709",
+  "doc": "python heappush max heap",
+  "code": "def _heapify_max(x):\n    \"\"\"Transform list into a maxheap, in-place, in O(len(x)) time.\"\"\"\n    n = len(x)\n    for i in reversed(range(n//2)):\n        _siftup_max(x, i)",
+  "code_tokens": "def _heapify_max ( x ) : n = len ( x ) for i in reversed ( range ( n // 2 ) ) : _siftup_max ( x , i )",
+  "docstring_tokens": "Transform list into a maxheap in - place in O ( len ( x )) time .",
+  "label": 1,
+  "retrieval_idx": 511
+ },
+ {
+  "idx": "cosqa-train-5880",
+  "doc": "pythonreturn json file from a function",
+  "code": "def information(filename):\n    \"\"\"Returns the file exif\"\"\"\n    check_if_this_file_exist(filename)\n    filename = os.path.abspath(filename)\n    result = get_json(filename)\n    result = result[0]\n    return result",
+  "code_tokens": "def information ( filename ) : check_if_this_file_exist ( filename ) filename = os . path . abspath ( filename ) result = get_json ( filename ) result = result [ 0 ] return result",
+  "docstring_tokens": "Returns the file exif",
+  "label": 1,
+  "retrieval_idx": 2145
+ },
+ {
+  "idx": "cosqa-train-12563",
+  "doc": "python check if file can be opened",
+  "code": "def is_readable(filename):\n    \"\"\"Check if file is a regular file and is readable.\"\"\"\n    return os.path.isfile(filename) and os.access(filename, os.R_OK)",
+  "code_tokens": "def is_readable ( filename ) : return os . path . isfile ( filename ) and os . access ( filename , os . R_OK )",
+  "docstring_tokens": "Check if file is a regular file and is readable .",
+  "label": 1,
+  "retrieval_idx": 2445
+ },
+ {
+  "idx": "cosqa-train-17092",
+  "doc": "python lastworking day of month",
+  "code": "def get_last_weekday_in_month(year, month, weekday):\n        \"\"\"Get the last weekday in a given month. e.g:\n\n        >>> # the last monday in Jan 2013\n        >>> Calendar.get_last_weekday_in_month(2013, 1, MON)\n        datetime.date(2013, 1, 28)\n        \"\"\"\n        day = date(year, month, monthrange(year, month)[1])\n        while True:\n            if day.weekday() == weekday:\n                break\n            day = day - timedelta(days=1)\n        return day",
+  "code_tokens": "def get_last_weekday_in_month ( year , month , weekday ) : day = date ( year , month , monthrange ( year , month ) [ 1 ] ) while True : if day . weekday ( ) == weekday : break day = day - timedelta ( days = 1 ) return day",
+  "docstring_tokens": "Get the last weekday in a given month . e . g :",
+  "label": 1,
+  "retrieval_idx": 5667
+ },
+ {
+  "idx": "cosqa-train-19483",
+  "doc": "how to get the maximum cell in one row in python",
+  "code": "def argmax(self, rows: List[Row], column: ComparableColumn) -> List[Row]:\n        \"\"\"\n        Takes a list of rows and a column name and returns a list containing a single row (dict from\n        columns to cells) that has the maximum numerical value in the given column. We return a list\n        instead of a single dict to be consistent with the return type of ``select`` and\n        ``all_rows``.\n        \"\"\"\n        if not rows:\n            return []\n        value_row_pairs = [(row.values[column.name], row) for row in rows]\n        if not value_row_pairs:\n            return []\n        # Returns a list containing the row with the max cell value.\n        return [sorted(value_row_pairs, key=lambda x: x[0], reverse=True)[0][1]]",
+  "code_tokens": "def argmax ( self , rows : List [ Row ] , column : ComparableColumn ) -> List [ Row ] : if not rows : return [ ] value_row_pairs = [ ( row . values [ column . name ] , row ) for row in rows ] if not value_row_pairs : return [ ] # Returns a list containing the row with the max cell value. return [ sorted ( value_row_pairs , key = lambda x : x [ 0 ] , reverse = True ) [ 0 ] [ 1 ] ]",
+  "docstring_tokens": "Takes a list of rows and a column name and returns a list containing a single row ( dict from columns to cells ) that has the maximum numerical value in the given column . We return a list instead of a single dict to be consistent with the return type of select and all_rows .",
+  "label": 1,
+  "retrieval_idx": 5799
+ },
+ {
+  "idx": "cosqa-train-12296",
+  "doc": "redefine the range in python",
+  "code": "def negate(self):\n        \"\"\"Reverse the range\"\"\"\n        self.from_value, self.to_value = self.to_value, self.from_value\n        self.include_lower, self.include_upper = self.include_upper, self.include_lower",
+  "code_tokens": "def negate ( self ) : self . from_value , self . to_value = self . to_value , self . from_value self . include_lower , self . include_upper = self . include_upper , self . include_lower",
+  "docstring_tokens": "Reverse the range",
+  "label": 1,
+  "retrieval_idx": 1685
+ },
+ {
+  "idx": "cosqa-train-11045",
+  "doc": "escape percent sign in python",
+  "code": "def quote(s, unsafe='/'):\n    \"\"\"Pass in a dictionary that has unsafe characters as the keys, and the percent\n    encoded value as the value.\"\"\"\n    res = s.replace('%', '%25')\n    for c in unsafe:\n        res = res.replace(c, '%' + (hex(ord(c)).upper())[2:])\n    return res",
+  "code_tokens": "def quote ( s , unsafe = '/' ) : res = s . replace ( '%' , '%25' ) for c in unsafe : res = res . replace ( c , '%' + ( hex ( ord ( c ) ) . upper ( ) ) [ 2 : ] ) return res",
+  "docstring_tokens": "Pass in a dictionary that has unsafe characters as the keys and the percent encoded value as the value .",
+  "label": 1,
+  "retrieval_idx": 905
+ },
+ {
+  "idx": "cosqa-train-12263",
+  "doc": "plot kde over histogram python",
+  "code": "def plot_kde(data, ax, title=None, color='r', fill_bt=True):\n    \"\"\"\n    Plot a smoothed (by kernel density estimate) histogram.\n    :type data: numpy array\n    :param data: An array containing the data to be plotted\n\n    :type ax: matplotlib.Axes\n    :param ax: The Axes object to draw to\n\n    :type title: str\n    :param title: The plot title\n\n    :type color: str\n    :param color: The color of the histogram line and fill. Note that the fill\n                  will be plotted with an alpha of 0.35.\n\n    :type fill_bt: bool\n    :param fill_bt: Specify whether to fill the area beneath the histogram line\n    \"\"\"\n    if isinstance(data, list):\n        data = np.asarray(data)\n    e = kde.KDEUnivariate(data.astype(np.float))\n    e.fit()\n    ax.plot(e.support, e.density, color=color, alpha=0.9, linewidth=2.25)\n    if fill_bt:\n        ax.fill_between(e.support, e.density, alpha=.35, zorder=1,\n                        antialiased=True, color=color)\n    if title is not None:\n        t = ax.set_title(title)\n        t.set_y(1.05)",
+  "code_tokens": "def plot_kde ( data , ax , title = None , color = 'r' , fill_bt = True ) : if isinstance ( data , list ) : data = np . asarray ( data ) e = kde . KDEUnivariate ( data . astype ( np . float ) ) e . fit ( ) ax . plot ( e . support , e . density , color = color , alpha = 0.9 , linewidth = 2.25 ) if fill_bt : ax . fill_between ( e . support , e . density , alpha = .35 , zorder = 1 , antialiased = True , color = color ) if title is not None : t = ax . set_title ( title ) t . set_y ( 1.05 )",
+  "docstring_tokens": "Plot a smoothed ( by kernel density estimate ) histogram . : type data : numpy array : param data : An array containing the data to be plotted",
+  "label": 1,
+  "retrieval_idx": 4630
+ },
+ {
+  "idx": "cosqa-train-17585",
+  "doc": "normalize to 1 in python",
+  "code": "def normalize(numbers):\n    \"\"\"Multiply each number by a constant such that the sum is 1.0\n    >>> normalize([1,2,1])\n    [0.25, 0.5, 0.25]\n    \"\"\"\n    total = float(sum(numbers))\n    return [n / total for n in numbers]",
+  "code_tokens": "def normalize ( numbers ) : total = float ( sum ( numbers ) ) return [ n / total for n in numbers ]",
+  "docstring_tokens": "Multiply each number by a constant such that the sum is 1 . 0 >>> normalize ( [ 1 2 1 ] ) [ 0 . 25 0 . 5 0 . 25 ]",
+  "label": 1,
+  "retrieval_idx": 5632
+ },
+ {
+  "idx": "cosqa-train-11245",
+  "doc": "python interpolate between different coordinate matrices",
+  "code": "def _linearInterpolationTransformMatrix(matrix1, matrix2, value):\n    \"\"\" Linear, 'oldstyle' interpolation of the transform matrix.\"\"\"\n    return tuple(_interpolateValue(matrix1[i], matrix2[i], value) for i in range(len(matrix1)))",
+  "code_tokens": "def _linearInterpolationTransformMatrix ( matrix1 , matrix2 , value ) : return tuple ( _interpolateValue ( matrix1 [ i ] , matrix2 [ i ] , value ) for i in range ( len ( matrix1 ) ) )",
+  "docstring_tokens": "Linear oldstyle interpolation of the transform matrix .",
+  "label": 1,
+  "retrieval_idx": 1274
+ },
+ {
+  "idx": "cosqa-train-14554",
+  "doc": "see properties of an object python",
+  "code": "def get_public_members(obj):\n    \"\"\"\n    Retrieves a list of member-like objects (members or properties) that are\n    publically exposed.\n\n    :param obj: The object to probe.\n    :return:    A list of strings.\n    \"\"\"\n    return {attr: getattr(obj, attr) for attr in dir(obj)\n            if not attr.startswith(\"_\")\n            and not hasattr(getattr(obj, attr), '__call__')}",
+  "code_tokens": "def get_public_members ( obj ) : return { attr : getattr ( obj , attr ) for attr in dir ( obj ) if not attr . startswith ( \"_\" ) and not hasattr ( getattr ( obj , attr ) , '__call__' ) }",
+  "docstring_tokens": "Retrieves a list of member - like objects ( members or properties ) that are publically exposed .",
+  "label": 1,
+  "retrieval_idx": 433
+ },
+ {
+  "idx": "cosqa-train-11387",
+  "doc": "how to check if sprites collide in python",
+  "code": "def check_player_collision(self):\n        \"\"\"Check to see if we are colliding with the player.\"\"\"\n        player_tiles = r.TileMapManager.active_map.grab_collisions(self.char.coords)\n        enemy_tiles = r.TileMapManager.active_map.grab_collisions(self.coords)\n\n        #Check to see if any of the tiles are the same. If so, there is a collision.\n        for ptile in player_tiles:\n            for etile in enemy_tiles:\n                if r.TileMapManager.active_map.pixels_to_tiles(ptile.coords) == r.TileMapManager.active_map.pixels_to_tiles(etile.coords):\n                    return True\n\n        return False",
+  "code_tokens": "def check_player_collision ( self ) : player_tiles = r . TileMapManager . active_map . grab_collisions ( self . char . coords ) enemy_tiles = r . TileMapManager . active_map . grab_collisions ( self . coords ) #Check to see if any of the tiles are the same. If so, there is a collision. for ptile in player_tiles : for etile in enemy_tiles : if r . TileMapManager . active_map . pixels_to_tiles ( ptile . coords ) == r . TileMapManager . active_map . pixels_to_tiles ( etile . coords ) : return True return False",
+  "docstring_tokens": "Check to see if we are colliding with the player .",
+  "label": 1,
+  "retrieval_idx": 4646
+ },
+ {
+  "idx": "cosqa-train-15249",
+  "doc": "python function get all objects of certain type",
+  "code": "def get_object_or_child_by_type(self, *types):\n        \"\"\" Get object if child already been read or get child.\n\n        Use this method for fast access to objects in case of static configurations.\n\n        :param types: requested object types.\n        :return: all children of the specified types.\n        \"\"\"\n\n        objects = self.get_objects_or_children_by_type(*types)\n        return objects[0] if any(objects) else None",
+  "code_tokens": "def get_object_or_child_by_type ( self , * types ) : objects = self . get_objects_or_children_by_type ( * types ) return objects [ 0 ] if any ( objects ) else None",
+  "docstring_tokens": "Get object if child already been read or get child .",
+  "label": 1,
+  "retrieval_idx": 4577
+ },
+ {
+  "idx": "cosqa-train-7142",
+  "doc": "how to cast an object as a float python",
+  "code": "def _tofloat(obj):\n    \"\"\"Convert to float if object is a float string.\"\"\"\n    if \"inf\" in obj.lower().strip():\n        return obj\n    try:\n        return int(obj)\n    except ValueError:\n        try:\n            return float(obj)\n        except ValueError:\n            return obj",
+  "code_tokens": "def _tofloat ( obj ) : if \"inf\" in obj . lower ( ) . strip ( ) : return obj try : return int ( obj ) except ValueError : try : return float ( obj ) except ValueError : return obj",
+  "docstring_tokens": "Convert to float if object is a float string .",
+  "label": 1,
+  "retrieval_idx": 2120
+ },
+ {
+  "idx": "cosqa-train-1141",
+  "doc": "python redis close conn",
+  "code": "def exit(self):\n        \"\"\"\n        Closes the connection\n        \"\"\"\n        self.pubsub.unsubscribe()\n        self.client.connection_pool.disconnect()\n\n        logger.info(\"Connection to Redis closed\")",
+  "code_tokens": "def exit ( self ) : self . pubsub . unsubscribe ( ) self . client . connection_pool . disconnect ( ) logger . info ( \"Connection to Redis closed\" )",
+  "docstring_tokens": "Closes the connection",
+  "label": 1,
+  "retrieval_idx": 985
+ },
+ {
+  "idx": "cosqa-train-6492",
+  "doc": "python dialog box to specify folder",
+  "code": "def ask_folder(message='Select folder.', default='', title=''):\n    \"\"\"\n    A dialog to get a directory name.\n    Returns the name of a directory, or None if user chose to cancel.\n    If the \"default\" argument specifies a directory name, and that\n    directory exists, then the dialog box will start with that directory.\n\n    :param message: message to be displayed.\n    :param title: window title\n    :param default: default folder path\n    :rtype: None or string\n    \"\"\"\n    return backend_api.opendialog(\"ask_folder\", dict(message=message, default=default, title=title))",
+  "code_tokens": "def ask_folder ( message = 'Select folder.' , default = '' , title = '' ) : return backend_api . opendialog ( \"ask_folder\" , dict ( message = message , default = default , title = title ) )",
+  "docstring_tokens": "A dialog to get a directory name . Returns the name of a directory or None if user chose to cancel . If the default argument specifies a directory name and that directory exists then the dialog box will start with that directory .",
+  "label": 1,
+  "retrieval_idx": 3504
+ },
+ {
+  "idx": "cosqa-train-11163",
+  "doc": "python how to remove docstrings from compiled code",
+  "code": "def debug_src(src, pm=False, globs=None):\n    \"\"\"Debug a single doctest docstring, in argument `src`'\"\"\"\n    testsrc = script_from_examples(src)\n    debug_script(testsrc, pm, globs)",
+  "code_tokens": "def debug_src ( src , pm = False , globs = None ) : testsrc = script_from_examples ( src ) debug_script ( testsrc , pm , globs )",
+  "docstring_tokens": "Debug a single doctest docstring in argument src",
+  "label": 1,
+  "retrieval_idx": 586
+ },
+ {
+  "idx": "cosqa-train-12144",
+  "doc": "math normalize a matrix python",
+  "code": "def v_normalize(v):\n    \"\"\"\n    Normalizes the given vector.\n    \n    The vector given may have any number of dimensions.\n    \"\"\"\n    vmag = v_magnitude(v)\n    return [ v[i]/vmag  for i in range(len(v)) ]",
+  "code_tokens": "def v_normalize ( v ) : vmag = v_magnitude ( v ) return [ v [ i ] / vmag for i in range ( len ( v ) ) ]",
+  "docstring_tokens": "Normalizes the given vector . The vector given may have any number of dimensions .",
+  "label": 1,
+  "retrieval_idx": 2497
+ },
+ {
+  "idx": "cosqa-train-5909",
+  "doc": "passing functions as argumetns python",
+  "code": "def def_linear(fun):\n    \"\"\"Flags that a function is linear wrt all args\"\"\"\n    defjvp_argnum(fun, lambda argnum, g, ans, args, kwargs:\n                  fun(*subval(args, argnum, g), **kwargs))",
+  "code_tokens": "def def_linear ( fun ) : defjvp_argnum ( fun , lambda argnum , g , ans , args , kwargs : fun ( * subval ( args , argnum , g ) , * * kwargs ) )",
+  "docstring_tokens": "Flags that a function is linear wrt all args",
+  "label": 1,
+  "retrieval_idx": 1433
+ },
+ {
+  "idx": "cosqa-train-1982",
+  "doc": "to get the next line in python",
+  "code": "def __next__(self):\n        \"\"\"\n\n        :return: a pair (1-based line number in the input, row)\n        \"\"\"\n        # Retrieve the row, thereby incrementing the line number:\n        row = super(UnicodeReaderWithLineNumber, self).__next__()\n        return self.lineno + 1, row",
+  "code_tokens": "def __next__ ( self ) : # Retrieve the row, thereby incrementing the line number: row = super ( UnicodeReaderWithLineNumber , self ) . __next__ ( ) return self . lineno + 1 , row",
+  "docstring_tokens": "",
+  "label": 1,
+  "retrieval_idx": 1590
+ },
+ {
+  "idx": "cosqa-train-17749",
+  "doc": "get table column names from database python",
+  "code": "def get_column_names(engine: Engine, tablename: str) -> List[str]:\n    \"\"\"\n    Get all the database column names for the specified table.\n    \"\"\"\n    return [info.name for info in gen_columns_info(engine, tablename)]",
+  "code_tokens": "def get_column_names ( engine : Engine , tablename : str ) -> List [ str ] : return [ info . name for info in gen_columns_info ( engine , tablename ) ]",
+  "docstring_tokens": "Get all the database column names for the specified table .",
+  "label": 1,
+  "retrieval_idx": 5550
+ },
+ {
+  "idx": "cosqa-train-14056",
+  "doc": "python sparse matrix features name",
+  "code": "def build_columns(self, X, verbose=False):\n        \"\"\"construct the model matrix columns for the term\n\n        Parameters\n        ----------\n        X : array-like\n            Input dataset with n rows\n\n        verbose : bool\n            whether to show warnings\n\n        Returns\n        -------\n        scipy sparse array with n rows\n        \"\"\"\n        return sp.sparse.csc_matrix(X[:, self.feature][:, np.newaxis])",
+  "code_tokens": "def build_columns ( self , X , verbose = False ) : return sp . sparse . csc_matrix ( X [ : , self . feature ] [ : , np . newaxis ] )",
+  "docstring_tokens": "construct the model matrix columns for the term",
+  "label": 1,
+  "retrieval_idx": 5103
+ },
+ {
+  "idx": "cosqa-train-2483",
+  "doc": "python get objectthat called a function",
+  "code": "def __get__(self, obj, objtype):\n        \"\"\" Support instance methods \"\"\"\n        import functools\n        return functools.partial(self.__call__, obj)",
+  "code_tokens": "def __get__ ( self , obj , objtype ) : import functools return functools . partial ( self . __call__ , obj )",
+  "docstring_tokens": "Support instance methods",
+  "label": 1,
+  "retrieval_idx": 1889
+ },
+ {
+  "idx": "cosqa-train-12420",
+  "doc": "python async function update state",
+  "code": "def async_update(self, event):\n        \"\"\"New event for light.\n\n        Check that state is part of event.\n        Signal that light has updated state.\n        \"\"\"\n        self.update_attr(event.get('state', {}))\n        super().async_update(event)",
+  "code_tokens": "def async_update ( self , event ) : self . update_attr ( event . get ( 'state' , { } ) ) super ( ) . async_update ( event )",
+  "docstring_tokens": "New event for light .",
+  "label": 1,
+  "retrieval_idx": 4822
+ },
+ {
+  "idx": "cosqa-train-14688",
+  "doc": "python check if variable is float, int, boolean",
+  "code": "def is_float(value):\n    \"\"\"must be a float\"\"\"\n    return isinstance(value, float) or isinstance(value, int) or isinstance(value, np.float64), float(value)",
+  "code_tokens": "def is_float ( value ) : return isinstance ( value , float ) or isinstance ( value , int ) or isinstance ( value , np . float64 ) , float ( value )",
+  "docstring_tokens": "must be a float",
+  "label": 1,
+  "retrieval_idx": 772
+ },
+ {
+  "idx": "cosqa-train-10097",
+  "doc": "maximum list depth python",
+  "code": "def maxlevel(lst):\n    \"\"\"Return maximum nesting depth\"\"\"\n    maxlev = 0\n    def f(lst, level):\n        nonlocal maxlev\n        if isinstance(lst, list):\n            level += 1\n            maxlev = max(level, maxlev)\n            for item in lst:\n                f(item, level)\n    f(lst, 0)\n    return maxlev",
+  "code_tokens": "def maxlevel ( lst ) : maxlev = 0 def f ( lst , level ) : nonlocal maxlev if isinstance ( lst , list ) : level += 1 maxlev = max ( level , maxlev ) for item in lst : f ( item , level ) f ( lst , 0 ) return maxlev",
+  "docstring_tokens": "Return maximum nesting depth",
+  "label": 1,
+  "retrieval_idx": 3040
+ },
+ {
+  "idx": "cosqa-train-12491",
+  "doc": "ssis check if python is still running in vackground",
+  "code": "def inside_softimage():\n    \"\"\"Returns a boolean indicating if the code is executed inside softimage.\"\"\"\n    try:\n        import maya\n        return False\n    except ImportError:\n        pass\n    try:\n        from win32com.client import Dispatch as disp\n        disp('XSI.Application')\n        return True\n    except:\n        return False",
+  "code_tokens": "def inside_softimage ( ) : try : import maya return False except ImportError : pass try : from win32com . client import Dispatch as disp disp ( 'XSI.Application' ) return True except : return False",
+  "docstring_tokens": "Returns a boolean indicating if the code is executed inside softimage .",
+  "label": 1,
+  "retrieval_idx": 1617
+ },
+ {
+  "idx": "cosqa-train-894",
+  "doc": "python max length of one line",
+  "code": "def _multiline_width(multiline_s, line_width_fn=len):\n    \"\"\"Visible width of a potentially multiline content.\"\"\"\n    return max(map(line_width_fn, re.split(\"[\\r\\n]\", multiline_s)))",
+  "code_tokens": "def _multiline_width ( multiline_s , line_width_fn = len ) : return max ( map ( line_width_fn , re . split ( \"[\\r\\n]\" , multiline_s ) ) )",
+  "docstring_tokens": "Visible width of a potentially multiline content .",
+  "label": 1,
+  "retrieval_idx": 733
+ },
+ {
+  "idx": "cosqa-train-13783",
+  "doc": "how to get thousands of http requests asynchronously python",
+  "code": "def _async_requests(urls):\n    \"\"\"\n    Sends multiple non-blocking requests. Returns\n    a list of responses.\n\n    :param urls:\n        List of urls\n    \"\"\"\n    session = FuturesSession(max_workers=30)\n    futures = [\n        session.get(url)\n        for url in urls\n    ]\n    return [ future.result() for future in futures ]",
+  "code_tokens": "def _async_requests ( urls ) : session = FuturesSession ( max_workers = 30 ) futures = [ session . get ( url ) for url in urls ] return [ future . result ( ) for future in futures ]",
+  "docstring_tokens": "Sends multiple non - blocking requests . Returns a list of responses .",
+  "label": 1,
+  "retrieval_idx": 5055
+ },
+ {
+  "idx": "cosqa-train-9543",
+  "doc": "python range function stack overflow",
+  "code": "def LinSpace(start, stop, num):\n    \"\"\"\n    Linspace op.\n    \"\"\"\n    return np.linspace(start, stop, num=num, dtype=np.float32),",
+  "code_tokens": "def LinSpace ( start , stop , num ) : return np . linspace ( start , stop , num = num , dtype = np . float32 ) ,",
+  "docstring_tokens": "Linspace op .",
+  "label": 1,
+  "retrieval_idx": 3124
+ },
+ {
+  "idx": "cosqa-train-4634",
+  "doc": "python get last record in file",
+  "code": "def last(self):\n        \"\"\"Get the last object in file.\"\"\"\n        # End of file\n        self.__file.seek(0, 2)\n\n        # Get the last struct\n        data = self.get(self.length - 1)\n\n        return data",
+  "code_tokens": "def last ( self ) : # End of file self . __file . seek ( 0 , 2 ) # Get the last struct data = self . get ( self . length - 1 ) return data",
+  "docstring_tokens": "Get the last object in file .",
+  "label": 1,
+  "retrieval_idx": 585
+ },
+ {
+  "idx": "cosqa-train-2994",
+  "doc": "python network activity log on and log off",
+  "code": "def logout(self):\n        \"\"\"\n            Logout from the remote server.\n        \"\"\"\n        self.client.write('exit\\r\\n')\n        self.client.read_all()\n        self.client.close()",
+  "code_tokens": "def logout ( self ) : self . client . write ( 'exit\\r\\n' ) self . client . read_all ( ) self . client . close ( )",
+  "docstring_tokens": "Logout from the remote server .",
+  "label": 1,
+  "retrieval_idx": 2148
+ },
+ {
+  "idx": "cosqa-train-806",
+  "doc": "python list get index with default",
+  "code": "def list_get(l, idx, default=None):\n    \"\"\"\n    Get from a list with an optional default value.\n    \"\"\"\n    try:\n        if l[idx]:\n            return l[idx]\n        else:\n            return default\n    except IndexError:\n        return default",
+  "code_tokens": "def list_get ( l , idx , default = None ) : try : if l [ idx ] : return l [ idx ] else : return default except IndexError : return default",
+  "docstring_tokens": "Get from a list with an optional default value .",
+  "label": 1,
+  "retrieval_idx": 719
+ },
+ {
+  "idx": "cosqa-train-12002",
+  "doc": "in a random generate sequence in python how do you retain a function",
+  "code": "def sometimesish(fn):\n    \"\"\"\n    Has a 50/50 chance of calling a function\n    \"\"\"\n    def wrapped(*args, **kwargs):\n        if random.randint(1, 2) == 1:\n            return fn(*args, **kwargs)\n\n    return wrapped",
+  "code_tokens": "def sometimesish ( fn ) : def wrapped ( * args , * * kwargs ) : if random . randint ( 1 , 2 ) == 1 : return fn ( * args , * * kwargs ) return wrapped",
+  "docstring_tokens": "Has a 50 / 50 chance of calling a function",
+  "label": 1,
+  "retrieval_idx": 1398
+ },
+ {
+  "idx": "cosqa-train-16219",
+  "doc": "python strictredis redis password",
+  "code": "def get_connection(self, host, port, db):\n        \"\"\"\n        Returns a ``StrictRedis`` connection instance.\n        \"\"\"\n        return redis.StrictRedis(\n            host=host,\n            port=port,\n            db=db,\n            decode_responses=True\n        )",
+  "code_tokens": "def get_connection ( self , host , port , db ) : return redis . StrictRedis ( host = host , port = port , db = db , decode_responses = True )",
+  "docstring_tokens": "Returns a StrictRedis connection instance .",
+  "label": 1,
+  "retrieval_idx": 5420
+ },
+ {
+  "idx": "cosqa-train-8635",
+  "doc": "python dict to key string and value stirng",
+  "code": "def stringify_dict_contents(dct):\n    \"\"\"Turn dict keys and values into native strings.\"\"\"\n    return {\n        str_if_nested_or_str(k): str_if_nested_or_str(v)\n        for k, v in dct.items()\n    }",
+  "code_tokens": "def stringify_dict_contents ( dct ) : return { str_if_nested_or_str ( k ) : str_if_nested_or_str ( v ) for k , v in dct . items ( ) }",
+  "docstring_tokens": "Turn dict keys and values into native strings .",
+  "label": 1,
+  "retrieval_idx": 1389
+ },
+ {
+  "idx": "cosqa-dev-474",
+  "doc": "python update minify js file",
+  "code": "def minify(path):\n    \"\"\"\n    Load a javascript file and minify.\n\n    Parameters\n    ------------\n    path: str, path of resource\n    \"\"\"\n\n    if 'http' in path:\n        data = requests.get(path).content.decode(\n            'ascii', errors='ignore')\n    else:\n        with open(path, 'rb') as f:\n            # some of these assholes use unicode spaces -_-\n            data = f.read().decode('ascii',\n                                   errors='ignore')\n    # don't re- minify\n    if '.min.' in path:\n        return data\n\n    try:\n        return jsmin.jsmin(data)\n    except BaseException:\n        return data",
+  "code_tokens": "def minify ( path ) : if 'http' in path : data = requests . get ( path ) . content . decode ( 'ascii' , errors = 'ignore' ) else : with open ( path , 'rb' ) as f : # some of these assholes use unicode spaces -_- data = f . read ( ) . decode ( 'ascii' , errors = 'ignore' ) # don't re- minify if '.min.' in path : return data try : return jsmin . jsmin ( data ) except BaseException : return data",
+  "docstring_tokens": "Load a javascript file and minify .",
+  "label": 1,
+  "retrieval_idx": 4779
+ },
+ {
+  "idx": "cosqa-train-13641",
+  "doc": "how to deifne a rotation in python",
+  "code": "def earth_orientation(date):\n    \"\"\"Earth orientation as a rotating matrix\n    \"\"\"\n\n    x_p, y_p, s_prime = np.deg2rad(_earth_orientation(date))\n    return rot3(-s_prime) @ rot2(x_p) @ rot1(y_p)",
+  "code_tokens": "def earth_orientation ( date ) : x_p , y_p , s_prime = np . deg2rad ( _earth_orientation ( date ) ) return rot3 ( - s_prime ) @ rot2 ( x_p ) @ rot1 ( y_p )",
+  "docstring_tokens": "Earth orientation as a rotating matrix",
+  "label": 1,
+  "retrieval_idx": 5040
+ },
+ {
+  "idx": "cosqa-train-6704",
+  "doc": "python get average volume of audio",
+  "code": "def calc_volume(self, sample: np.ndarray):\n        \"\"\"Find the RMS of the audio\"\"\"\n        return sqrt(np.mean(np.square(sample)))",
+  "code_tokens": "def calc_volume ( self , sample : np . ndarray ) : return sqrt ( np . mean ( np . square ( sample ) ) )",
+  "docstring_tokens": "Find the RMS of the audio",
+  "label": 1,
+  "retrieval_idx": 1914
+ },
+ {
+  "idx": "cosqa-train-9805",
+  "doc": "python split words in to list",
+  "code": "def tokenize_list(self, text):\n        \"\"\"\n        Split a text into separate words.\n        \"\"\"\n        return [self.get_record_token(record) for record in self.analyze(text)]",
+  "code_tokens": "def tokenize_list ( self , text ) : return [ self . get_record_token ( record ) for record in self . analyze ( text ) ]",
+  "docstring_tokens": "Split a text into separate words .",
+  "label": 1,
+  "retrieval_idx": 1576
+ },
+ {
+  "idx": "cosqa-train-8973",
+  "doc": "python how check int or float",
+  "code": "def is_float(value):\n    \"\"\"must be a float\"\"\"\n    return isinstance(value, float) or isinstance(value, int) or isinstance(value, np.float64), float(value)",
+  "code_tokens": "def is_float ( value ) : return isinstance ( value , float ) or isinstance ( value , int ) or isinstance ( value , np . float64 ) , float ( value )",
+  "docstring_tokens": "must be a float",
+  "label": 1,
+  "retrieval_idx": 772
+ },
+ {
+  "idx": "cosqa-train-14810",
+  "doc": "write file python change text color",
+  "code": "def _write_color_colorama (fp, text, color):\n    \"\"\"Colorize text with given color.\"\"\"\n    foreground, background, style = get_win_color(color)\n    colorama.set_console(foreground=foreground, background=background,\n      style=style)\n    fp.write(text)\n    colorama.reset_console()",
+  "code_tokens": "def _write_color_colorama ( fp , text , color ) : foreground , background , style = get_win_color ( color ) colorama . set_console ( foreground = foreground , background = background , style = style ) fp . write ( text ) colorama . reset_console ( )",
+  "docstring_tokens": "Colorize text with given color .",
+  "label": 1,
+  "retrieval_idx": 1347
+ },
+ {
+  "idx": "cosqa-train-15315",
+  "doc": "python get location of min/max",
+  "code": "def values(self):\n        \"\"\"Gets the user enter max and min values of where the \n        raster points should appear on the y-axis\n\n        :returns: (float, float) -- (min, max) y-values to bound the raster plot by\n        \"\"\"\n        lower = float(self.lowerSpnbx.value())\n        upper = float(self.upperSpnbx.value())\n        return (lower, upper)",
+  "code_tokens": "def values ( self ) : lower = float ( self . lowerSpnbx . value ( ) ) upper = float ( self . upperSpnbx . value ( ) ) return ( lower , upper )",
+  "docstring_tokens": "Gets the user enter max and min values of where the raster points should appear on the y - axis",
+  "label": 1,
+  "retrieval_idx": 314
+ },
+ {
+  "idx": "cosqa-train-8953",
+  "doc": "extract words from documents python",
+  "code": "def contains_extractor(document):\n    \"\"\"A basic document feature extractor that returns a dict of words that the\n    document contains.\"\"\"\n    tokens = _get_document_tokens(document)\n    features = dict((u'contains({0})'.format(w), True) for w in tokens)\n    return features",
+  "code_tokens": "def contains_extractor ( document ) : tokens = _get_document_tokens ( document ) features = dict ( ( u'contains({0})' . format ( w ) , True ) for w in tokens ) return features",
+  "docstring_tokens": "A basic document feature extractor that returns a dict of words that the document contains .",
+  "label": 1,
+  "retrieval_idx": 1969
+ },
+ {
+  "idx": "cosqa-train-10594",
+  "doc": "python \"binary string\" to int",
+  "code": "def _from_bytes(bytes, byteorder=\"big\", signed=False):\n    \"\"\"This is the same functionality as ``int.from_bytes`` in python 3\"\"\"\n    return int.from_bytes(bytes, byteorder=byteorder, signed=signed)",
+  "code_tokens": "def _from_bytes ( bytes , byteorder = \"big\" , signed = False ) : return int . from_bytes ( bytes , byteorder = byteorder , signed = signed )",
+  "docstring_tokens": "This is the same functionality as int . from_bytes in python 3",
+  "label": 1,
+  "retrieval_idx": 1205
+ },
+ {
+  "idx": "cosqa-dev-311",
+  "doc": "python return index of object in a list",
+  "code": "def get_list_index(lst, index_or_name):\n    \"\"\"\n    Return the index of an element in the list.\n\n    Args:\n        lst (list): The list.\n        index_or_name (int or str): The value of the reference element, or directly its numeric index.\n\n    Returns:\n        (int) The index of the element in the list.\n    \"\"\"\n    if isinstance(index_or_name, six.integer_types):\n        return index_or_name\n\n    return lst.index(index_or_name)",
+  "code_tokens": "def get_list_index ( lst , index_or_name ) : if isinstance ( index_or_name , six . integer_types ) : return index_or_name return lst . index ( index_or_name )",
+  "docstring_tokens": "Return the index of an element in the list .",
+  "label": 1,
+  "retrieval_idx": 456
+ },
+ {
+  "idx": "cosqa-train-10017",
+  "doc": "l2 norm for array python",
+  "code": "def l2_norm(arr):\n    \"\"\"\n    The l2 norm of an array is is defined as: sqrt(||x||), where ||x|| is the\n    dot product of the vector.\n    \"\"\"\n    arr = np.asarray(arr)\n    return np.sqrt(np.dot(arr.ravel().squeeze(), arr.ravel().squeeze()))",
+  "code_tokens": "def l2_norm ( arr ) : arr = np . asarray ( arr ) return np . sqrt ( np . dot ( arr . ravel ( ) . squeeze ( ) , arr . ravel ( ) . squeeze ( ) ) )",
+  "docstring_tokens": "The l2 norm of an array is is defined as : sqrt ( ||x|| ) where ||x|| is the dot product of the vector .",
+  "label": 1,
+  "retrieval_idx": 2471
+ },
+ {
+  "idx": "cosqa-train-7309",
+  "doc": "how to fill linterrepter python",
+  "code": "def register(linter):\n    \"\"\"Register the reporter classes with the linter.\"\"\"\n    linter.register_reporter(TextReporter)\n    linter.register_reporter(ParseableTextReporter)\n    linter.register_reporter(VSTextReporter)\n    linter.register_reporter(ColorizedTextReporter)",
+  "code_tokens": "def register ( linter ) : linter . register_reporter ( TextReporter ) linter . register_reporter ( ParseableTextReporter ) linter . register_reporter ( VSTextReporter ) linter . register_reporter ( ColorizedTextReporter )",
+  "docstring_tokens": "Register the reporter classes with the linter .",
+  "label": 1,
+  "retrieval_idx": 3726
+ },
+ {
+  "idx": "cosqa-train-18031",
+  "doc": "how to check datatype of column in python",
+  "code": "def is_sqlatype_numeric(coltype: Union[TypeEngine, VisitableType]) -> bool:\n    \"\"\"\n    Is the SQLAlchemy column type one that inherits from :class:`Numeric`,\n    such as :class:`Float`, :class:`Decimal`?\n    \"\"\"\n    coltype = _coltype_to_typeengine(coltype)\n    return isinstance(coltype, sqltypes.Numeric)",
+  "code_tokens": "def is_sqlatype_numeric ( coltype : Union [ TypeEngine , VisitableType ] ) -> bool : coltype = _coltype_to_typeengine ( coltype ) return isinstance ( coltype , sqltypes . Numeric )",
+  "docstring_tokens": "Is the SQLAlchemy column type one that inherits from : class : Numeric such as : class : Float : class : Decimal ?",
+  "label": 1,
+  "retrieval_idx": 5933
+ },
+ {
+  "idx": "cosqa-train-11241",
+  "doc": "python interactive window python is not defined",
+  "code": "def isInteractive():\n    \"\"\"\n    A basic check of if the program is running in interactive mode\n    \"\"\"\n    if sys.stdout.isatty() and os.name != 'nt':\n        #Hopefully everything but ms supports '\\r'\n        try:\n            import threading\n        except ImportError:\n            return False\n        else:\n            return True\n    else:\n        return False",
+  "code_tokens": "def isInteractive ( ) : if sys . stdout . isatty ( ) and os . name != 'nt' : #Hopefully everything but ms supports '\\r' try : import threading except ImportError : return False else : return True else : return False",
+  "docstring_tokens": "A basic check of if the program is running in interactive mode",
+  "label": 1,
+  "retrieval_idx": 133
+ },
+ {
+  "idx": "cosqa-train-13064",
+  "doc": "datetime add a month to a date python",
+  "code": "def start_of_month(val):\n    \"\"\"\n    Return a new datetime.datetime object with values that represent\n    a start of a month.\n    :param val: Date to ...\n    :type val: datetime.datetime | datetime.date\n    :rtype: datetime.datetime\n    \"\"\"\n    if type(val) == date:\n        val = datetime.fromordinal(val.toordinal())\n    return start_of_day(val).replace(day=1)",
+  "code_tokens": "def start_of_month ( val ) : if type ( val ) == date : val = datetime . fromordinal ( val . toordinal ( ) ) return start_of_day ( val ) . replace ( day = 1 )",
+  "docstring_tokens": "Return a new datetime . datetime object with values that represent a start of a month . : param val : Date to ... : type val : datetime . datetime | datetime . date : rtype : datetime . datetime",
+  "label": 1,
+  "retrieval_idx": 113
+ },
+ {
+  "idx": "cosqa-dev-487",
+  "doc": "python correlation pearson coefficient",
+  "code": "def cor(y_true, y_pred):\n    \"\"\"Compute Pearson correlation coefficient.\n    \"\"\"\n    y_true, y_pred = _mask_nan(y_true, y_pred)\n    return np.corrcoef(y_true, y_pred)[0, 1]",
+  "code_tokens": "def cor ( y_true , y_pred ) : y_true , y_pred = _mask_nan ( y_true , y_pred ) return np . corrcoef ( y_true , y_pred ) [ 0 , 1 ]",
+  "docstring_tokens": "Compute Pearson correlation coefficient .",
+  "label": 1,
+  "retrieval_idx": 2560
+ },
+ {
+  "idx": "cosqa-train-11248",
+  "doc": "how do i mae the cursor on python skinny again",
+  "code": "def hidden_cursor(self):\n        \"\"\"Return a context manager that hides the cursor while inside it and\n        makes it visible on leaving.\"\"\"\n        self.stream.write(self.hide_cursor)\n        try:\n            yield\n        finally:\n            self.stream.write(self.normal_cursor)",
+  "code_tokens": "def hidden_cursor ( self ) : self . stream . write ( self . hide_cursor ) try : yield finally : self . stream . write ( self . normal_cursor )",
+  "docstring_tokens": "Return a context manager that hides the cursor while inside it and makes it visible on leaving .",
+  "label": 1,
+  "retrieval_idx": 241
+ },
+ {
+  "idx": "cosqa-train-10454",
+  "doc": "test the number of characters in python list",
+  "code": "def token_list_len(tokenlist):\n    \"\"\"\n    Return the amount of characters in this token list.\n\n    :param tokenlist: List of (token, text) or (token, text, mouse_handler)\n                      tuples.\n    \"\"\"\n    ZeroWidthEscape = Token.ZeroWidthEscape\n    return sum(len(item[1]) for item in tokenlist if item[0] != ZeroWidthEscape)",
+  "code_tokens": "def token_list_len ( tokenlist ) : ZeroWidthEscape = Token . ZeroWidthEscape return sum ( len ( item [ 1 ] ) for item in tokenlist if item [ 0 ] != ZeroWidthEscape )",
+  "docstring_tokens": "Return the amount of characters in this token list .",
+  "label": 1,
+  "retrieval_idx": 4479
+ },
+ {
+  "idx": "cosqa-train-6061",
+  "doc": "sent urlencoded payload in python",
+  "code": "def urlencoded(body, charset='ascii', **kwargs):\n    \"\"\"Converts query strings into native Python objects\"\"\"\n    return parse_query_string(text(body, charset=charset), False)",
+  "code_tokens": "def urlencoded ( body , charset = 'ascii' , * * kwargs ) : return parse_query_string ( text ( body , charset = charset ) , False )",
+  "docstring_tokens": "Converts query strings into native Python objects",
+  "label": 1,
+  "retrieval_idx": 2540
+ },
+ {
+  "idx": "cosqa-train-16146",
+  "doc": "python setuptools command not found",
+  "code": "def main(argv, version=DEFAULT_VERSION):\n    \"\"\"Install or upgrade setuptools and EasyInstall\"\"\"\n    tarball = download_setuptools()\n    _install(tarball, _build_install_args(argv))",
+  "code_tokens": "def main ( argv , version = DEFAULT_VERSION ) : tarball = download_setuptools ( ) _install ( tarball , _build_install_args ( argv ) )",
+  "docstring_tokens": "Install or upgrade setuptools and EasyInstall",
+  "label": 1,
+  "retrieval_idx": 3203
+ },
+ {
+  "idx": "cosqa-train-8518",
+  "doc": "python ctypes load dll dependancies",
+  "code": "def _windowsLdmodTargets(target, source, env, for_signature):\n    \"\"\"Get targets for loadable modules.\"\"\"\n    return _dllTargets(target, source, env, for_signature, 'LDMODULE')",
+  "code_tokens": "def _windowsLdmodTargets ( target , source , env , for_signature ) : return _dllTargets ( target , source , env , for_signature , 'LDMODULE' )",
+  "docstring_tokens": "Get targets for loadable modules .",
+  "label": 1,
+  "retrieval_idx": 4052
+ },
+ {
+  "idx": "cosqa-train-18790",
+  "doc": "python create dictionray from a list of keys",
+  "code": "def encode_list(key, list_):\n    # type: (str, Iterable) -> Dict[str, str]\n    \"\"\"\n    Converts a list into a space-separated string and puts it in a dictionary\n\n    :param key: Dictionary key to store the list\n    :param list_: A list of objects\n    :return: A dictionary key->string or an empty dictionary\n    \"\"\"\n    if not list_:\n        return {}\n    return {key: \" \".join(str(i) for i in list_)}",
+  "code_tokens": "def encode_list ( key , list_ ) : # type: (str, Iterable) -> Dict[str, str] if not list_ : return { } return { key : \" \" . join ( str ( i ) for i in list_ ) }",
+  "docstring_tokens": "Converts a list into a space - separated string and puts it in a dictionary",
+  "label": 1,
+  "retrieval_idx": 5769
+ },
+ {
+  "idx": "cosqa-train-6682",
+  "doc": "python function to reduce image size",
+  "code": "def resize_by_area(img, size):\n  \"\"\"image resize function used by quite a few image problems.\"\"\"\n  return tf.to_int64(\n      tf.image.resize_images(img, [size, size], tf.image.ResizeMethod.AREA))",
+  "code_tokens": "def resize_by_area ( img , size ) : return tf . to_int64 ( tf . image . resize_images ( img , [ size , size ] , tf . image . ResizeMethod . AREA ) )",
+  "docstring_tokens": "image resize function used by quite a few image problems .",
+  "label": 1,
+  "retrieval_idx": 1466
+ },
+ {
+  "idx": "cosqa-train-15174",
+  "doc": "python filling missing values with fillna",
+  "code": "def fillna(series_or_arr, missing_value=0.0):\n    \"\"\"Fill missing values in pandas objects and numpy arrays.\n\n    Arguments\n    ---------\n    series_or_arr : pandas.Series, numpy.ndarray\n        The numpy array or pandas series for which the missing values\n        need to be replaced.\n    missing_value : float, int, str\n        The value to replace the missing value with. Default 0.0.\n\n    Returns\n    -------\n    pandas.Series, numpy.ndarray\n        The numpy array or pandas series with the missing values\n        filled.\n    \"\"\"\n\n    if pandas.notnull(missing_value):\n        if isinstance(series_or_arr, (numpy.ndarray)):\n            series_or_arr[numpy.isnan(series_or_arr)] = missing_value\n        else:\n            series_or_arr.fillna(missing_value, inplace=True)\n\n    return series_or_arr",
+  "code_tokens": "def fillna ( series_or_arr , missing_value = 0.0 ) : if pandas . notnull ( missing_value ) : if isinstance ( series_or_arr , ( numpy . ndarray ) ) : series_or_arr [ numpy . isnan ( series_or_arr ) ] = missing_value else : series_or_arr . fillna ( missing_value , inplace = True ) return series_or_arr",
+  "docstring_tokens": "Fill missing values in pandas objects and numpy arrays .",
+  "label": 1,
+  "retrieval_idx": 4722
+ },
+ {
+  "idx": "cosqa-train-7243",
+  "doc": "how to count the number of objects in python",
+  "code": "def get_size(objects):\n    \"\"\"Compute the total size of all elements in objects.\"\"\"\n    res = 0\n    for o in objects:\n        try:\n            res += _getsizeof(o)\n        except AttributeError:\n            print(\"IGNORING: type=%s; o=%s\" % (str(type(o)), str(o)))\n    return res",
+  "code_tokens": "def get_size ( objects ) : res = 0 for o in objects : try : res += _getsizeof ( o ) except AttributeError : print ( \"IGNORING: type=%s; o=%s\" % ( str ( type ( o ) ) , str ( o ) ) ) return res",
+  "docstring_tokens": "Compute the total size of all elements in objects .",
+  "label": 1,
+  "retrieval_idx": 713
+ },
+ {
+  "idx": "cosqa-train-10565",
+  "doc": "python cmd get dynamically added do methods to show up in help",
+  "code": "def do_help(self, arg):\n        \"\"\"\n        Show help on all commands.\n        \"\"\"\n        print(self.response_prompt, file=self.stdout)\n        return cmd.Cmd.do_help(self, arg)",
+  "code_tokens": "def do_help ( self , arg ) : print ( self . response_prompt , file = self . stdout ) return cmd . Cmd . do_help ( self , arg )",
+  "docstring_tokens": "Show help on all commands .",
+  "label": 1,
+  "retrieval_idx": 4504
+ },
+ {
+  "idx": "cosqa-train-2927",
+  "doc": "how to change a dictionary to a numy array in python",
+  "code": "def C_dict2array(C):\n    \"\"\"Convert an OrderedDict containing C values to a 1D array.\"\"\"\n    return np.hstack([np.asarray(C[k]).ravel() for k in C_keys])",
+  "code_tokens": "def C_dict2array ( C ) : return np . hstack ( [ np . asarray ( C [ k ] ) . ravel ( ) for k in C_keys ] )",
+  "docstring_tokens": "Convert an OrderedDict containing C values to a 1D array .",
+  "label": 1,
+  "retrieval_idx": 879
+ }
+]

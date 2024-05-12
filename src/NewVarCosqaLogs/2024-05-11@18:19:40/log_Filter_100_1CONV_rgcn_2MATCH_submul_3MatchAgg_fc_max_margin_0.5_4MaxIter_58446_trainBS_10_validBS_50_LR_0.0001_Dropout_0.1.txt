@@ -1,0 +1,49 @@
+    Parameter                Value         
+===========================================
+conv                rgcn                   
+data_dir            ../../../cosqa/VarCosqa
+dropout             0.1                    
+filters             100                    
+gpu_index           6                      
+log_dir             ../NewVarCosqaLogs/    
+lr                  0.0001                 
+margin              0.5                    
+match               submul                 
+match_agg           fc_max                 
+max_iter            58446                  
+model_path          .                      
+only_test           False                  
+print_interval      2000                   
+random_split        True                   
+skip_file_check     False                  
+test_chunk_size     100                    
+train_batch_size    10                     
+train_sample_size   19482                  
+val_start           15000                  
+valid_batch_size    50                     
+valid_interval      2000                   
+
+****CPU or GPU: cpu
+GraphMatchNetwork(
+  (GraphEncoder_1): RGCNConv(300, 100, num_relations=3)
+  (fc_match): Linear(in_features=200, out_features=100, bias=True)
+  (fc_agg): Linear(in_features=100, out_features=100, bias=True)
+)
+Init Reading Code Graphs ... 
+Train=19482
+Valid=498
+Test=497
+Init Reading Text Graphs ... 
+Train=19482
+Valid=498
+Test=497
+#Valid Iter 0: loss = #0.49766063690185547# (Decrease) < Best loss = 0.49766063690185547. Save to best model..., time elapsed = 0:00:01.443027.
+Start to testing ...
+
+&Testing Iteration 0: for 497 queries finished. Time elapsed = 0:00:54.569796.
+&Testing Iteration 0: MRR = &0.052076555689970085&
+&Testing Iteration 0: S@1@ = &0.004024144869215292&
+&Testing Iteration 0: S@5@ = &0.05835010060362173&
+&Testing Iteration 0: S@10@ = &0.1227364185110664&
+S@1, S@5, S@10
+0.004024144869215292, 0.05835010060362173, 0.1227364185110664

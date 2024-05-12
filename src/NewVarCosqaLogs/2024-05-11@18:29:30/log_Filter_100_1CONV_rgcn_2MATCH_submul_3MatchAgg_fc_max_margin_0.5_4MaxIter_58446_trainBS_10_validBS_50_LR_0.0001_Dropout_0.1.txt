@@ -1,0 +1,113 @@
+    Parameter                Value         
+===========================================
+conv                rgcn                   
+data_dir            ../../../cosqa/VarCosqa
+dropout             0.1                    
+filters             100                    
+gpu_index           3                      
+log_dir             ../NewVarCosqaLogs/    
+lr                  0.0001                 
+margin              0.5                    
+match               submul                 
+match_agg           fc_max                 
+max_iter            58446                  
+model_path          .                      
+only_test           False                  
+print_interval      2000                   
+random_split        False                  
+skip_file_check     False                  
+test_chunk_size     100                    
+train_batch_size    10                     
+train_sample_size   19482                  
+val_start           15000                  
+valid_batch_size    50                     
+valid_interval      2000                   
+
+****CPU or GPU: cuda
+GraphMatchNetwork(
+  (GraphEncoder_1): RGCNConv(300, 100, num_relations=3)
+  (fc_match): Linear(in_features=200, out_features=100, bias=True)
+  (fc_agg): Linear(in_features=100, out_features=100, bias=True)
+)
+Init Reading Code Graphs ... 
+Train=19482
+Valid=497
+Test=498
+Init Reading Text Graphs ... 
+Train=19482
+Valid=497
+Test=498
+#Valid Iter 0: loss = #0.5002442598342896# (Decrease) < Best loss = 0.5002442598342896. Save to best model..., time elapsed = 0:00:00.523000.
+Start to testing ...
+
+&Testing Iteration 0: for 498 queries finished. Time elapsed = 0:00:36.756242.
+&Testing Iteration 0: MRR = &0.0525402378537207&
+&Testing Iteration 0: S@1@ = &0.014056224899598393&
+&Testing Iteration 0: S@5@ = &0.040160642570281124&
+&Testing Iteration 0: S@10@ = &0.0963855421686747&
+S@1, S@5, S@10
+0.014056224899598393, 0.040160642570281124, 0.0963855421686747
+@Train Iter 2000: mean smooth loss = @0.4467759132385254@, time = 0:01:57.751366.
+@Train Iter 4000: mean smooth loss = @0.296530157327652@, time = 0:01:15.905705.
+@Train Iter 6000: mean smooth loss = @0.24030277132987976@, time = 0:01:16.629776.
+@Train Iter 8000: mean smooth loss = @0.21025091409683228@, time = 0:01:03.958358.
+@Train Iter 10000: mean smooth loss = @0.18955963850021362@, time = 0:01:01.042793.
+@Train Iter 12000: mean smooth loss = @0.17452606558799744@, time = 0:01:03.599547.
+@Train Iter 14000: mean smooth loss = @0.16196121275424957@, time = 0:01:07.503454.
+@Train Iter 16000: mean smooth loss = @0.15727047622203827@, time = 0:01:06.343928.
+#Valid Iter 16000: loss = #0.17279180884361267# (Decrease) < Best loss = 0.17279180884361267. Save to best model..., time elapsed = 0:00:00.619724.
+@Train Iter 18000: mean smooth loss = @0.14577195048332214@, time = 0:00:59.846164.
+#Valid Iter 18000: loss = #0.16887935996055603# (Decrease) < Best loss = 0.16887935996055603. Save to best model..., time elapsed = 0:00:00.612962.
+@Train Iter 20000: mean smooth loss = @0.13614733517169952@, time = 0:01:12.799806.
+#Valid Iter 20000: loss = #0.1602548360824585# (Decrease) < Best loss = 0.1602548360824585. Save to best model..., time elapsed = 0:00:00.615644.
+@Train Iter 22000: mean smooth loss = @0.13176792860031128@, time = 0:01:07.358349.
+#Valid Iter 22000: loss = #0.1562618911266327# (Decrease) < Best loss = 0.1562618911266327. Save to best model..., time elapsed = 0:00:00.519656.
+@Train Iter 24000: mean smooth loss = @0.12374444305896759@, time = 0:01:01.545061.
+#Valid Iter 24000: loss = #0.14815281331539154# (Decrease) < Best loss = 0.14815281331539154. Save to best model..., time elapsed = 0:00:00.609441.
+@Train Iter 26000: mean smooth loss = @0.11956718564033508@, time = 0:01:01.193296.
+#Valid Iter 26000: loss = #0.14666345715522766# (Decrease) < Best loss = 0.14666345715522766. Save to best model..., time elapsed = 0:00:00.610251.
+@Train Iter 28000: mean smooth loss = @0.11377975344657898@, time = 0:01:12.556137.
+#Valid Iter 28000: loss = #0.1434721052646637# (Decrease) < Best loss = 0.1434721052646637. Save to best model..., time elapsed = 0:00:00.617820.
+@Train Iter 30000: mean smooth loss = @0.10761099308729172@, time = 0:01:14.512075.
+#Valid Iter 30000: loss = #0.13969258964061737# (Decrease) < Best loss = 0.13969258964061737. Save to best model..., time elapsed = 0:00:00.609114.
+@Train Iter 32000: mean smooth loss = @0.10550407320261002@, time = 0:01:06.923436.
+#Valid Iter 32000: loss = #0.15363024175167084# (Increase). Best val loss = 0.13969258964061737, time elapsed = 0:00:00.614985.
+@Train Iter 34000: mean smooth loss = @0.10101942718029022@, time = 0:01:07.458468.
+#Valid Iter 34000: loss = #0.1392759382724762# (Decrease) < Best loss = 0.1392759382724762. Save to best model..., time elapsed = 0:00:00.618208.
+@Train Iter 36000: mean smooth loss = @0.09985995292663574@, time = 0:01:02.722050.
+#Valid Iter 36000: loss = #0.1550273895263672# (Increase). Best val loss = 0.1392759382724762, time elapsed = 0:00:00.620380.
+@Train Iter 38000: mean smooth loss = @0.09574732184410095@, time = 0:01:01.967565.
+#Valid Iter 38000: loss = #0.12575659155845642# (Decrease) < Best loss = 0.12575659155845642. Save to best model..., time elapsed = 0:00:00.607211.
+@Train Iter 40000: mean smooth loss = @0.09115155041217804@, time = 0:01:03.318764.
+#Valid Iter 40000: loss = #0.13962721824645996# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.621530.
+@Train Iter 42000: mean smooth loss = @0.09141338616609573@, time = 0:01:09.636604.
+#Valid Iter 42000: loss = #0.13936910033226013# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.606134.
+@Train Iter 44000: mean smooth loss = @0.08873725682497025@, time = 0:01:00.108893.
+#Valid Iter 44000: loss = #0.1259917914867401# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.611568.
+@Train Iter 46000: mean smooth loss = @0.08524598181247711@, time = 0:01:06.685836.
+#Valid Iter 46000: loss = #0.12823937833309174# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.515845.
+@Train Iter 48000: mean smooth loss = @0.08306095749139786@, time = 0:01:05.716787.
+#Valid Iter 48000: loss = #0.14183345437049866# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.611446.
+@Train Iter 50000: mean smooth loss = @0.08102035522460938@, time = 0:00:59.400938.
+#Valid Iter 50000: loss = #0.1329926699399948# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.688963.
+@Train Iter 52000: mean smooth loss = @0.07953406125307083@, time = 0:00:59.150441.
+#Valid Iter 52000: loss = #0.1294301450252533# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.518398.
+@Train Iter 54000: mean smooth loss = @0.07760807126760483@, time = 0:00:59.293970.
+#Valid Iter 54000: loss = #0.136134535074234# (Increase). Best val loss = 0.12575659155845642, time elapsed = 0:00:00.619777.
+@Train Iter 56000: mean smooth loss = @0.07578229159116745@, time = 0:00:59.270539.
+#Valid Iter 56000: loss = #0.11805091798305511# (Decrease) < Best loss = 0.11805091798305511. Save to best model..., time elapsed = 0:00:00.623422.
+@Train Iter 58000: mean smooth loss = @0.07365567982196808@, time = 0:00:59.505107.
+#Valid Iter 58000: loss = #0.13287124037742615# (Increase). Best val loss = 0.11805091798305511, time elapsed = 0:00:00.619715.
+finished to load the model, next to start to test and time is = 2024-05-11 19:02:15.096201
+Start to testing ...
+
+&Testing Iteration 58447: for 498 queries finished. Time elapsed = 0:00:36.690950.
+&Testing Iteration 58447: MRR = &0.3993940690777069&
+&Testing Iteration 58447: S@1@ = &0.24899598393574296&
+&Testing Iteration 58447: S@5@ = &0.5883534136546185&
+&Testing Iteration 58447: S@10@ = &0.7530120481927711&
+S@1, S@5, S@10
+0.24899598393574296, 0.5883534136546185, 0.7530120481927711
+
+All Finished using (0:00:36.692673)
+

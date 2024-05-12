@@ -1,0 +1,52 @@
+    Parameter                             Value                      
+=====================================================================
+conv                rgcn                                             
+data_dir            ../../../cosqa/p                                 
+dropout             0.1                                              
+filters             100                                              
+gpu_index           6                                                
+log_dir             ../NewCosqaLogs/                                 
+lr                  0.0001                                           
+margin              0.5                                              
+match               submul                                           
+match_agg           fc_max                                           
+max_iter            58812                                            
+model_path          ../NewCosqaLogs/2024-05-09@11:09:52/best_model.pt
+only_test           True                                             
+print_interval      2000                                             
+random_split        True                                             
+skip_file_check     False                                            
+test_chunk_size     100                                              
+train_batch_size    10                                               
+train_sample_size   19604                                            
+val_start           15000                                            
+valid_batch_size    50                                               
+valid_interval      2000                                             
+
+****CPU or GPU: cpu
+GraphMatchNetwork(
+  (GraphEncoder_1): RGCNConv(300, 100, num_relations=3)
+  (fc_match): Linear(in_features=200, out_features=100, bias=True)
+  (fc_agg): Linear(in_features=100, out_features=100, bias=True)
+)
+Init Reading Code Graphs ... 
+Train=19604
+Valid=498
+Test=497
+Init Reading Text Graphs ... 
+Train=19604
+Valid=498
+Test=497
+finished to load the model, next to start to test and time is = 2024-05-11 16:31:01.880380
+Start to testing ...
+
+&Testing Iteration 58813: for 497 queries finished. Time elapsed = 0:00:57.751380.
+&Testing Iteration 58813: MRR = &0.5736683204195021&
+&Testing Iteration 58813: S@1@ = &0.4024144869215292&
+&Testing Iteration 58813: S@5@ = &0.8028169014084507&
+&Testing Iteration 58813: S@10@ = &0.9416498993963782&
+S@1, S@5, S@10
+0.4024144869215292, 0.8028169014084507, 0.9416498993963782
+
+All Finished using (0:00:57.753272)
+
